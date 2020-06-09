@@ -1019,361 +1019,6 @@
     return-void
 .end method
 
-.method private launchOpCamera(Ljava/lang/String;)V
-    .locals 11
-
-    const-string v0, "com.android.systemui.camera_launch_source_gesture"
-
-    const-string v1, "com.android.systemui.camera_launch_source"
-
-    const-string v2, "com.oneplus.camera"
-
-    const-string v3, "power_double_tap"
-
-    const-string v4, "StatusBar/KeyguardBottomAreaView"
-
-    const/4 v5, 0x1
-
-    const/4 v6, 0x0
-
-    if-ne p1, v3, :cond_1
-
-    iget-object v7, p0, Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView;->mStatusBar:Lcom/android/systemui/statusbar/phone/StatusBar;
-
-    invoke-virtual {v7, v5}, Lcom/oneplus/systemui/statusbar/phone/OpStatusBar;->getDoubleTapPowerOpAppIntent(I)Landroid/content/Intent;
-
-    move-result-object v7
-
-    if-eqz v7, :cond_1
-
-    const-string p1, "isAlexa"
-
-    invoke-virtual {v7, p1, v6}, Landroid/content/Intent;->getBooleanExtra(Ljava/lang/String;Z)Z
-
-    move-result p1
-
-    new-instance v0, Ljava/lang/StringBuilder;
-
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v1, "DoubleTapPower: launching "
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v0, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    const-string v1, ", "
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v0
-
-    invoke-static {v4, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    if-eqz p1, :cond_0
-
-    iget-object p1, p0, Landroid/widget/FrameLayout;->mContext:Landroid/content/Context;
-
-    invoke-static {p1}, Lcom/android/keyguard/KeyguardUpdateMonitor;->getInstance(Landroid/content/Context;)Lcom/android/keyguard/KeyguardUpdateMonitor;
-
-    move-result-object p1
-
-    invoke-virtual {p1, v6}, Lcom/oneplus/keyguard/OpKeyguardUpdateMonitor;->updateLaunchingCameraState(Z)V
-
-    iget-object p0, p0, Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView;->mActivityStarter:Lcom/android/systemui/plugins/ActivityStarter;
-
-    invoke-interface {p0, v7, v6}, Lcom/android/systemui/plugins/ActivityStarter;->startActivity(Landroid/content/Intent;Z)V
-
-    goto :goto_0
-
-    :cond_0
-    new-instance p1, Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView$5;
-
-    invoke-direct {p1, p0, v7}, Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView$5;-><init>(Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView;Landroid/content/Intent;)V
-
-    invoke-static {p1}, Landroid/os/AsyncTask;->execute(Ljava/lang/Runnable;)V
-
-    :goto_0
-    return-void
-
-    :cond_1
-    iget-object v7, p0, Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView;->mStatusBar:Lcom/android/systemui/statusbar/phone/StatusBar;
-
-    if-ne p1, v3, :cond_2
-
-    move v3, v5
-
-    goto :goto_1
-
-    :cond_2
-    move v3, v6
-
-    :goto_1
-    invoke-virtual {v7, p1, v3}, Lcom/oneplus/systemui/statusbar/phone/OpStatusBar;->notifyCameraLaunching(Ljava/lang/String;Z)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    new-instance p0, Ljava/lang/StringBuilder;
-
-    invoke-direct {p0}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v0, "pending launchCamera, "
-
-    invoke-virtual {p0, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {p0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {p0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object p0
-
-    invoke-static {v4, p0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    return-void
-
-    :cond_3
-    invoke-direct {p0}, Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView;->getCameraIntent()Landroid/content/Intent;
-
-    move-result-object v3
-
-    new-instance v7, Ljava/lang/StringBuilder;
-
-    invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v8, "launchCamera, "
-
-    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v7, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    const-string v8, ", intent:"
-
-    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v7, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v7
-
-    invoke-static {v4, v7}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    iget-object v7, p0, Landroid/widget/FrameLayout;->mContext:Landroid/content/Context;
-
-    invoke-virtual {v7}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
-
-    move-result-object v7
-
-    iget-object v8, p0, Landroid/widget/FrameLayout;->mContext:Landroid/content/Context;
-
-    invoke-virtual {v8}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v8
-
-    sget v9, Lcom/android/systemui/R$string;->op_camera_package_name:I
-
-    invoke-virtual {v8, v9}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
-
-    move-result-object v8
-
-    :try_start_0
-    invoke-static {v8}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    move-result v9
-
-    if-eqz v9, :cond_5
-
-    invoke-virtual {v7, v2, v5}, Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
-
-    sget-object v5, Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView;->SECURE_CAMERA_INTENT:Landroid/content/Intent;
-
-    if-ne v3, v5, :cond_4
-
-    new-instance v5, Landroid/content/ComponentName;
-
-    const-string v7, "com.oneplus.camera.OPSecureCameraActivity"
-
-    invoke-direct {v5, v2, v7}, Landroid/content/ComponentName;-><init>(Ljava/lang/String;Ljava/lang/String;)V
-
-    invoke-virtual {v3, v5}, Landroid/content/Intent;->setComponent(Landroid/content/ComponentName;)Landroid/content/Intent;
-
-    goto :goto_2
-
-    :cond_4
-    new-instance v5, Landroid/content/ComponentName;
-
-    const-string v7, "com.oneplus.camera.OPCameraActivity"
-
-    invoke-direct {v5, v2, v7}, Landroid/content/ComponentName;-><init>(Ljava/lang/String;Ljava/lang/String;)V
-
-    invoke-virtual {v3, v5}, Landroid/content/Intent;->setComponent(Landroid/content/ComponentName;)Landroid/content/Intent;
-
-    :goto_2
-    invoke-virtual {v3, v1, p1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-
-    sget v2, Lcom/android/systemui/statusbar/phone/NotificationPanelViewController;->mLastCameraGestureLaunchSource:I
-
-    invoke-virtual {v3, v0, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
-
-    goto/16 :goto_4
-
-    :cond_5
-    invoke-virtual {v7, v8, v5}, Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
-
-    invoke-virtual {v3, v8}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
-
-    sget-object v2, Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView;->SECURE_CAMERA_INTENT:Landroid/content/Intent;
-
-    if-ne v3, v2, :cond_6
-
-    iget-object v2, p0, Landroid/widget/FrameLayout;->mContext:Landroid/content/Context;
-
-    invoke-virtual {v2}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v2
-
-    sget v7, Lcom/android/systemui/R$string;->op_secure_camera_action:I
-
-    invoke-virtual {v2, v7}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-virtual {v3, v2}, Landroid/content/Intent;->setAction(Ljava/lang/String;)Landroid/content/Intent;
-
-    goto :goto_3
-
-    :cond_6
-    iget-object v2, p0, Landroid/widget/FrameLayout;->mContext:Landroid/content/Context;
-
-    invoke-virtual {v2}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v2
-
-    sget v7, Lcom/android/systemui/R$string;->op_camera_action:I
-
-    invoke-virtual {v2, v7}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-virtual {v3, v2}, Landroid/content/Intent;->setAction(Ljava/lang/String;)Landroid/content/Intent;
-
-    :goto_3
-    sget v2, Lcom/android/systemui/statusbar/phone/NotificationPanelViewController;->mLastCameraGestureLaunchSource:I
-    :try_end_0
-    .catch Landroid/content/pm/PackageManager$NameNotFoundException; {:try_start_0 .. :try_end_0} :catch_0
-
-    const v7, 0x10000200
-
-    const-string v8, "rear"
-
-    const-string v9, "front"
-
-    const-string v10, "mode"
-
-    if-eq v2, v7, :cond_8
-
-    const v7, 0x10000400
-
-    if-eq v2, v7, :cond_7
-
-    :try_start_1
-    invoke-virtual {v3, v10, v6}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
-
-    invoke-virtual {v3, v9, v6}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
-
-    invoke-virtual {v3, v8, v5}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
-
-    goto :goto_4
-
-    :cond_7
-    const/4 v2, 0x6
-
-    invoke-virtual {v3, v10, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
-
-    invoke-virtual {v3, v9, v6}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
-
-    invoke-virtual {v3, v8, v5}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
-
-    goto :goto_4
-
-    :cond_8
-    invoke-virtual {v3, v10, v6}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
-
-    invoke-virtual {v3, v9, v5}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
-
-    invoke-virtual {v3, v8, v6}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
-    :try_end_1
-    .catch Landroid/content/pm/PackageManager$NameNotFoundException; {:try_start_1 .. :try_end_1} :catch_0
-
-    goto :goto_4
-
-    :catch_0
-    const-string v2, "no op camera"
-
-    invoke-static {v4, v2}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
-    new-instance v2, Landroid/content/ComponentName;
-
-    const-string v4, "com.android.camera2"
-
-    const-string v5, "com.android.camera.CameraActivity"
-
-    invoke-direct {v2, v4, v5}, Landroid/content/ComponentName;-><init>(Ljava/lang/String;Ljava/lang/String;)V
-
-    invoke-virtual {v3, v2}, Landroid/content/Intent;->setComponent(Landroid/content/ComponentName;)Landroid/content/Intent;
-
-    invoke-virtual {v3, v1, p1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-
-    sget p1, Lcom/android/systemui/statusbar/phone/NotificationPanelViewController;->mLastCameraGestureLaunchSource:I
-
-    invoke-virtual {v3, v0, p1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
-
-    :goto_4
-    sput v6, Lcom/android/systemui/statusbar/phone/NotificationPanelViewController;->mLastCameraGestureLaunchSource:I
-
-    iget-object p1, p0, Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView;->mActivityIntentHelper:Lcom/android/systemui/ActivityIntentHelper;
-
-    invoke-static {}, Lcom/android/keyguard/KeyguardUpdateMonitor;->getCurrentUser()I
-
-    move-result v0
-
-    invoke-virtual {p1, v3, v0}, Lcom/android/systemui/ActivityIntentHelper;->wouldLaunchResolverActivity(Landroid/content/Intent;I)Z
-
-    move-result p1
-
-    sget-object v0, Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView;->SECURE_CAMERA_INTENT:Landroid/content/Intent;
-
-    if-ne v3, v0, :cond_9
-
-    if-nez p1, :cond_9
-
-    new-instance p1, Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView$6;
-
-    invoke-direct {p1, p0, v3}, Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView$6;-><init>(Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView;Landroid/content/Intent;)V
-
-    invoke-static {p1}, Landroid/os/AsyncTask;->execute(Ljava/lang/Runnable;)V
-
-    goto :goto_5
-
-    :cond_9
-    iget-object p1, p0, Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView;->mActivityStarter:Lcom/android/systemui/plugins/ActivityStarter;
-
-    new-instance v0, Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView$7;
-
-    invoke-direct {v0, p0}, Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView$7;-><init>(Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView;)V
-
-    invoke-interface {p1, v3, v6, v0}, Lcom/android/systemui/plugins/ActivityStarter;->startActivity(Landroid/content/Intent;ZLcom/android/systemui/plugins/ActivityStarter$Callback;)V
-
-    :goto_5
-    return-void
-.end method
-
 .method private launchPhone()V
     .locals 3
 
@@ -2285,10 +1930,52 @@
 .end method
 
 .method public launchCamera(Ljava/lang/String;)V
-    .locals 0
+    .locals 3
 
-    invoke-direct {p0, p1}, Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView;->launchOpCamera(Ljava/lang/String;)V
+    invoke-direct {p0}, Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView;->getCameraIntent()Landroid/content/Intent;
 
+    move-result-object v0
+
+    const-string v1, "com.android.systemui.camera_launch_source"
+
+    invoke-virtual {v0, v1, p1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+
+    iget-object p1, p0, Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView;->mActivityIntentHelper:Lcom/android/systemui/ActivityIntentHelper;
+
+    invoke-static {}, Lcom/android/keyguard/KeyguardUpdateMonitor;->getCurrentUser()I
+
+    move-result v1
+
+    invoke-virtual {p1, v0, v1}, Lcom/android/systemui/ActivityIntentHelper;->wouldLaunchResolverActivity(Landroid/content/Intent;I)Z
+
+    move-result p1
+
+    sget-object v1, Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView;->SECURE_CAMERA_INTENT:Landroid/content/Intent;
+
+    if-ne v0, v1, :cond_0
+
+    if-nez p1, :cond_0
+
+    new-instance p1, Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView$3;
+
+    invoke-direct {p1, p0, v0}, Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView$3;-><init>(Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView;Landroid/content/Intent;)V
+
+    invoke-static {p1}, Landroid/os/AsyncTask;->execute(Ljava/lang/Runnable;)V
+
+    goto :goto_0
+
+    :cond_0
+    iget-object p1, p0, Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView;->mActivityStarter:Lcom/android/systemui/plugins/ActivityStarter;
+
+    const/4 v1, 0x0
+
+    new-instance v2, Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView$4;
+
+    invoke-direct {v2, p0}, Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView$4;-><init>(Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView;)V
+
+    invoke-interface {p1, v0, v1, v2}, Lcom/android/systemui/plugins/ActivityStarter;->startActivity(Landroid/content/Intent;ZLcom/android/systemui/plugins/ActivityStarter$Callback;)V
+
+    :goto_0
     return-void
 .end method
 
