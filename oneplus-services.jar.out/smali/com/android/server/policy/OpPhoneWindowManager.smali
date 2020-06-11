@@ -3497,6 +3497,24 @@
     invoke-direct {v0, p0}, Lcom/android/server/policy/OpPhoneWindowManager$KillApp;-><init>(Lcom/android/server/policy/OpPhoneWindowManager;)V
 
     iput-object v0, p0, Lcom/android/server/policy/OpPhoneWindowManager;->mKillProcess:Ljava/lang/Runnable;
+    
+    const-string v1, "camera"
+
+    invoke-virtual {p1, v1}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Landroid/hardware/camera2/CameraManager;
+
+    iput-object v1, p0, Lcom/android/server/policy/PhoneWindowManager;->mCameraManager:Landroid/hardware/camera2/CameraManager;
+    
+    new-instance v1, Lcom/android/server/policy/PhoneWindowManager$TorchCallback;
+
+    invoke-direct {v1, p0}, Lcom/android/server/policy/PhoneWindowManager$TorchCallback;-><init>(Lcom/android/server/policy/PhoneWindowManager;)V
+
+    iput-object v1, p0, Lcom/android/server/policy/PhoneWindowManager;->mTorchCallback:Landroid/hardware/camera2/CameraManager$TorchCallback;
+    
+    invoke-virtual {p0}, Lcom/android/server/policy/PhoneWindowManager;->registerCameraManagerCallbacks()V
 
     return-void
 .end method
