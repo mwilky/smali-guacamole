@@ -14,6 +14,7 @@
         Lcom/android/server/policy/OpPhoneWindowManager$dma;,
         Lcom/android/server/policy/OpPhoneWindowManager$ywr;,
         Lcom/android/server/policy/OpPhoneWindowManager$KeyLockMode;
+        Lcom/android/server/policy/OpPhoneWindowManager$KillApp;
     }
 .end annotation
 
@@ -166,6 +167,10 @@
 
 
 # instance fields
+.field mKHandler:Landroid/os/Handler;
+
+.field mKillProcess:Ljava/lang/Runnable;
+
 .field private longPressStartTime:J
 
 .field private final mAppSwitchDoubleTapTimeoutRunnable:Ljava/lang/Runnable;
@@ -3477,9 +3482,21 @@
 
     invoke-direct {p2, p3}, Landroid/content/IntentFilter;-><init>(Ljava/lang/String;)V
 
-    iget-object p0, p0, Lcom/android/server/policy/OpPhoneWindowManager;->mMultiuserReceiver:Landroid/content/BroadcastReceiver;
+    iget-object v0, p0, Lcom/android/server/policy/OpPhoneWindowManager;->mMultiuserReceiver:Landroid/content/BroadcastReceiver;
 
-    invoke-virtual {p1, p0, p2}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
+    invoke-virtual {p1, v0, p2}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
+    
+    new-instance v0, Landroid/os/Handler;
+
+    invoke-direct {v0}, Landroid/os/Handler;-><init>()V
+
+    iput-object v0, p0, Lcom/android/server/policy/OpPhoneWindowManager;->mKHandler:Landroid/os/Handler;
+    
+    new-instance v0, Lcom/android/server/policy/OpPhoneWindowManager$KillApp;
+
+    invoke-direct {v0, p0}, Lcom/android/server/policy/OpPhoneWindowManager$KillApp;-><init>(Lcom/android/server/policy/OpPhoneWindowManager;)V
+
+    iput-object v0, p0, Lcom/android/server/policy/OpPhoneWindowManager;->mKillProcess:Ljava/lang/Runnable;
 
     return-void
 .end method
@@ -7128,5 +7145,24 @@
 
     :cond_4
     :goto_2
+    return-void
+.end method
+
+.method public killApp()V
+    .locals 3
+
+    invoke-virtual {p0}, Lcom/android/server/policy/PhoneWindowManager;->keyguardOn()Z
+
+    move-result v1
+
+    if-nez v1, :cond_0
+
+    iget-object v2, p0, Lcom/android/server/policy/OpPhoneWindowManager;->mKHandler:Landroid/os/Handler;
+
+    iget-object v0, p0, Lcom/android/server/policy/OpPhoneWindowManager;->mKillProcess:Ljava/lang/Runnable;
+
+    invoke-virtual {v2, v0}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+
+    :cond_0
     return-void
 .end method
