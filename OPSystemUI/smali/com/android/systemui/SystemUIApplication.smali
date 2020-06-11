@@ -7,6 +7,8 @@
 
 
 # static fields
+.field private static mGearContext:Landroid/content/Context;
+
 .field private static final DEBUG:Z
 
 
@@ -563,6 +565,8 @@
     sget v0, Lcom/android/systemui/R$style;->Theme_SystemUI:I
 
     invoke-virtual {p0, v0}, Landroid/app/Application;->setTheme(I)V
+    
+    sput-object p0, Lcom/android/systemui/SystemUIApplication;->mGearContext:Landroid/content/Context;
 
     invoke-static {}, Landroid/os/Process;->myUserHandle()Landroid/os/UserHandle;
 
@@ -702,4 +706,12 @@
     invoke-direct {p0, v1, v0}, Lcom/android/systemui/SystemUIApplication;->startServicesIfNeeded(Ljava/lang/String;[Ljava/lang/String;)V
 
     return-void
+.end method
+
+.method public static getContext()Landroid/content/Context;
+    .locals 1
+
+    sget-object v0, Lcom/android/systemui/SystemUIApplication;->mGearContext:Landroid/content/Context;
+
+    return-object v0
 .end method
