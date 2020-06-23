@@ -1289,7 +1289,7 @@
 .end method
 
 .method private synthetic lambda$updateView$3()V
-    .locals 3
+    .locals 4
 
     iget-object v0, p0, Lcom/oneplus/keyguard/OpKeyguardClockInfoView;->mKeyguardAssistantView:Lcom/android/keyguard/KeyguardAssistantView;
 
@@ -1318,6 +1318,8 @@
     iget-object v0, p0, Lcom/oneplus/keyguard/OpKeyguardClockInfoView;->mAodSliceViewContainer:Landroid/view/ViewGroup;
 
     invoke-virtual {v0, v2}, Landroid/view/ViewGroup;->setVisibility(I)V
+    
+    invoke-virtual {p0}, Lcom/oneplus/keyguard/OpKeyguardClockInfoView;->updateClockView()V
 
     invoke-direct {p0}, Lcom/oneplus/keyguard/OpKeyguardClockInfoView;->updateAodSliceView()V
 
@@ -1367,6 +1369,8 @@
 
     :cond_4
     :goto_0
+    invoke-virtual {p0}, Lcom/oneplus/keyguard/OpKeyguardClockInfoView;->updateClockView()V
+
     invoke-direct {p0}, Lcom/oneplus/keyguard/OpKeyguardClockInfoView;->updateAodSliceView()V
 
     return-void
@@ -2766,5 +2770,63 @@
 
     invoke-direct {p0}, Lcom/oneplus/keyguard/OpKeyguardClockInfoView;->updateView()V
 
+    return-void
+.end method
+
+.method public updateClockView()V
+	.locals 3
+
+	iget-object v0, p0, Lcom/oneplus/keyguard/OpKeyguardClockInfoView;->mViewType:Lcom/oneplus/keyguard/OpKeyguardClockInfoView$ViewTypeEnum;
+
+    sget-object v1, Lcom/oneplus/keyguard/OpKeyguardClockInfoView$ViewTypeEnum;->aod:Lcom/oneplus/keyguard/OpKeyguardClockInfoView$ViewTypeEnum;
+    
+    const v2, 0x8
+
+    if-eq v0, v1, :cond_exit
+
+    sget-boolean v0, Lcom/android/mwilky/Renovate;->mHideLockscreenClock:Z
+    
+    if-eqz v0, :cond_show
+    
+    iget-object v0, p0, Lcom/oneplus/keyguard/OpKeyguardClockInfoView;->mTextViewDateOfWeekLineOne:Landroid/widget/TextView;
+
+    if-eqz v0, :cond_mw
+
+    invoke-virtual {v0, v2}, Landroid/widget/TextView;->setVisibility(I)V
+
+    :cond_mw
+    iget-object v0, p0, Lcom/oneplus/keyguard/OpKeyguardClockInfoView;->mTextViewTimeLineTwo:Lcom/oneplus/keyguard/OpKeyguardOneplusTextView;
+    
+    if-eqz v0, :cond_mw2
+
+    invoke-virtual {v0, v2}, Landroid/widget/TextView;->setVisibility(I)V
+
+    :cond_mw2
+    iget-object v0, p0, Lcom/oneplus/keyguard/OpKeyguardClockInfoView;->mTextViewDateLineThree:Landroid/widget/TextView;
+    
+    if-eqz v0, :cond_exit
+
+    invoke-virtual {v0, v2}, Landroid/widget/TextView;->setVisibility(I)V
+    
+    goto :goto_exit
+    
+    :cond_show
+    const v2, 0x0
+
+    iget-object v0, p0, Lcom/oneplus/keyguard/OpKeyguardClockInfoView;->mTextViewTimeLineTwo:Lcom/oneplus/keyguard/OpKeyguardOneplusTextView;
+    
+    if-eqz v0, :cond_mw3
+
+    invoke-virtual {v0, v2}, Landroid/widget/TextView;->setVisibility(I)V
+
+    :cond_mw3
+    iget-object v0, p0, Lcom/oneplus/keyguard/OpKeyguardClockInfoView;->mTextViewDateLineThree:Landroid/widget/TextView;
+    
+    if-eqz v0, :cond_exit
+
+    invoke-virtual {v0, v2}, Landroid/widget/TextView;->setVisibility(I)V
+
+    :goto_exit
+    :cond_exit
     return-void
 .end method
