@@ -47,6 +47,8 @@
 
 
 # instance fields
+.field private mKeyguardStatusBar:Lcom/android/systemui/statusbar/phone/KeyguardStatusBarView;
+
 .field private mActivityIntentHelper:Lcom/android/systemui/ActivityIntentHelper;
 
 .field private mActivityLaunchAnimator:Lcom/android/systemui/statusbar/notification/ActivityLaunchAnimator;
@@ -4946,6 +4948,8 @@
     move-result-object v3
 
     check-cast v3, Lcom/android/systemui/statusbar/phone/KeyguardStatusBarView;
+    
+    iput-object v3, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mKeyguardStatusBar:Lcom/android/systemui/statusbar/phone/KeyguardStatusBarView;
 
     iget-object v4, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mNotificationPanelViewController:Lcom/android/systemui/statusbar/phone/NotificationPanelViewController;
 
@@ -13171,6 +13175,8 @@
     invoke-static {v0}, Lcom/android/mwilky/Renovate;->setScrambleKeypad(Landroid/content/Context;)V
     
     invoke-static {v0}, Lcom/android/mwilky/Renovate;->setHideLockscreenClock(Landroid/content/Context;)V
+    
+    invoke-static {v0}, Lcom/android/mwilky/Renovate;->setHideLockscreenStatusbar(Landroid/content/Context;)V
 
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mScreenLifecycle:Lcom/android/systemui/keyguard/ScreenLifecycle;
 
@@ -15465,6 +15471,10 @@
     const-string v1, "tweaks_hide_lockscreen_clock"
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+    
+    const-string v1, "tweaks_hide_lockscreen_statusbar"
+
+    invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
     .line 102
     new-instance v1, Lcom/android/wubydax/GearContentObserver;
@@ -15678,6 +15688,21 @@
     invoke-static {v0}, Lcom/android/mwilky/Renovate;->setHideLockscreenClock(Landroid/content/Context;)V
 
     :cond_mwilky4
+    const-string v0, "tweaks_hide_lockscreen_statusbar"
+    
+    invoke-virtual {v0, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_mwilky5
+
+    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mContext:Landroid/content/Context;
+    
+    invoke-static {v0}, Lcom/android/mwilky/Renovate;->setHideLockscreenStatusbar(Landroid/content/Context;)V
+    
+    invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/StatusBar;->updateLockscreenStatusbarViews()V
+
+    :cond_mwilky5
     return-void
 .end method
 
@@ -15730,5 +15755,18 @@
     invoke-virtual {v0}, Lcom/android/systemui/qs/QuickQSPanel;->updateTiles()V
 
     .line 149
+    return-void
+.end method
+
+.method updateLockscreenStatusbarViews()V
+	.locals 1
+	
+	iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mKeyguardStatusBar:Lcom/android/systemui/statusbar/phone/KeyguardStatusBarView;
+	
+	if-eqz v0, :cond_mw
+	
+	invoke-virtual {v0}, Lcom/android/systemui/statusbar/phone/KeyguardStatusBarView;->updateVisibilities()V
+    
+    :cond_mw
     return-void
 .end method
