@@ -2554,6 +2554,10 @@
 
     :cond_9
     if-eqz v4, :cond_a
+    
+    sget-boolean v0, Lcom/android/mwilky/Renovate;->mHideLockscreenAlbumArt:Z
+    
+    if-nez v0, :cond_a
 
     iget-object v0, p0, Lcom/android/systemui/statusbar/NotificationMediaManager;->mProcessArtworkTasks:Ljava/util/Set;
 
