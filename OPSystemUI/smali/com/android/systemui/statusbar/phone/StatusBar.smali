@@ -7441,15 +7441,13 @@
 
     if-eqz p1, :cond_5
 
-    iget-boolean p1, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mVibrateOnOpening:Z
+    sget-boolean p1, Lcom/android/mwilky/Renovate;->mQsExpandVibration:Z
 
     if-eqz p1, :cond_4
 
-    iget-object p1, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mVibratorHelper:Lcom/android/systemui/statusbar/VibratorHelper;
+    const/16 v1, 0x3ff
 
-    const/4 v1, 0x2
-
-    invoke-virtual {p1, v1}, Lcom/android/systemui/statusbar/VibratorHelper;->vibrate(I)V
+    invoke-static {v1}, Lcom/android/systemui/statusbar/phone/StatusBar;->vibrate(I)V
 
     :cond_4
     iget-object p1, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mNotificationPanelViewController:Lcom/android/systemui/statusbar/phone/NotificationPanelViewController;
@@ -13188,6 +13186,8 @@
     
     invoke-static {v0}, Lcom/android/mwilky/Renovate;->setAlbumArtBlurAmount(Landroid/content/Context;)V
 
+    invoke-static {v0}, Lcom/android/mwilky/Renovate;->setQsExpandVibration(Landroid/content/Context;)V
+    
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mScreenLifecycle:Lcom/android/systemui/keyguard/ScreenLifecycle;
 
     iget-object v1, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mScreenObserver:Lcom/android/systemui/keyguard/ScreenLifecycle$Observer;
@@ -15510,7 +15510,11 @@
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
     
-     const-string v1, "tweaks_album_art_blur_amount"
+    const-string v1, "tweaks_album_art_blur_amount"
+
+    invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+    
+    const-string v1, "tweaks_qs_vibrate_expansion"
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
@@ -15847,6 +15851,19 @@
     invoke-static {v0}, Lcom/android/mwilky/Renovate;->setAlbumArtBlurAmount(Landroid/content/Context;)V
 
     :cond_mwilky13
+    const-string v0, "tweaks_qs_vibrate_expansion"
+    
+    invoke-virtual {v0, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_mwilky14
+
+    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mContext:Landroid/content/Context;
+    
+    invoke-static {v0}, Lcom/android/mwilky/Renovate;->setQsExpandVibration(Landroid/content/Context;)V
+
+    :cond_mwilky14
     return-void
 .end method
 
@@ -15912,5 +15929,77 @@
 	invoke-virtual {v0}, Lcom/android/systemui/statusbar/phone/KeyguardStatusBarView;->updateVisibilities()V
     
     :cond_mw
+    return-void
+.end method
+
+.method public static vibrate(I)V
+    .registers 4
+    .param p0, "i"    # I
+
+    .line 197
+    invoke-static {}, Lcom/android/systemui/SystemUIApplication;->getContext()Landroid/content/Context;
+
+    move-result-object v0
+
+    const-string v1, "vibrator"
+
+    invoke-virtual {v0, v1}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/os/Vibrator;
+
+    .line 198
+    .local v0, "vibrator":Landroid/os/Vibrator;
+    invoke-static {}, Lcom/oneplus/util/OpUtils;->isSupportLinearVibration()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_1a
+
+    .line 199
+    invoke-static {}, Lcom/android/systemui/SystemUIApplication;->getContext()Landroid/content/Context;
+
+    move-result-object v1
+
+    invoke-static {v1, v0, p0}, Lcom/oneplus/util/VibratorSceneUtils;->doVibrateWithSceneIfNeeded(Landroid/content/Context;Landroid/os/Vibrator;I)Z
+    
+    goto :goto_2d
+
+    .line 200
+    :cond_1a
+    invoke-static {}, Lcom/oneplus/util/OpUtils;->isSupportZVibrationMotor()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_28
+
+    .line 201
+    const/4 v1, 0x0
+
+    invoke-static {v1}, Landroid/os/VibrationEffect;->get(I)Landroid/os/VibrationEffect;
+
+    move-result-object v1
+
+    sget-object v2, Lcom/android/systemui/statusbar/phone/StatusBar;->VIBRATION_ATTRIBUTES:Landroid/media/AudioAttributes;
+
+    invoke-virtual {v0, v1, v2}, Landroid/os/Vibrator;->vibrate(Landroid/os/VibrationEffect;Landroid/media/AudioAttributes;)V
+
+    goto :goto_2d
+
+    .line 203
+    :cond_28
+    const/4 v1, 0x5
+
+    invoke-static {v1}, Landroid/os/VibrationEffect;->get(I)Landroid/os/VibrationEffect;
+
+    move-result-object v1
+
+    sget-object v2, Lcom/android/systemui/statusbar/phone/StatusBar;->VIBRATION_ATTRIBUTES:Landroid/media/AudioAttributes;
+
+    invoke-virtual {v0, v1, v2}, Landroid/os/Vibrator;->vibrate(Landroid/os/VibrationEffect;Landroid/media/AudioAttributes;)V
+
+    .line 205
+    :goto_2d
     return-void
 .end method

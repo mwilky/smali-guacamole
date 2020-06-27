@@ -3455,15 +3455,13 @@
 .method protected maybeVibrateOnOpening()V
     .locals 1
 
-    iget-boolean v0, p0, Lcom/android/systemui/statusbar/phone/PanelViewController;->mVibrateOnOpening:Z
+    sget-boolean v0, Lcom/android/mwilky/Renovate;->mQsExpandVibration:Z
 
     if-eqz v0, :cond_0
+    
+    const/16 v1, 0x3ff
 
-    iget-object p0, p0, Lcom/android/systemui/statusbar/phone/PanelViewController;->mVibratorHelper:Lcom/android/systemui/statusbar/VibratorHelper;
-
-    const/4 v0, 0x2
-
-    invoke-virtual {p0, v0}, Lcom/android/systemui/statusbar/VibratorHelper;->vibrate(I)V
+    invoke-static {v1}, Lcom/android/systemui/statusbar/phone/StatusBar;->vibrate(I)V
 
     :cond_0
     return-void
