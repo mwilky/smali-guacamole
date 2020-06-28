@@ -602,14 +602,6 @@
 
     invoke-direct {p0}, Lcom/android/systemui/plugins/qs/QSTile$BooleanState;-><init>()V
 
-    const-string v0, "qs_airplane_tile"
-
-    iput-object v0, p0, Lcom/android/systemui/plugins/qs/QSTile$State;->lottiePrefix:Ljava/lang/CharSequence;
-
-    const/16 v0, 0x3f
-
-    iput v0, p0, Lcom/android/systemui/plugins/qs/QSTile$State;->lottieSupport:I
-
     return-object p0
 .end method
 
