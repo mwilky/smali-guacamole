@@ -218,6 +218,8 @@
     iget-object v0, p0, Lcom/android/systemui/qs/tileimpl/QSTileView;->mLabelContainer:Landroid/view/ViewGroup;
 
     invoke-virtual {p0, v0}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
+    
+    invoke-virtual {p0}, Lcom/android/systemui/qs/tileimpl/QSTileView;->hideQsLabel()V
 
     return-void
 .end method
@@ -611,4 +613,26 @@
 
     :cond_1
     return-void
+.end method
+
+.method public hideQsLabel()V
+	.locals 3
+
+	sget-boolean v2, Lcom/android/mwilky/Renovate;->mHideQsLabels:Z
+
+	iget-object v0, p0, Lcom/android/systemui/qs/tileimpl/QSTileView;->mLabelContainer:Landroid/view/ViewGroup;
+
+	if-nez v2, :cond_hide
+
+	const v2, 0x0
+
+	goto :goto_skip
+
+    :cond_hide
+    const v2, 0x8
+
+    :goto_skip
+    invoke-virtual {v0, v2}, Landroid/view/ViewGroup;->setVisibility(I)V
+
+	return-void
 .end method
