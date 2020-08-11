@@ -2089,4 +2089,6 @@
     <item type="id" name="zen_radio_buttons" />
     <item type="id" name="zen_radio_buttons_content" />
     <item type="id" name="zero" />
+    <item type="id" name="renovate_title" />
+    <item type="id" name="renovate_message" />
 </resources>

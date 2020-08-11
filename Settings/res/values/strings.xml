@@ -8149,4 +8149,5 @@ Update settings to:
     <string name="APKTOOL_DUMMY_1991" />
     <string name="APKTOOL_DUMMY_19e6" />
     <string name="APKTOOL_DUMMY_19e7" />
+    <string name="renovate_version">RENOVATE ICE version</string>
 </resources>
