@@ -13,13 +13,27 @@
         Lcom/android/server/policy/OpPhoneWindowManager$gck;,
         Lcom/android/server/policy/OpPhoneWindowManager$dma;,
         Lcom/android/server/policy/OpPhoneWindowManager$ywr;,
-        Lcom/android/server/policy/OpPhoneWindowManager$KeyLockMode;
+        Lcom/android/server/policy/OpPhoneWindowManager$KeyLockMode;,
         Lcom/android/server/policy/OpPhoneWindowManager$KillApp;
     }
 .end annotation
 
 
 # static fields
+.field public static mDoublePressHomeCustomApp:Ljava/lang/String;
+
+.field public static mLongPressHomeCustomApp:Ljava/lang/String;
+
+.field public static mDoublePressBackCustomApp:Ljava/lang/String;
+
+.field public static mLongPressBackCustomApp:Ljava/lang/String;
+
+.field public static mDoublePressRecentCustomApp:Ljava/lang/String;
+
+.field public static mLongPressRecentCustomApp:Ljava/lang/String;
+
+.field public static remapAction:Ljava/lang/String;
+
 .field private static final ACTION_CAPTURE_SCREENSHOT:Ljava/lang/String; = "com.oneplus.voiceassist.TAKE_SCREENSHOT"
 
 .field private static final ACTION_KEY_LOCK:Ljava/lang/String; = "com.oem.intent.action.KEY_LOCK_MODE"
@@ -1610,18 +1624,6 @@
 
     iput v1, p0, Lcom/android/server/policy/OpPhoneWindowManager;->mLongPressOnHomeBehavior:I
 
-    const/16 v2, 0xc
-
-    const/4 v3, 0x0
-
-    if-ltz v1, :cond_0
-
-    if-le v1, v2, :cond_1
-
-    :cond_0
-    iput v3, p0, Lcom/android/server/policy/OpPhoneWindowManager;->mLongPressOnHomeBehavior:I
-
-    :cond_1
     iget-object v1, p0, Lcom/android/server/policy/PhoneWindowManager;->mContext:Landroid/content/Context;
 
     invoke-virtual {v1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
@@ -1642,14 +1644,6 @@
 
     iput v1, p0, Lcom/android/server/policy/OpPhoneWindowManager;->mDoubleTapOnHomeBehavior:I
 
-    if-ltz v1, :cond_2
-
-    if-le v1, v2, :cond_3
-
-    :cond_2
-    iput v3, p0, Lcom/android/server/policy/OpPhoneWindowManager;->mDoubleTapOnHomeBehavior:I
-
-    :cond_3
     iget-object v1, p0, Lcom/android/server/policy/PhoneWindowManager;->mContext:Landroid/content/Context;
 
     invoke-virtual {v1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
@@ -1670,14 +1664,6 @@
 
     iput v1, p0, Lcom/android/server/policy/OpPhoneWindowManager;->mLongPressOnMenuBehavior:I
 
-    if-ltz v1, :cond_4
-
-    if-le v1, v2, :cond_5
-
-    :cond_4
-    iput v3, p0, Lcom/android/server/policy/OpPhoneWindowManager;->mLongPressOnMenuBehavior:I
-
-    :cond_5
     iget-object v1, p0, Lcom/android/server/policy/PhoneWindowManager;->mContext:Landroid/content/Context;
 
     invoke-virtual {v1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
@@ -1698,14 +1684,6 @@
 
     iput v1, p0, Lcom/android/server/policy/OpPhoneWindowManager;->mDoubleTapOnMenuBehavior:I
 
-    if-ltz v1, :cond_6
-
-    if-le v1, v2, :cond_7
-
-    :cond_6
-    iput v3, p0, Lcom/android/server/policy/OpPhoneWindowManager;->mDoubleTapOnMenuBehavior:I
-
-    :cond_7
     iget-object v1, p0, Lcom/android/server/policy/PhoneWindowManager;->mContext:Landroid/content/Context;
 
     invoke-virtual {v1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
@@ -1726,14 +1704,6 @@
 
     iput v1, p0, Lcom/android/server/policy/OpPhoneWindowManager;->mLongPressOnBackBehavior:I
 
-    if-ltz v1, :cond_8
-
-    if-le v1, v2, :cond_9
-
-    :cond_8
-    iput v3, p0, Lcom/android/server/policy/OpPhoneWindowManager;->mLongPressOnBackBehavior:I
-
-    :cond_9
     iget-object v1, p0, Lcom/android/server/policy/PhoneWindowManager;->mContext:Landroid/content/Context;
 
     invoke-virtual {v1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
@@ -1754,14 +1724,6 @@
 
     iput v1, p0, Lcom/android/server/policy/OpPhoneWindowManager;->mDoubleTapOnBackBehavior:I
 
-    if-ltz v1, :cond_a
-
-    if-le v1, v2, :cond_b
-
-    :cond_a
-    iput v3, p0, Lcom/android/server/policy/OpPhoneWindowManager;->mDoubleTapOnBackBehavior:I
-
-    :cond_b
     iget-object v1, p0, Lcom/android/server/policy/PhoneWindowManager;->mContext:Landroid/content/Context;
 
     invoke-virtual {v1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
@@ -1782,14 +1744,6 @@
 
     iput v1, p0, Lcom/android/server/policy/OpPhoneWindowManager;->mLongPressOnAppSwitchBehavior:I
 
-    if-ltz v1, :cond_c
-
-    if-le v1, v2, :cond_d
-
-    :cond_c
-    iput v3, p0, Lcom/android/server/policy/OpPhoneWindowManager;->mLongPressOnAppSwitchBehavior:I
-
-    :cond_d
     iget-object v1, p0, Lcom/android/server/policy/PhoneWindowManager;->mContext:Landroid/content/Context;
 
     invoke-virtual {v1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
@@ -1810,14 +1764,6 @@
 
     iput v0, p0, Lcom/android/server/policy/OpPhoneWindowManager;->mDoubleTapOnAppSwitchBehavior:I
 
-    if-ltz v0, :cond_e
-
-    if-le v0, v2, :cond_f
-
-    :cond_e
-    iput v3, p0, Lcom/android/server/policy/OpPhoneWindowManager;->mDoubleTapOnAppSwitchBehavior:I
-
-    :cond_f
     return-void
 .end method
 
@@ -3525,6 +3471,10 @@
     move-object/from16 v0, p0
 
     move-object/from16 v1, p2
+    
+    const-string v2, ""
+    
+    sput-object v2, Lcom/android/server/policy/OpPhoneWindowManager;->remapAction:Ljava/lang/String;
 
     sget-object v2, Lcom/android/server/policy/PhoneWindowManager;->WINDOW_TYPES_WHERE_HOME_DOESNT_WORK:[I
 
@@ -4216,6 +4166,10 @@
     invoke-virtual {v3, v4}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
 
     iput-boolean v2, v0, Lcom/android/server/policy/OpPhoneWindowManager;->mHomeKeyConsumed:Z
+    
+    const-string v2, "mDoubleTapOnHomeBehavior"
+    
+    sput-object v2, Lcom/android/server/policy/OpPhoneWindowManager;->remapAction:Ljava/lang/String;
 
     iget v2, v0, Lcom/android/server/policy/OpPhoneWindowManager;->mDoubleTapOnHomeBehavior:I
 
@@ -4275,6 +4229,10 @@
     const/4 v3, 0x0
 
     invoke-virtual {v0, v3, v3, v2}, Lcom/android/server/policy/PhoneWindowManager;->performHapticFeedback(IZLjava/lang/String;)Z
+    
+    const-string v2, "mLongPressOnHomeBehavior"
+    
+    sput-object v2, Lcom/android/server/policy/OpPhoneWindowManager;->remapAction:Ljava/lang/String;
 
     iget v2, v0, Lcom/android/server/policy/OpPhoneWindowManager;->mLongPressOnHomeBehavior:I
 
@@ -4477,6 +4435,10 @@
     invoke-virtual {v3, v4}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
 
     iput-boolean v2, v0, Lcom/android/server/policy/OpPhoneWindowManager;->mBackKeyConsumed:Z
+    
+    const-string v2, "mDoubleTapOnBackBehavior"
+    
+    sput-object v2, Lcom/android/server/policy/OpPhoneWindowManager;->remapAction:Ljava/lang/String;
 
     iget v2, v0, Lcom/android/server/policy/OpPhoneWindowManager;->mDoubleTapOnBackBehavior:I
 
@@ -4519,6 +4481,10 @@
     const/4 v3, 0x0
 
     invoke-virtual {v0, v3, v3, v2}, Lcom/android/server/policy/PhoneWindowManager;->performHapticFeedback(IZLjava/lang/String;)Z
+    
+    const-string v2, "mLongPressOnBackBehavior"
+    
+    sput-object v2, Lcom/android/server/policy/OpPhoneWindowManager;->remapAction:Ljava/lang/String;
 
     iget v2, v0, Lcom/android/server/policy/OpPhoneWindowManager;->mLongPressOnBackBehavior:I
 
@@ -4675,6 +4641,10 @@
     invoke-virtual {v3, v4}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
 
     iput-boolean v2, v0, Lcom/android/server/policy/OpPhoneWindowManager;->mAppSwitchKeyConsumed:Z
+    
+    const-string v2, "mDoubleTapOnAppSwitchBehavior"
+    
+    sput-object v2, Lcom/android/server/policy/OpPhoneWindowManager;->remapAction:Ljava/lang/String;
 
     iget v2, v0, Lcom/android/server/policy/OpPhoneWindowManager;->mDoubleTapOnAppSwitchBehavior:I
 
@@ -4717,6 +4687,10 @@
     const/4 v3, 0x0
 
     invoke-virtual {v0, v3, v3, v2}, Lcom/android/server/policy/PhoneWindowManager;->performHapticFeedback(IZLjava/lang/String;)Z
+    
+    const-string v2, "mLongPressOnAppSwitchBehavior"
+    
+    sput-object v2, Lcom/android/server/policy/OpPhoneWindowManager;->remapAction:Ljava/lang/String;
 
     iget v2, v0, Lcom/android/server/policy/OpPhoneWindowManager;->mLongPressOnAppSwitchBehavior:I
 
@@ -6487,6 +6461,33 @@
 
     :cond_3
     packed-switch p1, :pswitch_data_0
+    
+    :pswitch_kill
+    invoke-virtual {p0}, Lcom/android/server/policy/OpPhoneWindowManager;->killApp()V
+    
+    goto :goto_3
+    
+    :pswitch_screenshot
+    const/4 v0, 0x1
+
+    invoke-virtual {p0, v0, v0}, Lcom/android/server/policy/OpPhoneWindowManager;->takeOPScreenshot(II)V
+
+    goto :goto_3  
+
+    :pswitch_customapp
+    invoke-direct {p0}, Lcom/android/server/policy/OpPhoneWindowManager;->launchCustomApp()V
+
+    goto :goto_3
+    
+    :pswitch_lastapp
+    invoke-direct {p0}, Lcom/android/server/policy/OpPhoneWindowManager;->toggleLastApp()V
+
+    goto :goto_3
+    
+    :pswitch_torch
+    invoke-virtual {p0}, Lcom/android/server/policy/PhoneWindowManager;->toggleTorchMode()V
+
+    goto :goto_3
 
     :pswitch_0
     goto/16 :goto_3
@@ -6627,6 +6628,11 @@
         :pswitch_0
         :pswitch_2
         :pswitch_1
+        :pswitch_kill
+        :pswitch_screenshot
+        :pswitch_customapp
+        :pswitch_lastapp
+        :pswitch_torch
     .end packed-switch
 .end method
 
@@ -7348,4 +7354,379 @@
     invoke-static {v11, v12, v2}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
     goto :goto_78
+.end method
+
+.method private launchCustomApp()V
+    .registers 5
+
+    .line 111
+    iget-object v0, p0, Lcom/android/server/policy/OpPhoneWindowManager;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+
+    move-result-object v0
+
+    .line 112
+    .local v0, "ContentResolver":Landroid/content/ContentResolver;
+    sget-object v1, Lcom/android/server/policy/OpPhoneWindowManager;->remapAction:Ljava/lang/String;
+
+    const-string v2, "mLongPressOnBackBehavior"
+
+    invoke-virtual {v1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    const/high16 v2, 0x10000000
+
+    if-eqz v1, :cond_2a
+
+    .line 113
+    iget-object v1, p0, Lcom/android/server/policy/OpPhoneWindowManager;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v1}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+
+    move-result-object v1
+
+    sget-object v3, Lcom/android/server/policy/OpPhoneWindowManager;->mLongPressBackCustomApp:Ljava/lang/String;
+
+    invoke-virtual {v1, v3}, Landroid/content/pm/PackageManager;->getLaunchIntentForPackage(Ljava/lang/String;)Landroid/content/Intent;
+
+    move-result-object v1
+
+    .line 114
+    .local v1, "launchIntentForPackage":Landroid/content/Intent;
+    if-eqz v1, :cond_28
+
+    .line 115
+    invoke-virtual {v1, v2}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
+
+    .line 116
+    iget-object v2, p0, Lcom/android/server/policy/OpPhoneWindowManager;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v2, v1}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
+
+    .line 118
+    .end local v1    # "launchIntentForPackage":Landroid/content/Intent;
+    :cond_28
+    goto/16 :goto_d1
+
+    :cond_2a
+    sget-object v1, Lcom/android/server/policy/OpPhoneWindowManager;->remapAction:Ljava/lang/String;
+
+    const-string v3, "mDoubleTapOnBackBehavior"
+
+    invoke-virtual {v1, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_4c
+
+    .line 119
+    iget-object v1, p0, Lcom/android/server/policy/OpPhoneWindowManager;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v1}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+
+    move-result-object v1
+
+    sget-object v3, Lcom/android/server/policy/OpPhoneWindowManager;->mDoublePressBackCustomApp:Ljava/lang/String;
+
+    invoke-virtual {v1, v3}, Landroid/content/pm/PackageManager;->getLaunchIntentForPackage(Ljava/lang/String;)Landroid/content/Intent;
+
+    move-result-object v1
+
+    .line 120
+    .restart local v1    # "launchIntentForPackage":Landroid/content/Intent;
+    if-eqz v1, :cond_4a
+
+    .line 121
+    invoke-virtual {v1, v2}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
+
+    .line 122
+    iget-object v2, p0, Lcom/android/server/policy/OpPhoneWindowManager;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v2, v1}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
+
+    .line 124
+    .end local v1    # "launchIntentForPackage":Landroid/content/Intent;
+    :cond_4a
+    goto/16 :goto_d1
+
+    :cond_4c
+    sget-object v1, Lcom/android/server/policy/OpPhoneWindowManager;->remapAction:Ljava/lang/String;
+
+    const-string v3, "mLongPressOnHomeBehavior"
+
+    invoke-virtual {v1, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_6d
+
+    .line 125
+    iget-object v1, p0, Lcom/android/server/policy/OpPhoneWindowManager;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v1}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+
+    move-result-object v1
+
+    sget-object v3, Lcom/android/server/policy/OpPhoneWindowManager;->mLongPressHomeCustomApp:Ljava/lang/String;
+
+    invoke-virtual {v1, v3}, Landroid/content/pm/PackageManager;->getLaunchIntentForPackage(Ljava/lang/String;)Landroid/content/Intent;
+
+    move-result-object v1
+
+    .line 126
+    .restart local v1    # "launchIntentForPackage":Landroid/content/Intent;
+    if-eqz v1, :cond_6c
+
+    .line 127
+    invoke-virtual {v1, v2}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
+
+    .line 128
+    iget-object v2, p0, Lcom/android/server/policy/OpPhoneWindowManager;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v2, v1}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
+
+    .line 130
+    .end local v1    # "launchIntentForPackage":Landroid/content/Intent;
+    :cond_6c
+    goto :goto_d1
+
+    :cond_6d
+    sget-object v1, Lcom/android/server/policy/OpPhoneWindowManager;->remapAction:Ljava/lang/String;
+
+    const-string v3, "mDoubleTapOnHomeBehavior"
+
+    invoke-virtual {v1, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_8e
+
+    .line 131
+    iget-object v1, p0, Lcom/android/server/policy/OpPhoneWindowManager;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v1}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+
+    move-result-object v1
+
+    sget-object v3, Lcom/android/server/policy/OpPhoneWindowManager;->mDoublePressHomeCustomApp:Ljava/lang/String;
+
+    invoke-virtual {v1, v3}, Landroid/content/pm/PackageManager;->getLaunchIntentForPackage(Ljava/lang/String;)Landroid/content/Intent;
+
+    move-result-object v1
+
+    .line 132
+    .restart local v1    # "launchIntentForPackage":Landroid/content/Intent;
+    if-eqz v1, :cond_8d
+
+    .line 133
+    invoke-virtual {v1, v2}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
+
+    .line 134
+    iget-object v2, p0, Lcom/android/server/policy/OpPhoneWindowManager;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v2, v1}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
+
+    .line 136
+    .end local v1    # "launchIntentForPackage":Landroid/content/Intent;
+    :cond_8d
+    goto :goto_d1
+
+    :cond_8e
+    sget-object v1, Lcom/android/server/policy/OpPhoneWindowManager;->remapAction:Ljava/lang/String;
+
+    const-string v3, "mLongPressOnAppSwitchBehavior"
+
+    invoke-virtual {v1, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_af
+
+    .line 137
+    iget-object v1, p0, Lcom/android/server/policy/OpPhoneWindowManager;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v1}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+
+    move-result-object v1
+
+    sget-object v3, Lcom/android/server/policy/OpPhoneWindowManager;->mLongPressRecentCustomApp:Ljava/lang/String;
+
+    invoke-virtual {v1, v3}, Landroid/content/pm/PackageManager;->getLaunchIntentForPackage(Ljava/lang/String;)Landroid/content/Intent;
+
+    move-result-object v1
+
+    .line 138
+    .restart local v1    # "launchIntentForPackage":Landroid/content/Intent;
+    if-eqz v1, :cond_d0
+
+    .line 139
+    invoke-virtual {v1, v2}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
+
+    .line 140
+    iget-object v2, p0, Lcom/android/server/policy/OpPhoneWindowManager;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v2, v1}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
+
+    goto :goto_d0
+
+    .line 142
+    .end local v1    # "launchIntentForPackage":Landroid/content/Intent;
+    :cond_af
+    sget-object v1, Lcom/android/server/policy/OpPhoneWindowManager;->remapAction:Ljava/lang/String;
+
+    const-string v3, "mDoubleTapOnAppSwitchBehavior"
+
+    invoke-virtual {v1, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_d0
+
+    .line 143
+    iget-object v1, p0, Lcom/android/server/policy/OpPhoneWindowManager;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v1}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+
+    move-result-object v1
+
+    sget-object v3, Lcom/android/server/policy/OpPhoneWindowManager;->mDoublePressRecentCustomApp:Ljava/lang/String;
+
+    invoke-virtual {v1, v3}, Landroid/content/pm/PackageManager;->getLaunchIntentForPackage(Ljava/lang/String;)Landroid/content/Intent;
+
+    move-result-object v1
+
+    .line 144
+    .restart local v1    # "launchIntentForPackage":Landroid/content/Intent;
+    if-eqz v1, :cond_d1
+
+    .line 145
+    invoke-virtual {v1, v2}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
+
+    .line 146
+    iget-object v2, p0, Lcom/android/server/policy/OpPhoneWindowManager;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v2, v1}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
+
+    goto :goto_d1
+
+    .line 142
+    .end local v1    # "launchIntentForPackage":Landroid/content/Intent;
+    :cond_d0
+    :goto_d0
+    nop
+
+    .line 149
+    :cond_d1
+    :goto_d1
+    return-void
+.end method
+
+.method public setCustomApp()V
+    .registers 4
+
+    .line 593
+    iget-object v0, p0, Lcom/android/server/policy/OpPhoneWindowManager;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+
+    move-result-object v0
+
+    .line 594
+    .local v0, "contentResolver":Landroid/content/ContentResolver;
+    const-string v1, "rice_type"
+
+    const/4 v2, 0x0
+
+    invoke-static {v0, v1, v2}, Landroid/provider/Settings$Global;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I
+
+    move-result v1
+
+    .line 595
+    .local v1, "riceType":I
+    const/4 v2, 0x1
+
+    if-ne v1, v2, :cond_41
+
+    .line 596
+    const-string v2, "tweaks_custom_home_double_app"
+
+    invoke-static {v0, v2}, Landroid/provider/Settings$System;->getString(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    sput-object v2, Lcom/android/server/policy/OpPhoneWindowManager;->mDoublePressHomeCustomApp:Ljava/lang/String;
+
+    .line 597
+    const-string v2, "tweaks_custom_home_long_app"
+
+    invoke-static {v0, v2}, Landroid/provider/Settings$System;->getString(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    sput-object v2, Lcom/android/server/policy/OpPhoneWindowManager;->mLongPressHomeCustomApp:Ljava/lang/String;
+
+    .line 598
+    const-string v2, "tweaks_custom_back_double_app"
+
+    invoke-static {v0, v2}, Landroid/provider/Settings$System;->getString(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    sput-object v2, Lcom/android/server/policy/OpPhoneWindowManager;->mDoublePressBackCustomApp:Ljava/lang/String;
+
+    .line 599
+    const-string v2, "tweaks_custom_back_long_app"
+
+    invoke-static {v0, v2}, Landroid/provider/Settings$System;->getString(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    sput-object v2, Lcom/android/server/policy/OpPhoneWindowManager;->mLongPressBackCustomApp:Ljava/lang/String;
+
+    .line 600
+    const-string v2, "tweaks_custom_recent_double_app"
+
+    invoke-static {v0, v2}, Landroid/provider/Settings$System;->getString(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    sput-object v2, Lcom/android/server/policy/OpPhoneWindowManager;->mDoublePressRecentCustomApp:Ljava/lang/String;
+
+    .line 601
+    const-string v2, "tweaks_custom_recent_long_app"
+
+    invoke-static {v0, v2}, Landroid/provider/Settings$System;->getString(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    sput-object v2, Lcom/android/server/policy/OpPhoneWindowManager;->mLongPressRecentCustomApp:Ljava/lang/String;
+
+    goto :goto_4f
+
+    .line 603
+    :cond_41
+    const-string v2, ""
+
+    sput-object v2, Lcom/android/server/policy/OpPhoneWindowManager;->mDoublePressHomeCustomApp:Ljava/lang/String;
+
+    .line 604
+    sput-object v2, Lcom/android/server/policy/OpPhoneWindowManager;->mLongPressHomeCustomApp:Ljava/lang/String;
+
+    .line 605
+    sput-object v2, Lcom/android/server/policy/OpPhoneWindowManager;->mDoublePressBackCustomApp:Ljava/lang/String;
+
+    .line 606
+    sput-object v2, Lcom/android/server/policy/OpPhoneWindowManager;->mLongPressBackCustomApp:Ljava/lang/String;
+
+    .line 607
+    sput-object v2, Lcom/android/server/policy/OpPhoneWindowManager;->mDoublePressRecentCustomApp:Ljava/lang/String;
+
+    .line 608
+    sput-object v2, Lcom/android/server/policy/OpPhoneWindowManager;->mLongPressRecentCustomApp:Ljava/lang/String;
+
+    .line 610
+    :goto_4f
+    return-void
 .end method
