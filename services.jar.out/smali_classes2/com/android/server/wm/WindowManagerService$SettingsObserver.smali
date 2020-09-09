@@ -15,6 +15,8 @@
 
 
 # instance fields
+.field private final mSecureWindowsUri:Landroid/net/Uri;
+
 .field private final mAnimationDurationScaleUri:Landroid/net/Uri;
 
 .field private final mDisplayInversionEnabledUri:Landroid/net/Uri;
@@ -53,6 +55,16 @@
     invoke-direct {v0}, Landroid/os/Handler;-><init>()V
 
     invoke-direct {p0, v0}, Landroid/database/ContentObserver;-><init>(Landroid/os/Handler;)V
+
+    nop
+    
+    const-string v0, "tweaks_secure_window"
+
+    invoke-static {v0}, Landroid/provider/Settings$System;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/android/server/wm/WindowManagerService$SettingsObserver;->mSecureWindowsUri:Landroid/net/Uri;
 
     nop
 
@@ -177,6 +189,10 @@
     const/4 v3, -0x1
 
     invoke-virtual {v0, v1, v2, p0, v3}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;I)V
+    
+    iget-object v1, p0, Lcom/android/server/wm/WindowManagerService$SettingsObserver;->mSecureWindowsUri:Landroid/net/Uri;
+
+    invoke-virtual {v0, v1, v2, p0, v3}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;I)V
 
     iget-object v1, p0, Lcom/android/server/wm/WindowManagerService$SettingsObserver;->mWindowAnimationScaleUri:Landroid/net/Uri;
 
@@ -245,6 +261,21 @@
     return-void
 
     :cond_0
+    iget-object v0, p0, Lcom/android/server/wm/WindowManagerService$SettingsObserver;->mSecureWindowsUri:Landroid/net/Uri;
+
+    invoke-virtual {v0, p2}, Landroid/net/Uri;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_mw
+
+    iget-object v0, p0, Lcom/android/server/wm/WindowManagerService$SettingsObserver;->this$0:Lcom/android/server/wm/WindowManagerService;
+
+    invoke-virtual {v0}, Lcom/android/server/wm/WindowManagerService;->setSecureWindows()V
+
+    return-void
+
+    :cond_mw
     iget-object v0, p0, Lcom/android/server/wm/WindowManagerService$SettingsObserver;->mImmersiveModeConfirmationsUri:Landroid/net/Uri;
 
     invoke-virtual {v0, p2}, Landroid/net/Uri;->equals(Ljava/lang/Object;)Z
