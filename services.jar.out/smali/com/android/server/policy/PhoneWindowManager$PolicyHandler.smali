@@ -236,6 +236,13 @@
     invoke-static {v0, v1}, Lcom/android/server/policy/PhoneWindowManager;->access$100(Lcom/android/server/policy/PhoneWindowManager;Z)V
 
     goto :goto_0
+    
+    :pswitch_torch
+    iget-object v0, p0, Lcom/android/server/policy/PhoneWindowManager$PolicyHandler;->this$0:Lcom/android/server/policy/PhoneWindowManager;
+
+    invoke-virtual {v0}, Lcom/android/server/policy/PhoneWindowManager;->toggleTorchMode()V
+
+    goto :goto_0
 
     :cond_1
     const-string v0, "MSG_KEYGUARD_FP_AUTHENTICATED_TIMEOUT"
@@ -355,5 +362,6 @@
         :pswitch_2
         :pswitch_1
         :pswitch_0
+        :pswitch_torch
     .end packed-switch
 .end method
