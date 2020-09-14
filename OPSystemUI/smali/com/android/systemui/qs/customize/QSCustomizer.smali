@@ -1233,3 +1233,13 @@
 
     return-void
 .end method
+
+.method public updateCustomizer()V
+    .locals 1
+
+	iget-object v0, p0, Lcom/android/systemui/qs/customize/QSCustomizer;->mTileQueryHelper:Lcom/android/systemui/qs/customize/TileQueryHelper;
+
+    invoke-virtual {v0}, Lcom/android/systemui/qs/customize/TileQueryHelper;->recalcEditPage()V
+    
+    return-void
+.end method

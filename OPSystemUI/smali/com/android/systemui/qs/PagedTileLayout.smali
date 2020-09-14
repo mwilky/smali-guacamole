@@ -1907,3 +1907,24 @@
     :cond_3
     return v0
 .end method
+
+.method public updateTileLayout()V
+    .locals 3
+
+    .prologue
+    const/4 v0, 0x0
+
+    iget-object v1, p0, Lcom/android/systemui/qs/PagedTileLayout;->mPages:Ljava/util/ArrayList;
+
+    invoke-virtual {v1, v0}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Lcom/android/systemui/qs/PagedTileLayout$TilePage;
+
+    invoke-virtual {v1}, Lcom/android/systemui/qs/PagedTileLayout$TilePage;->updateResources()Z
+    
+    invoke-direct {p0}, Lcom/android/systemui/qs/PagedTileLayout;->distributeTiles()V
+   
+    return-void
+.end method

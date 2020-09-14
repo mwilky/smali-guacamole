@@ -160,20 +160,12 @@
     invoke-static {v1, v2}, Ljava/lang/Math;->min(II)I
 
     move-result v1
+    
+    sget v1, Lcom/android/mwilky/Renovate;->mQsColumns:I
 
     iput v1, p0, Lcom/android/systemui/qs/TileLayout;->mColumns:I
 
-    if-eq v0, v1, :cond_0
-
-    const/4 p0, 0x1
-
-    goto :goto_0
-
-    :cond_0
-    const/4 p0, 0x0
-
-    :goto_0
-    return p0
+    return v1
 .end method
 
 
@@ -831,24 +823,11 @@
     invoke-static {v2, v0}, Ljava/lang/Math;->max(II)I
 
     move-result v0
+    
+    sget v0, Lcom/android/mwilky/Renovate;->mQsRows:I
 
     iput v0, p0, Lcom/android/systemui/qs/TileLayout;->mMaxAllowedRows:I
 
-    iget-boolean v1, p0, Lcom/android/systemui/qs/TileLayout;->mLessRows:Z
-
-    if-eqz v1, :cond_0
-
-    iget v1, p0, Lcom/android/systemui/qs/TileLayout;->mMinRows:I
-
-    sub-int/2addr v0, v2
-
-    invoke-static {v1, v0}, Ljava/lang/Math;->max(II)I
-
-    move-result v0
-
-    iput v0, p0, Lcom/android/systemui/qs/TileLayout;->mMaxAllowedRows:I
-
-    :cond_0
     invoke-direct {p0}, Lcom/android/systemui/qs/TileLayout;->updateColumns()Z
 
     move-result v0

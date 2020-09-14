@@ -101,7 +101,7 @@
     return p0
 
     :catch_0
-    sget p0, Lcom/android/systemui/qs/QuickQSPanel;->sDefaultMaxTiles:I
+    sget p0, Lcom/android/mwilky/Renovate;->mQuickQsNumber:I
 
     return p0
 .end method
@@ -481,5 +481,15 @@
 .method protected updatePadding()V
     .locals 0
 
+    return-void
+.end method
+
+.method public updateTiles()V
+    .locals 1
+ 
+	sget v0, Lcom/android/mwilky/Renovate;->mQuickQsNumber:I
+
+	invoke-virtual {p0, v0}, Lcom/android/systemui/qs/QuickQSPanel;->setMaxTiles(I)V
+	
     return-void
 .end method
