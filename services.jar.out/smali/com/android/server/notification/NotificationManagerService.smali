@@ -28,6 +28,8 @@
 
 
 # static fields
+.field public static mDisableNotificationSoundScreenOn:Z
+
 .field private static final ACTION_NOTIFICATION_TIMEOUT:Ljava/lang/String;
 
 .field private static final APPLOCKER_SEPARATOR:Ljava/lang/String; = "|"
@@ -1028,6 +1030,8 @@
     sget-object v0, Lcom/android/server/notification/NotificationManagerService;->WHITELIST_TOKEN:Landroid/os/IBinder;
 
     sput-object v0, Landroid/app/Notification;->processWhitelistToken:Landroid/os/IBinder;
+    
+    invoke-virtual {p0}, Lcom/android/server/notification/NotificationManagerService;->setDisableNotificationSoundScreenOn()V
 
     return-void
 .end method
@@ -11338,6 +11342,27 @@
     iget-boolean v10, v0, Lcom/android/server/notification/NotificationManagerService;->mSystemReady:Z
 
     if-eqz v10, :cond_28
+    
+    iget-boolean v0, v0, Lcom/android/server/notification/NotificationManagerService;->mScreenOn:Z
+
+    if-eqz v0, :cond_on
+
+    sget-boolean v0, Lcom/android/server/notification/NotificationManagerService;->mDisableNotificationSoundScreenOn:Z
+
+    if-nez v0, :cond_off
+
+    :cond_on
+    const/4 v0, 0x1
+
+    goto :goto_mw
+
+    :cond_off
+    const/4 v0, 0x0
+
+    :goto_mw    
+    if-eqz v0, :cond_28
+
+    move-object/from16 v0, p0
 
     iget-object v10, v0, Lcom/android/server/notification/NotificationManagerService;->mAudioManager:Landroid/media/AudioManager;
 
@@ -12006,6 +12031,8 @@
     goto :goto_15
 
     :cond_28
+    move-object/from16 v0, p0
+
     move/from16 v18, v2
 
     move/from16 v19, v4
@@ -22701,5 +22728,29 @@
     iput-object v13, v7, Lcom/android/server/notification/NotificationRecord;->permissionOwner:Landroid/os/IBinder;
 
     :cond_11
+    return-void
+.end method
+
+.method public setDisableNotificationSoundScreenOn()V
+    .locals 2
+
+    invoke-virtual {p0}, Lcom/android/server/notification/NotificationManagerService;->getContext()Landroid/content/Context;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+
+    move-result-object v1
+
+    const-string/jumbo p0, "tweaks_disable_notif_sound_screenon"
+
+    const/4 v0, 0x0
+
+    invoke-static {v1, p0, v0}, Landroid/provider/Settings$System;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I
+
+    move-result v0
+
+    sput-boolean v0, Lcom/android/server/notification/NotificationManagerService;->mDisableNotificationSoundScreenOn:Z
+
     return-void
 .end method
