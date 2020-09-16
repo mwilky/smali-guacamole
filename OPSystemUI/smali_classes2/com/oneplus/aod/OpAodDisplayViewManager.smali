@@ -17,6 +17,8 @@
 # static fields
 .field private static final AOD_SCRIM_ALPHA_VALUE:F
 
+.field public static mPulseStatus:I
+
 
 # instance fields
 .field private mAodCanvas:Lcom/oneplus/aod/bg/OpAodCanvas;
@@ -542,6 +544,8 @@
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     iget v1, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mStatus:I
+
+    sput v1, Lcom/oneplus/aod/OpAodDisplayViewManager;->mPulseStatus:I
 
     invoke-direct {p0, v1}, Lcom/oneplus/aod/OpAodDisplayViewManager;->getStateString(I)Ljava/lang/String;
 
