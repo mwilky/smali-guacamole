@@ -514,6 +514,8 @@
     move-object/from16 v0, p0
 
     move/from16 v1, p1
+    
+    invoke-virtual {v0}, Lcom/oneplus/systemui/biometrics/OpFodIconViewController;->setFpIconColors()V
 
     iget-object v2, v0, Lcom/oneplus/systemui/biometrics/OpFodIconViewController;->mUpdateMonitor:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
@@ -1922,5 +1924,96 @@
     invoke-virtual {p0, v0}, Landroid/view/View;->setVisibility(I)V
 
     :goto_0
+	return-void
+.end method
+
+.method public setFpIconColors()V
+    .registers 4
+
+    .line 17
+    sget-boolean v0, Lcom/android/mwilky/Renovate;->mUnlockFingerprintColors:Z
+
+    const/4 v1, 0x0
+
+    if-eqz v0, :cond_3e
+
+    .line 18
+    sget v0, Lcom/android/mwilky/Renovate;->mFingerprintFlashColor:I
+
+    if-eqz v0, :cond_1c
+
+    .line 19
+    iget-object v0, p0, Lcom/oneplus/systemui/biometrics/OpFodIconViewController;->mIconFlash:Lcom/oneplus/systemui/biometrics/OpCircleImageView;
+
+    sget v2, Lcom/android/mwilky/Renovate;->mFingerprintFlashColor:I
+
+    invoke-static {v2}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
+
+    move-result-object v2
+
+    invoke-virtual {v0, v2}, Lcom/oneplus/systemui/biometrics/OpCircleImageView;->setBackgroundTintList(Landroid/content/res/ColorStateList;)V
+
+    .line 20
+    iget-object v0, p0, Lcom/oneplus/systemui/biometrics/OpFodIconViewController;->mIconFlash:Lcom/oneplus/systemui/biometrics/OpCircleImageView;
+
+    sget-object v2, Landroid/graphics/PorterDuff$Mode;->SRC_ATOP:Landroid/graphics/PorterDuff$Mode;
+
+    invoke-virtual {v0, v2}, Lcom/oneplus/systemui/biometrics/OpCircleImageView;->setBackgroundTintMode(Landroid/graphics/PorterDuff$Mode;)V
+
+    goto :goto_21
+
+    .line 22
+    :cond_1c
+    iget-object v0, p0, Lcom/oneplus/systemui/biometrics/OpFodIconViewController;->mIconFlash:Lcom/oneplus/systemui/biometrics/OpCircleImageView;
+
+    invoke-virtual {v0, v1}, Lcom/oneplus/systemui/biometrics/OpCircleImageView;->setBackgroundTintMode(Landroid/graphics/PorterDuff$Mode;)V
+
+    .line 24
+    :goto_21
+    sget v0, Lcom/android/mwilky/Renovate;->mFingerprintDisabledColor:I
+
+    if-eqz v0, :cond_38
+
+    .line 25
+    iget-object v0, p0, Lcom/oneplus/systemui/biometrics/OpFodIconViewController;->mIconDisable:Lcom/oneplus/systemui/biometrics/OpCircleImageView;
+
+    sget v1, Lcom/android/mwilky/Renovate;->mFingerprintDisabledColor:I
+
+    invoke-static {v1}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Lcom/oneplus/systemui/biometrics/OpCircleImageView;->setBackgroundTintList(Landroid/content/res/ColorStateList;)V
+
+    .line 26
+    iget-object v0, p0, Lcom/oneplus/systemui/biometrics/OpFodIconViewController;->mIconDisable:Lcom/oneplus/systemui/biometrics/OpCircleImageView;
+
+    sget-object v1, Landroid/graphics/PorterDuff$Mode;->SRC_ATOP:Landroid/graphics/PorterDuff$Mode;
+
+    invoke-virtual {v0, v1}, Lcom/oneplus/systemui/biometrics/OpCircleImageView;->setBackgroundTintMode(Landroid/graphics/PorterDuff$Mode;)V
+
+    goto :goto_48
+
+    .line 28
+    :cond_38
+    iget-object v0, p0, Lcom/oneplus/systemui/biometrics/OpFodIconViewController;->mIconDisable:Lcom/oneplus/systemui/biometrics/OpCircleImageView;
+
+    invoke-virtual {v0, v1}, Lcom/oneplus/systemui/biometrics/OpCircleImageView;->setBackgroundTintMode(Landroid/graphics/PorterDuff$Mode;)V
+
+    goto :goto_48
+
+    .line 31
+    :cond_3e
+    iget-object v0, p0, Lcom/oneplus/systemui/biometrics/OpFodIconViewController;->mIconDisable:Lcom/oneplus/systemui/biometrics/OpCircleImageView;
+
+    invoke-virtual {v0, v1}, Lcom/oneplus/systemui/biometrics/OpCircleImageView;->setBackgroundTintMode(Landroid/graphics/PorterDuff$Mode;)V
+
+    .line 32
+    iget-object v0, p0, Lcom/oneplus/systemui/biometrics/OpFodIconViewController;->mIconFlash:Lcom/oneplus/systemui/biometrics/OpCircleImageView;
+
+    invoke-virtual {v0, v1}, Lcom/oneplus/systemui/biometrics/OpCircleImageView;->setBackgroundTintMode(Landroid/graphics/PorterDuff$Mode;)V
+
+    .line 34
+    :goto_48
     return-void
 .end method

@@ -584,19 +584,28 @@
 .end method
 
 .method private updateIconDim()V
-    .locals 8
+    .registers 13
 
+    .line 67
     invoke-direct {p0}, Lcom/oneplus/systemui/biometrics/OpCircleImageView;->getDimAlpha()I
 
     move-result v0
 
+    .line 68
+    .local v0, "dimAlpha":I
     iget-object v1, p0, Lcom/oneplus/systemui/biometrics/OpCircleImageView;->mContext:Landroid/content/Context;
 
     invoke-virtual {v1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
     move-result-object v1
 
-    sget v2, Lcom/android/systemui/R$dimen;->op_fingerprint_icon_dim_alpha_precentage:I
+    const-string v2, "op_fingerprint_icon_dim_alpha_precentage"
+
+    const-string v3, "dimen"
+
+    invoke-static {v2, v3}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
+
+    move-result v2
 
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
@@ -604,12 +613,16 @@
 
     int-to-float v1, v1
 
+    .line 69
+    .local v1, "dimensionPixelSize":F
     int-to-float v2, v0
 
     const/high16 v3, 0x437f0000    # 255.0f
 
     div-float/2addr v2, v3
 
+    .line 70
+    .local v2, "f":F
     float-to-int v3, v1
 
     const-string v4, "sys.fod.icon.dim"
@@ -624,6 +637,8 @@
 
     div-float/2addr v3, v4
 
+    .line 71
+    .local v3, "f2":F
     const v5, -0x40a77633
 
     mul-float/2addr v5, v2
@@ -632,6 +647,8 @@
 
     add-float/2addr v5, v6
 
+    .line 72
+    .local v5, "f3":F
     const-string v6, "sys.fod.icon.cust"
 
     const/4 v7, 0x0
@@ -644,89 +661,159 @@
 
     div-float/2addr v6, v4
 
+    .line 73
+    .local v6, "f4":F
     const/4 v4, 0x0
 
     cmpl-float v4, v6, v4
 
-    if-eqz v4, :cond_0
+    if-eqz v4, :cond_3d
 
+    .line 74
     move v5, v6
 
-    :cond_0
+    .line 76
+    :cond_3d
     new-instance v4, Ljava/lang/StringBuilder;
 
     invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v7, "updateIconDim: "
+    const-string v8, "updateIconDim: "
 
-    invoke-virtual {v4, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v4, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    const-string v0, ", "
+    const-string v8, ", "
 
-    invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v4, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     invoke-virtual {v4, v1}, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
 
-    const-string v0, "alpha = "
+    const-string v8, "alpha = "
 
-    invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v4, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     invoke-virtual {v4, v2}, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
 
-    const-string v0, ", ratio = "
+    const-string v8, ", ratio = "
 
-    invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v4, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     invoke-virtual {v4, v3}, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
 
-    const-string v0, ", (alpha * ratio):"
+    const-string v8, ", (alpha * ratio):"
 
-    invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v4, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    mul-float/2addr v2, v3
+    mul-float v8, v2, v3
 
-    invoke-virtual {v4, v2}, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
+    invoke-virtual {v4, v8}, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
 
-    const-string v0, ", converseAlpha:"
+    const-string v8, ", converseAlpha:"
 
-    invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v4, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
 
-    const-string v0, ", custBright:"
+    const-string v8, ", custBright:"
 
-    invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v4, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     invoke-virtual {v4, v6}, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
 
     invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v0
+    move-result-object v4
 
-    const-string v1, "OpCircleImageView"
+    const-string v8, "OpCircleImageView"
 
-    invoke-static {v1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v8, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    new-instance v0, Landroid/graphics/ColorMatrix;
+    .line 77
+    new-instance v4, Landroid/graphics/ColorMatrix;
 
-    invoke-direct {v0}, Landroid/graphics/ColorMatrix;-><init>()V
+    invoke-direct {v4}, Landroid/graphics/ColorMatrix;-><init>()V
 
-    const/high16 v1, 0x3f800000    # 1.0f
+    .line 78
+    .local v4, "colorMatrix":Landroid/graphics/ColorMatrix;
+    const/high16 v8, 0x3f800000    # 1.0f
 
-    invoke-virtual {v0, v5, v5, v5, v1}, Landroid/graphics/ColorMatrix;->setScale(FFFF)V
+    invoke-virtual {v4, v5, v5, v5, v8}, Landroid/graphics/ColorMatrix;->setScale(FFFF)V
 
-    new-instance v1, Landroid/graphics/ColorMatrixColorFilter;
+    .line 79
+    invoke-virtual {p0}, Lcom/oneplus/systemui/biometrics/OpCircleImageView;->getBackground()Landroid/graphics/drawable/Drawable;
 
-    invoke-direct {v1, v0}, Landroid/graphics/ColorMatrixColorFilter;-><init>(Landroid/graphics/ColorMatrix;)V
+    move-result-object v8
 
-    invoke-virtual {p0}, Landroid/widget/ImageView;->getBackground()Landroid/graphics/drawable/Drawable;
+    new-instance v9, Landroid/graphics/ColorMatrixColorFilter;
 
-    move-result-object p0
+    invoke-direct {v9, v4}, Landroid/graphics/ColorMatrixColorFilter;-><init>(Landroid/graphics/ColorMatrix;)V
 
-    invoke-virtual {p0, v1}, Landroid/graphics/drawable/Drawable;->setColorFilter(Landroid/graphics/ColorFilter;)V
+    invoke-virtual {v8, v9}, Landroid/graphics/drawable/Drawable;->setColorFilter(Landroid/graphics/ColorFilter;)V
 
+    .line 80
+    sget-boolean v8, Lcom/android/mwilky/Renovate;->mUnlockFingerprintColors:Z
+
+    sget v9, Lcom/android/mwilky/Renovate;->mFingerprintNormalColor:I
+
+    const/4 v10, 0x1
+
+    if-eqz v9, :cond_a4
+
+    move v9, v10
+
+    goto :goto_a5
+
+    :cond_a4
+    move v9, v7
+
+    :goto_a5
+    and-int/2addr v8, v9
+
+    if-eqz v8, :cond_b3
+
+    .line 81
+    invoke-virtual {p0}, Lcom/oneplus/systemui/biometrics/OpCircleImageView;->getBackground()Landroid/graphics/drawable/Drawable;
+
+    move-result-object v8
+
+    sget v9, Lcom/android/mwilky/Renovate;->mFingerprintNormalColor:I
+
+    sget-object v11, Landroid/graphics/PorterDuff$Mode;->SRC_ATOP:Landroid/graphics/PorterDuff$Mode;
+
+    invoke-virtual {v8, v9, v11}, Landroid/graphics/drawable/Drawable;->setColorFilter(ILandroid/graphics/PorterDuff$Mode;)V
+
+    .line 83
+    :cond_b3
+    sget v8, Lcom/oneplus/aod/OpAodDisplayViewManager;->mPulseStatus:I
+
+    const/4 v9, 0x2
+
+    if-ne v8, v9, :cond_b9
+
+    move v7, v10
+
+    :cond_b9
+    sget-boolean v8, Lcom/android/mwilky/Renovate;->mUseAppColorForFp:Z
+
+    and-int/2addr v7, v8
+
+    if-eqz v7, :cond_c9
+
+    .line 84
+    invoke-virtual {p0}, Lcom/oneplus/systemui/biometrics/OpCircleImageView;->getBackground()Landroid/graphics/drawable/Drawable;
+
+    move-result-object v7
+
+    sget v8, Lcom/oneplus/aod/OpSingleNotificationView;->mAppIconColor:I
+
+    sget-object v9, Landroid/graphics/PorterDuff$Mode;->SRC_ATOP:Landroid/graphics/PorterDuff$Mode;
+
+    invoke-virtual {v7, v8, v9}, Landroid/graphics/drawable/Drawable;->setColorFilter(ILandroid/graphics/PorterDuff$Mode;)V
+
+    .line 86
+    :cond_c9
     return-void
 .end method
 
