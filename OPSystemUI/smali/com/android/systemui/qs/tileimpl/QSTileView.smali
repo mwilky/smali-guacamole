@@ -83,7 +83,7 @@
 .end method
 
 .method private updateThemeColor(Lcom/android/systemui/plugins/qs/QSTile$State;)V
-    .locals 1
+    .locals 2
 
     const/4 p1, 0x1
 
@@ -97,7 +97,7 @@
 
     invoke-virtual {v0, p1}, Landroid/widget/TextView;->setTextColor(I)V
 
-    iget-object p0, p0, Lcom/android/systemui/qs/tileimpl/QSTileView;->mSecondLine:Landroid/widget/TextView;
+    iget-object v0, p0, Lcom/android/systemui/qs/tileimpl/QSTileView;->mSecondLine:Landroid/widget/TextView;
 
     const/4 p1, 0x2
 
@@ -105,7 +105,19 @@
 
     move-result p1
 
-    invoke-virtual {p0, p1}, Landroid/widget/TextView;->setTextColor(I)V
+    invoke-virtual {v0, p1}, Landroid/widget/TextView;->setTextColor(I)V
+    
+    iget-object v0, p0, Lcom/android/systemui/qs/tileimpl/QSTileView;->mExpandIndicator:Landroid/view/View;
+
+    sget-object v1, Landroid/graphics/PorterDuff$Mode;->SRC_ATOP:Landroid/graphics/PorterDuff$Mode;
+
+    invoke-virtual {v0, v1}, Landroid/view/View;->setBackgroundTintMode(Landroid/graphics/PorterDuff$Mode;)V
+
+    invoke-static {p1}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
+
+    move-result-object p1
+
+    invoke-virtual {v0, p1}, Landroid/view/View;->setBackgroundTintList(Landroid/content/res/ColorStateList;)V
 
     return-void
 .end method
@@ -238,11 +250,14 @@
     return v0
 .end method
 
-.method protected handleStateChanged(Lcom/android/systemui/plugins/qs/QSTile$State;)V
-    .locals 4
+.method public handleStateChanged(Lcom/android/systemui/plugins/qs/QSTile$State;)V
+    .registers 9
+    .param p1, "state"    # Lcom/android/systemui/plugins/qs/QSTile$State;
 
+    .line 82
     invoke-super {p0, p1}, Lcom/android/systemui/qs/tileimpl/QSTileBaseView;->handleStateChanged(Lcom/android/systemui/plugins/qs/QSTile$State;)V
 
+    .line 83
     iget-object v0, p0, Lcom/android/systemui/qs/tileimpl/QSTileView;->mLabel:Landroid/widget/TextView;
 
     invoke-virtual {v0}, Landroid/widget/TextView;->getText()Ljava/lang/CharSequence;
@@ -255,15 +270,16 @@
 
     move-result v0
 
-    if-eqz v0, :cond_0
+    if-eqz v0, :cond_17
 
     iget v0, p0, Lcom/android/systemui/qs/tileimpl/QSTileView;->mState:I
 
     iget v1, p1, Lcom/android/systemui/plugins/qs/QSTile$State;->state:I
 
-    if-eq v0, v1, :cond_1
+    if-eq v0, v1, :cond_2d
 
-    :cond_0
+    .line 84
+    :cond_17
     iget-object v0, p0, Lcom/android/systemui/qs/tileimpl/QSTileView;->mLabel:Landroid/widget/TextView;
 
     iget v1, p1, Lcom/android/systemui/plugins/qs/QSTile$State;->state:I
@@ -274,121 +290,206 @@
 
     invoke-virtual {v0, v1}, Landroid/widget/TextView;->setTextColor(I)V
 
+    .line 85
     iget v0, p1, Lcom/android/systemui/plugins/qs/QSTile$State;->state:I
 
     iput v0, p0, Lcom/android/systemui/qs/tileimpl/QSTileView;->mState:I
 
+    .line 86
     iget-object v0, p0, Lcom/android/systemui/qs/tileimpl/QSTileView;->mLabel:Landroid/widget/TextView;
 
     iget-object v1, p1, Lcom/android/systemui/plugins/qs/QSTile$State;->label:Ljava/lang/CharSequence;
 
     invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    :cond_1
-    iget-object v0, p0, Lcom/android/systemui/qs/tileimpl/QSTileView;->mSecondLine:Landroid/widget/TextView;
+    .line 88
+    :cond_2d
+    const/4 v0, 0x0
 
-    invoke-virtual {v0}, Landroid/widget/TextView;->getText()Ljava/lang/CharSequence;
+    .line 89
+    .local v0, "i":I
+    iget-object v1, p0, Lcom/android/systemui/qs/tileimpl/QSTileView;->mSecondLine:Landroid/widget/TextView;
 
-    move-result-object v0
+    invoke-virtual {v1}, Landroid/widget/TextView;->getText()Ljava/lang/CharSequence;
 
-    iget-object v1, p1, Lcom/android/systemui/plugins/qs/QSTile$State;->secondaryLabel:Ljava/lang/CharSequence;
+    move-result-object v1
 
-    invoke-static {v0, v1}, Ljava/util/Objects;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+    iget-object v2, p1, Lcom/android/systemui/plugins/qs/QSTile$State;->secondaryLabel:Ljava/lang/CharSequence;
 
-    move-result v0
+    invoke-static {v1, v2}, Ljava/util/Objects;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
 
-    const/4 v1, 0x0
+    move-result v1
 
     const/16 v2, 0x8
 
-    if-nez v0, :cond_3
-
-    iget-object v0, p0, Lcom/android/systemui/qs/tileimpl/QSTileView;->mSecondLine:Landroid/widget/TextView;
-
-    iget-object v3, p1, Lcom/android/systemui/plugins/qs/QSTile$State;->secondaryLabel:Ljava/lang/CharSequence;
-
-    invoke-virtual {v0, v3}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
-    iget-object v0, p0, Lcom/android/systemui/qs/tileimpl/QSTileView;->mSecondLine:Landroid/widget/TextView;
-
-    iget-object v3, p1, Lcom/android/systemui/plugins/qs/QSTile$State;->secondaryLabel:Ljava/lang/CharSequence;
-
-    invoke-static {v3}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_2
-
-    move v3, v2
-
-    goto :goto_0
-
-    :cond_2
-    move v3, v1
-
-    :goto_0
-    invoke-virtual {v0, v3}, Landroid/widget/TextView;->setVisibility(I)V
-
-    :cond_3
-    iget-object v0, p0, Lcom/android/systemui/qs/tileimpl/QSTileView;->mExpandIndicator:Landroid/view/View;
-
-    invoke-virtual {v0, v2}, Landroid/view/View;->setVisibility(I)V
-
-    iget-object v0, p0, Lcom/android/systemui/qs/tileimpl/QSTileView;->mExpandSpace:Landroid/view/View;
-
-    invoke-virtual {v0, v2}, Landroid/view/View;->setVisibility(I)V
-
-    iget-object v0, p0, Lcom/android/systemui/qs/tileimpl/QSTileView;->mLabelContainer:Landroid/view/ViewGroup;
-
     const/4 v3, 0x0
 
-    invoke-virtual {v0, v3}, Landroid/view/ViewGroup;->setContentDescription(Ljava/lang/CharSequence;)V
+    if-nez v1, :cond_56
 
-    iget-object v0, p0, Lcom/android/systemui/qs/tileimpl/QSTileView;->mLabelContainer:Landroid/view/ViewGroup;
+    .line 90
+    iget-object v1, p0, Lcom/android/systemui/qs/tileimpl/QSTileView;->mSecondLine:Landroid/widget/TextView;
 
-    invoke-virtual {v0}, Landroid/view/ViewGroup;->isClickable()Z
+    iget-object v4, p1, Lcom/android/systemui/plugins/qs/QSTile$State;->secondaryLabel:Ljava/lang/CharSequence;
 
-    move-result v0
+    invoke-virtual {v1, v4}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    if-eqz v0, :cond_4
+    .line 91
+    iget-object v1, p0, Lcom/android/systemui/qs/tileimpl/QSTileView;->mSecondLine:Landroid/widget/TextView;
 
-    iget-object v0, p0, Lcom/android/systemui/qs/tileimpl/QSTileView;->mLabelContainer:Landroid/view/ViewGroup;
+    iget-object v4, p1, Lcom/android/systemui/plugins/qs/QSTile$State;->secondaryLabel:Ljava/lang/CharSequence;
 
-    invoke-virtual {v0, v1}, Landroid/view/ViewGroup;->setClickable(Z)V
+    invoke-static {v4}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
-    iget-object v0, p0, Lcom/android/systemui/qs/tileimpl/QSTileView;->mLabelContainer:Landroid/view/ViewGroup;
+    move-result v4
 
-    invoke-virtual {v0, v1}, Landroid/view/ViewGroup;->setLongClickable(Z)V
+    if-eqz v4, :cond_52
 
-    iget-object v0, p0, Lcom/android/systemui/qs/tileimpl/QSTileView;->mLabelContainer:Landroid/view/ViewGroup;
+    move v4, v2
 
-    invoke-virtual {v0, v3}, Landroid/view/ViewGroup;->setBackground(Landroid/graphics/drawable/Drawable;)V
+    goto :goto_53
 
-    :cond_4
-    iget-object v0, p0, Lcom/android/systemui/qs/tileimpl/QSTileView;->mLabel:Landroid/widget/TextView;
+    :cond_52
+    move v4, v3
 
-    iget-boolean v3, p1, Lcom/android/systemui/plugins/qs/QSTile$State;->disabledByPolicy:Z
+    :goto_53
+    invoke-virtual {v1, v4}, Landroid/widget/TextView;->setVisibility(I)V
 
-    xor-int/lit8 v3, v3, 0x1
+    .line 93
+    :cond_56
+    sget-boolean v1, Lcom/android/mwilky/Renovate;->mShowQsDetail:Z
 
-    invoke-virtual {v0, v3}, Landroid/widget/TextView;->setEnabled(Z)V
+    .line 94
+    .local v1, "x":Z
+    iget-boolean v4, p1, Lcom/android/systemui/plugins/qs/QSTile$State;->dualTarget:Z
 
-    iget-object v0, p0, Lcom/android/systemui/qs/tileimpl/QSTileView;->mPadLock:Landroid/widget/ImageView;
+    .line 95
+    .local v4, "z":Z
+    iget-object v5, p0, Lcom/android/systemui/qs/tileimpl/QSTileView;->mExpandIndicator:Landroid/view/View;
 
-    iget-boolean v3, p1, Lcom/android/systemui/plugins/qs/QSTile$State;->disabledByPolicy:Z
+    and-int v6, v1, v4
 
-    if-eqz v3, :cond_5
+    if-eqz v6, :cond_62
 
-    goto :goto_1
+    move v6, v3
 
-    :cond_5
-    move v1, v2
+    goto :goto_63
 
-    :goto_1
-    invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setVisibility(I)V
+    :cond_62
+    move v6, v2
 
+    :goto_63
+    invoke-virtual {v5, v6}, Landroid/view/View;->setVisibility(I)V
+
+    .line 96
+    iget-object v5, p0, Lcom/android/systemui/qs/tileimpl/QSTileView;->mExpandSpace:Landroid/view/View;
+
+    and-int v6, v1, v4
+
+    if-eqz v6, :cond_6d
+
+    move v2, v3
+
+    :cond_6d
+    invoke-virtual {v5, v2}, Landroid/view/View;->setVisibility(I)V
+
+    .line 97
+    const/4 v2, 0x0
+
+    .line 98
+    .local v2, "drawable":Landroid/graphics/drawable/Drawable;
+    iget-object v5, p0, Lcom/android/systemui/qs/tileimpl/QSTileView;->mLabelContainer:Landroid/view/ViewGroup;
+
+    and-int v6, v1, v4
+
+    if-eqz v6, :cond_7a
+
+    iget-object v6, p1, Lcom/android/systemui/plugins/qs/QSTile$State;->dualLabelContentDescription:Ljava/lang/CharSequence;
+
+    goto :goto_7b
+
+    :cond_7a
+    const/4 v6, 0x0
+
+    :goto_7b
+    invoke-virtual {v5, v6}, Landroid/view/ViewGroup;->setContentDescription(Ljava/lang/CharSequence;)V
+
+    .line 99
+    iget-object v5, p0, Lcom/android/systemui/qs/tileimpl/QSTileView;->mLabelContainer:Landroid/view/ViewGroup;
+
+    invoke-virtual {v5}, Landroid/view/ViewGroup;->isClickable()Z
+
+    move-result v5
+
+    const/4 v6, 0x1
+
+    if-eq v4, v5, :cond_88
+
+    move v3, v6
+
+    :cond_88
+    and-int/2addr v3, v1
+
+    if-eqz v3, :cond_a2
+
+    .line 100
+    iget-object v3, p0, Lcom/android/systemui/qs/tileimpl/QSTileView;->mLabelContainer:Landroid/view/ViewGroup;
+
+    invoke-virtual {v3, v4}, Landroid/view/ViewGroup;->setClickable(Z)V
+
+    .line 101
+    iget-object v3, p0, Lcom/android/systemui/qs/tileimpl/QSTileView;->mLabelContainer:Landroid/view/ViewGroup;
+
+    invoke-virtual {v3, v4}, Landroid/view/ViewGroup;->setLongClickable(Z)V
+
+    .line 102
+    iget-object v3, p0, Lcom/android/systemui/qs/tileimpl/QSTileView;->mLabelContainer:Landroid/view/ViewGroup;
+
+    .line 103
+    .local v3, "viewGroup":Landroid/view/ViewGroup;
+    and-int v5, v1, v4
+
+    if-eqz v5, :cond_9f
+
+    .line 104
+    invoke-virtual {p0}, Lcom/android/systemui/qs/tileimpl/QSTileView;->newTileBackground()Landroid/graphics/drawable/Drawable;
+
+    move-result-object v2
+
+    .line 106
+    :cond_9f
+    invoke-virtual {v3, v2}, Landroid/view/ViewGroup;->setBackground(Landroid/graphics/drawable/Drawable;)V
+
+    .line 108
+    .end local v3    # "viewGroup":Landroid/view/ViewGroup;
+    :cond_a2
+    iget-object v3, p0, Lcom/android/systemui/qs/tileimpl/QSTileView;->mLabel:Landroid/widget/TextView;
+
+    iget-boolean v5, p1, Lcom/android/systemui/plugins/qs/QSTile$State;->disabledByPolicy:Z
+
+    xor-int/2addr v5, v6
+
+    invoke-virtual {v3, v5}, Landroid/widget/TextView;->setEnabled(Z)V
+
+    .line 109
+    iget-object v3, p0, Lcom/android/systemui/qs/tileimpl/QSTileView;->mPadLock:Landroid/widget/ImageView;
+
+    .line 110
+    .local v3, "imageView":Landroid/widget/ImageView;
+    iget-boolean v5, p1, Lcom/android/systemui/plugins/qs/QSTile$State;->disabledByPolicy:Z
+
+    if-nez v5, :cond_b2
+
+    .line 111
+    const/16 v0, 0x8
+
+    .line 113
+    :cond_b2
+    invoke-virtual {v3, v0}, Landroid/widget/ImageView;->setVisibility(I)V
+
+    .line 114
     invoke-direct {p0, p1}, Lcom/android/systemui/qs/tileimpl/QSTileView;->updateThemeColor(Lcom/android/systemui/plugins/qs/QSTile$State;)V
 
+    .line 115
     return-void
 .end method
 

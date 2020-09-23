@@ -90,7 +90,7 @@
 .end method
 
 .method public getView(ILandroid/view/View;Landroid/view/ViewGroup;)Landroid/view/View;
-    .locals 5
+    .locals 6
 
     iget-object v0, p0, Lcom/android/systemui/qs/QSDetailItems$Adapter;->this$0:Lcom/android/systemui/qs/QSDetailItems;
 
@@ -269,6 +269,18 @@
 
     :goto_4
     invoke-virtual {v1, v2}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    invoke-static {}, Lcom/android/systemui/SystemUIApplication;->getContext()Landroid/content/Context;
+    
+    move-result-object v5
+
+    sget v2, Lcom/android/systemui/R$color;->qs_tile_icon:I
+
+    invoke-static {v5, v2}, Lcom/oneplus/util/OpUtils;->getThemeAccentColor(Landroid/content/Context;I)I
+
+    move-result v2
+
+    invoke-virtual {v1, v2}, Landroid/widget/TextView;->setTextColor(I)V
 
     new-instance v1, Lcom/android/systemui/qs/QSDetailItems$Adapter$1;
 

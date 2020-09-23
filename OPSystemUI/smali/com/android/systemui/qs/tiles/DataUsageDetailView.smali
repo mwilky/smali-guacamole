@@ -276,6 +276,20 @@
     move-result-object v6
 
     :cond_3
+    invoke-static {}, Lcom/android/systemui/SystemUIApplication;->getContext()Landroid/content/Context;
+    
+    move-result-object v6
+
+    sget v4, Lcom/android/systemui/R$color;->qs_tile_icon:I
+
+    invoke-static {v6, v4}, Lcom/oneplus/util/OpUtils;->getThemeAccentColor(Landroid/content/Context;I)I
+
+    move-result v6
+
+    invoke-static {v6}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
+
+    move-result-object v6
+
     const v4, 0x1020016
 
     invoke-virtual {v0, v4}, Landroid/widget/LinearLayout;->findViewById(I)Landroid/view/View;

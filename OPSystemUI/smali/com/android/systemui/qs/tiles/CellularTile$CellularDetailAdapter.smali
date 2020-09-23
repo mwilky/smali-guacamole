@@ -43,7 +43,7 @@
 
 # virtual methods
 .method public createDetailView(Landroid/content/Context;Landroid/view/View;Landroid/view/ViewGroup;)Landroid/view/View;
-    .locals 1
+    .locals 2
 
     const/4 p1, 0x0
 
@@ -71,13 +71,43 @@
     :goto_0
     check-cast p2, Lcom/android/systemui/qs/tiles/DataUsageDetailView;
 
+    new-instance p3, Lcom/android/settingslib/net/DataUsageController;
+
+    iget-object v0, p0, Lcom/android/systemui/qs/tiles/CellularTile$CellularDetailAdapter;->this$0:Lcom/android/systemui/qs/tiles/CellularTile;
+
+    invoke-static {v0}, Lcom/android/systemui/qs/tiles/CellularTile;->access$1100(Lcom/android/systemui/qs/tiles/CellularTile;)Landroid/content/Context;
+
+    move-result-object v0
+
+    invoke-direct {p3, v0}, Lcom/android/settingslib/net/DataUsageController;-><init>(Landroid/content/Context;)V
+
+    invoke-static {}, Landroid/telephony/SubscriptionManager;->getDefaultDataSubscriptionId()I
+
+    move-result v0
+
+    invoke-virtual {p3, v0}, Lcom/android/settingslib/net/DataUsageController;->setSubscriptionId(I)V
+
     iget-object p3, p0, Lcom/android/systemui/qs/tiles/CellularTile$CellularDetailAdapter;->this$0:Lcom/android/systemui/qs/tiles/CellularTile;
 
     invoke-static {p3}, Lcom/android/systemui/qs/tiles/CellularTile;->access$1000(Lcom/android/systemui/qs/tiles/CellularTile;)Lcom/android/settingslib/net/DataUsageController;
 
     move-result-object p3
 
-    invoke-virtual {p3}, Lcom/android/settingslib/net/DataUsageController;->getDataUsageInfo()Lcom/android/settingslib/net/DataUsageController$DataUsageInfo;
+    iget-object v0, p0, Lcom/android/systemui/qs/tiles/CellularTile$CellularDetailAdapter;->this$0:Lcom/android/systemui/qs/tiles/CellularTile;
+
+    invoke-static {v0}, Lcom/android/systemui/qs/tiles/CellularTile;->access$1100(Lcom/android/systemui/qs/tiles/CellularTile;)Landroid/content/Context;
+
+    move-result-object v0
+
+    invoke-static {}, Landroid/telephony/SubscriptionManager;->getDefaultDataSubscriptionId()I
+
+    move-result v1
+
+    invoke-static {v0, v1}, Lcom/android/settingslib/net/DataUsageUtils;->getMobileTemplate(Landroid/content/Context;I)Landroid/net/NetworkTemplate;
+
+    move-result-object v0
+
+    invoke-virtual {p3, v0}, Lcom/android/settingslib/net/DataUsageController;->getDataUsageInfo(Landroid/net/NetworkTemplate;)Lcom/android/settingslib/net/DataUsageController$DataUsageInfo;
 
     move-result-object p3
 
