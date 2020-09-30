@@ -47,6 +47,10 @@
 
 
 # instance fields
+.field private blurperformed:Z
+
+.field public mQSBlurView:Landroid/widget/ImageView;
+
 .field private mKeyguardStatusBar:Lcom/android/systemui/statusbar/phone/KeyguardStatusBarView;
 
 .field private mActivityIntentHelper:Lcom/android/systemui/ActivityIntentHelper;
@@ -634,6 +638,10 @@
     const/4 v1, 0x0
 
     iput v1, v0, Lcom/android/systemui/statusbar/phone/StatusBar;->mStatusBarWindowState:I
+    
+    const/4 v1, 0x0
+
+    iput-boolean v1, v0, Lcom/android/systemui/statusbar/phone/StatusBar;->blurperformed:Z
 
     new-instance v2, Ljava/lang/Object;
 
@@ -9573,6 +9581,24 @@
     invoke-virtual {v1, v3, p1}, Lcom/android/systemui/fragments/FragmentHostManager;->addTagListener(Ljava/lang/String;Lcom/android/systemui/fragments/FragmentHostManager$FragmentListener;)Lcom/android/systemui/fragments/FragmentHostManager;
 
     :cond_3
+    const-string v0, "tweaks_qs_blur"
+
+    const-string v1, "id"
+
+    invoke-static {v0, v1}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
+
+    move-result v1
+
+    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mNotificationShadeWindowView:Lcom/android/systemui/statusbar/phone/NotificationShadeWindowView;
+
+    invoke-virtual {v0, v1}, Lcom/android/systemui/statusbar/phone/NotificationShadeWindowView;->findViewById(I)Landroid/view/View;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/widget/ImageView;
+
+    iput-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mQSBlurView:Landroid/widget/ImageView;
+
     iget-object p1, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mNotificationShadeWindowView:Lcom/android/systemui/statusbar/phone/NotificationShadeWindowView;
 
     sget v0, Lcom/android/systemui/R$id;->report_rejected_touch:I
@@ -10214,6 +10240,8 @@
     invoke-virtual {v0}, Lcom/android/systemui/recents/ScreenPinningRequest;->onConfigurationChanged()V
 
     invoke-virtual {p0, p1}, Lcom/oneplus/systemui/statusbar/phone/OpStatusBar;->opOnConfigChanged(Landroid/content/res/Configuration;)V
+    
+    invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/StatusBar;->updateBlurView()V
 
     return-void
 .end method
@@ -13200,6 +13228,8 @@
     
     invoke-static {v0}, Lcom/android/mwilky/Renovate;->setHideQsLabel(Landroid/content/Context;)V
     
+    invoke-static {v0}, Lcom/android/mwilky/Renovate;->setQsBlur(Landroid/content/Context;)V
+    
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mScreenLifecycle:Lcom/android/systemui/keyguard/ScreenLifecycle;
 
     iget-object v1, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mScreenObserver:Lcom/android/systemui/keyguard/ScreenLifecycle$Observer;
@@ -14793,6 +14823,8 @@
 
 .method updateIsKeyguard()Z
     .locals 5
+    
+    invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/StatusBar;->updateBlurVisibility()V
 
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mBiometricUnlockController:Lcom/android/systemui/statusbar/phone/BiometricUnlockController;
 
@@ -15545,6 +15577,18 @@
     const-string v1, "tweaks_hide_qs_labels"
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+    
+    const-string v1, "tweaks_qs_blur"
+
+    invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    const-string v1, "tweaks_qs_blur_enabled"
+
+    invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    const-string v1, "tweaks_qs_blur_alpha"
+
+    invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
     .line 102
     new-instance v1, Lcom/android/wubydax/GearContentObserver;
@@ -15950,6 +15994,51 @@
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/StatusBar;->reloadTiles()V
 
     :cond_mwilky19
+    const-string v0, "tweaks_qs_blur_enabled"
+
+    invoke-virtual {v0, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_mwilky20
+
+    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mContext:Landroid/content/Context;
+
+    invoke-static {v0}, Lcom/android/mwilky/Renovate;->setQsBlur(Landroid/content/Context;)V
+
+    invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/StatusBar;->updateBlurView()V
+
+    :cond_mwilky20
+    const-string v0, "tweaks_qs_blur"
+
+    invoke-virtual {v0, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_mwilky21
+
+    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mContext:Landroid/content/Context;
+
+    invoke-static {v0}, Lcom/android/mwilky/Renovate;->setQsBlur(Landroid/content/Context;)V
+
+    invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/StatusBar;->updateBlurView()V
+
+    :cond_mwilky21
+    const-string v0, "tweaks_qs_blur_alpha"
+
+    invoke-virtual {v0, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_mwilky22
+
+    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mContext:Landroid/content/Context;
+
+    invoke-static {v0}, Lcom/android/mwilky/Renovate;->setQsBlur(Landroid/content/Context;)V
+
+    invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/StatusBar;->updateBlurView()V
+
+    :cond_mwilky22
     return-void
 .end method
 
@@ -16104,5 +16193,190 @@
     invoke-virtual {v0}, Lcom/android/systemui/qs/QSTileHost;->reloadTiles()V
 
     :cond_0
+    return-void
+.end method
+
+.method public drawBlurView()V
+    .locals 3
+
+    iget-object v0, p0, Lcom/android/systemui/SystemUI;->mContext:Landroid/content/Context;
+
+    invoke-static {v0}, Lcom/android/systemui/ImageUtilities;->screenshotSurface(Landroid/content/Context;)Landroid/graphics/Bitmap;
+
+    move-result-object v0
+
+    if-nez v0, :cond_0
+
+    iget-object p0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mQSBlurView:Landroid/widget/ImageView;
+
+    const/4 v0, 0x0
+
+    invoke-virtual {p0, v0}, Landroid/widget/ImageView;->setImageDrawable(Landroid/graphics/drawable/Drawable;)V
+
+    goto :goto_0
+
+    :cond_0
+    iget-object v1, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mQSBlurView:Landroid/widget/ImageView;
+
+    iget-object v2, p0, Lcom/android/systemui/SystemUI;->mContext:Landroid/content/Context;
+
+    sget p0, Lcom/android/mwilky/Renovate;->mQsBlur:I
+
+    invoke-static {v2, v0, p0}, Lcom/android/systemui/ImageUtilities;->blurImage(Landroid/content/Context;Landroid/graphics/Bitmap;I)Landroid/graphics/Bitmap;
+
+    move-result-object p0
+
+    invoke-virtual {v1, p0}, Landroid/widget/ImageView;->setImageBitmap(Landroid/graphics/Bitmap;)V
+
+    :goto_0
+    return-void
+.end method
+
+.method public updateBlurView()V
+    .locals 10
+
+    iget-boolean v5, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->blurperformed:Z
+
+    if-eqz v5, :cond_0
+
+    iget-object v5, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mNotificationPanelViewController:Lcom/android/systemui/statusbar/phone/NotificationPanelViewController;
+
+    const/4 v0, 0x0
+
+    invoke-virtual {v5, v0, v0}, Lcom/android/systemui/statusbar/phone/NotificationPanelViewController;->setPanelAlpha(IZ)V
+
+    iget-object v5, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mHandler:Lcom/android/systemui/statusbar/phone/StatusBar$H;
+
+    new-instance v0, Lcom/android/systemui/statusbar/phone/StatusBar$QsBlur;
+
+    invoke-direct {v0, p0}, Lcom/android/systemui/statusbar/phone/StatusBar$QsBlur;-><init>(Lcom/android/systemui/statusbar/phone/StatusBar;)V
+
+    const/16 v1, 0x186
+
+    const v2, 0x43e38000    # 455.0f
+
+    iget-object p0, p0, Lcom/android/systemui/SystemUI;->mContext:Landroid/content/Context;
+
+    invoke-virtual {p0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+
+    move-result-object p0
+
+    const/high16 v3, 0x3f800000    # 1.0f
+
+    const-string v4, "transition_animation_scale"
+
+    invoke-static {p0, v4, v3}, Landroid/provider/Settings$Global;->getFloat(Landroid/content/ContentResolver;Ljava/lang/String;F)F
+
+    move-result p0
+
+    mul-float/2addr p0, v2
+
+    invoke-static {p0}, Ljava/lang/Math;->round(F)I
+
+    move-result p0
+
+    invoke-static {v1, p0}, Ljava/lang/Math;->max(II)I
+
+    move-result p0
+
+    int-to-long v1, p0
+
+    invoke-virtual {v5, v0, v1, v2}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
+
+    :cond_0
+    return-void
+.end method
+
+.method public updateBlurVisibility()V
+    .locals 6
+
+    sget v0, Lcom/android/mwilky/Renovate;->mQsBlurAlpha:I
+
+    iget-object v1, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mNotificationPanelViewController:Lcom/android/systemui/statusbar/phone/NotificationPanelViewController;
+
+    invoke-virtual {v1}, Lcom/android/systemui/statusbar/phone/PanelViewController;->getExpandedFraction()F
+
+    move-result v1
+
+    int-to-float v0, v0
+
+    float-to-double v2, v0
+
+    const-wide/high16 v4, 0x4059000000000000L    # 100.0
+
+    div-double/2addr v2, v4
+
+    double-to-float v0, v2
+
+    mul-float/2addr v1, v0
+
+    const/4 v0, 0x0
+
+    cmpl-float v0, v1, v0
+
+    const/4 v2, 0x1
+
+    const/4 v3, 0x0
+
+    if-lez v0, :cond_0
+
+    sget v0, Lcom/android/mwilky/Renovate;->mQsBlur:I
+
+    if-lez v0, :cond_0
+
+    move v0, v2
+
+    goto :goto_0
+
+    :cond_0
+    move v0, v3
+
+    :goto_0
+    if-eqz v0, :cond_1
+
+    iget-boolean v4, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->blurperformed:Z
+
+    if-nez v4, :cond_1
+
+    iget-boolean v4, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mIsKeyguard:Z
+
+    if-nez v4, :cond_1
+
+    sget-boolean v4, Lcom/android/mwilky/Renovate;->mQsBlurEnabled:Z
+
+    if-eqz v4, :cond_1
+
+    invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/StatusBar;->drawBlurView()V
+
+    iput-boolean v2, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->blurperformed:Z
+
+    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mQSBlurView:Landroid/widget/ImageView;
+
+    invoke-virtual {v0, v3}, Landroid/widget/ImageView;->setVisibility(I)V
+
+    goto :goto_1
+
+    :cond_1
+    if-eqz v0, :cond_2
+
+    iget v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mState:I
+
+    if-ne v0, v2, :cond_3
+
+    :cond_2
+    iput-boolean v3, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->blurperformed:Z
+
+    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mQSBlurView:Landroid/widget/ImageView;
+
+    const/16 v2, 0x8
+
+    invoke-virtual {v0, v2}, Landroid/widget/ImageView;->setVisibility(I)V
+
+    :cond_3
+    :goto_1
+    iget-object p0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mQSBlurView:Landroid/widget/ImageView;
+
+    invoke-virtual {p0, v1}, Landroid/widget/ImageView;->setAlpha(F)V
+
     return-void
 .end method

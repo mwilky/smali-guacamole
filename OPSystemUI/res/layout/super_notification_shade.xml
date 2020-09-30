@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.android.systemui.statusbar.phone.NotificationShadeWindowView android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:sysui="http://schemas.android.com/apk/res-auto">
+  <ImageView android:id="@id/tweaks_qs_blur" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" sysui:ignoreRightInset="true" />
     <com.android.systemui.statusbar.BackDropView android:id="@id/backdrop" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" sysui:ignoreRightInset="true">
         <ImageView android:id="@id/backdrop_back" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
         <ImageView android:id="@id/backdrop_front" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
