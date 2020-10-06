@@ -47,6 +47,10 @@
 
 
 # instance fields
+.field protected mEntryManager:Lcom/android/systemui/statusbar/notification/NotificationEntryManager;
+
+.field protected mStackScroller:Lcom/android/systemui/statusbar/notification/stack/NotificationStackScrollLayout;
+
 .field private blurperformed:Z
 
 .field public mQSBlurView:Landroid/widget/ImageView;
@@ -9252,6 +9256,28 @@
     iget-object v1, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mKeyguardIndicationController:Lcom/android/systemui/statusbar/KeyguardIndicationController;
 
     invoke-virtual {p1, v1}, Lcom/android/systemui/statusbar/phone/NotificationPanelViewController;->setKeyguardIndicationController(Lcom/android/systemui/statusbar/KeyguardIndicationController;)V
+    
+    iget-object p1, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mNotificationShadeWindowView:Lcom/android/systemui/statusbar/phone/NotificationShadeWindowView;
+
+    sget v1, Lcom/android/systemui/R$id;->notification_stack_scroller:I
+
+    invoke-virtual {p1, v1}, Landroid/widget/FrameLayout;->findViewById(I)Landroid/view/View;
+
+    move-result-object p1
+    
+    check-cast p1, Lcom/android/systemui/statusbar/notification/stack/NotificationStackScrollLayout;
+
+    iput-object p1, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mStackScroller:Lcom/android/systemui/statusbar/notification/stack/NotificationStackScrollLayout;
+    
+    const-class p1, Lcom/android/systemui/statusbar/notification/NotificationEntryManager;
+
+    invoke-static {p1}, Lcom/android/systemui/Dependency;->get(Ljava/lang/Class;)Ljava/lang/Object;
+
+    move-result-object p1
+
+    check-cast p1, Lcom/android/systemui/statusbar/notification/NotificationEntryManager;
+
+    iput-object p1, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mEntryManager:Lcom/android/systemui/statusbar/notification/NotificationEntryManager;
 
     iget-object p1, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mNotificationShadeWindowView:Lcom/android/systemui/statusbar/phone/NotificationShadeWindowView;
 
@@ -13230,6 +13256,10 @@
     
     invoke-static {v0}, Lcom/android/mwilky/Renovate;->setQsBlur(Landroid/content/Context;)V
     
+    invoke-static {v0}, Lcom/android/mwilky/Renovate;->setSmartPulldown(Landroid/content/Context;)V
+
+    invoke-static {v0}, Lcom/android/mwilky/Renovate;->setQuickQsPulldown(Landroid/content/Context;)V
+    
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mScreenLifecycle:Lcom/android/systemui/keyguard/ScreenLifecycle;
 
     iget-object v1, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mScreenObserver:Lcom/android/systemui/keyguard/ScreenLifecycle$Observer;
@@ -15589,6 +15619,14 @@
     const-string v1, "tweaks_qs_blur_alpha"
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+    
+    const-string v1, "tweaks_smart_pulldown"
+
+    invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+    
+    const-string v1, "tweaks_qs_pulldown_list"
+
+    invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
     .line 102
     new-instance v1, Lcom/android/wubydax/GearContentObserver;
@@ -16039,6 +16077,32 @@
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/StatusBar;->updateBlurView()V
 
     :cond_mwilky22
+    const-string v0, "tweaks_smart_pulldown"
+
+    invoke-virtual {v0, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_mwilky23
+
+    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mContext:Landroid/content/Context;
+
+    invoke-static {v0}, Lcom/android/mwilky/Renovate;->setSmartPulldown(Landroid/content/Context;)V
+
+    :cond_mwilky23
+    const-string v0, "tweaks_qs_pulldown_list"
+
+    invoke-virtual {v0, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_mwilky24
+
+    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mContext:Landroid/content/Context;
+
+    invoke-static {v0}, Lcom/android/mwilky/Renovate;->setQuickQsPulldown(Landroid/content/Context;)V
+
+    :cond_mwilky24
     return-void
 .end method
 
@@ -16379,4 +16443,370 @@
     invoke-virtual {p0, v1}, Landroid/widget/ImageView;->setAlpha(F)V
 
     return-void
+.end method
+
+.method protected hasActiveHighImportanceNotifications()Z
+    .locals 6
+
+    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mStackScroller:Lcom/android/systemui/statusbar/notification/stack/NotificationStackScrollLayout;
+
+    invoke-virtual {v0}, Lcom/android/systemui/statusbar/notification/stack/NotificationStackScrollLayout;->getChildCount()I
+
+    move-result v0
+
+    const/4 v1, 0x0
+
+    move v2, v1
+
+    :goto_0
+    if-ge v2, v0, :cond_2
+
+    iget-object v3, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mStackScroller:Lcom/android/systemui/statusbar/notification/stack/NotificationStackScrollLayout;
+
+    invoke-virtual {v3, v2}, Lcom/android/systemui/statusbar/notification/stack/NotificationStackScrollLayout;->getChildAt(I)Landroid/view/View;
+
+    move-result-object v3
+
+    instance-of v4, v3, Lcom/android/systemui/statusbar/notification/row/ExpandableNotificationRow;
+
+    if-nez v4, :cond_0
+
+    goto :goto_1
+
+    :cond_0
+    move-object v4, v3
+
+    check-cast v4, Lcom/android/systemui/statusbar/notification/row/ExpandableNotificationRow;
+    
+    invoke-virtual {v4}, Lcom/android/systemui/statusbar/notification/row/ExpandableNotificationRow;->getEntry()Lcom/android/systemui/statusbar/notification/collection/NotificationEntry;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Lcom/android/systemui/statusbar/notification/collection/NotificationEntry;->getImportance()I
+
+    move-result v4
+    
+    const v5, 0x4
+
+    if-ne v4, v5, :cond_1
+
+    const/4 v1, 0x1
+
+    return v1
+
+    :cond_1
+    :goto_1
+    add-int/lit8 v2, v2, 0x1
+
+    goto :goto_0
+
+    :cond_2
+    return v1
+.end method
+
+.method protected hasActiveDefaultImportanceNotifications()Z
+    .locals 6
+
+    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mStackScroller:Lcom/android/systemui/statusbar/notification/stack/NotificationStackScrollLayout;
+
+    invoke-virtual {v0}, Lcom/android/systemui/statusbar/notification/stack/NotificationStackScrollLayout;->getChildCount()I
+
+    move-result v0
+
+    const/4 v1, 0x0
+
+    move v2, v1
+
+    :goto_0
+    if-ge v2, v0, :cond_2
+
+    iget-object v3, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mStackScroller:Lcom/android/systemui/statusbar/notification/stack/NotificationStackScrollLayout;
+
+    invoke-virtual {v3, v2}, Lcom/android/systemui/statusbar/notification/stack/NotificationStackScrollLayout;->getChildAt(I)Landroid/view/View;
+
+    move-result-object v3
+
+    instance-of v4, v3, Lcom/android/systemui/statusbar/notification/row/ExpandableNotificationRow;
+
+    if-nez v4, :cond_0
+
+    goto :goto_1
+
+    :cond_0
+    move-object v4, v3
+
+    check-cast v4, Lcom/android/systemui/statusbar/notification/row/ExpandableNotificationRow;
+    
+    invoke-virtual {v4}, Lcom/android/systemui/statusbar/notification/row/ExpandableNotificationRow;->getEntry()Lcom/android/systemui/statusbar/notification/collection/NotificationEntry;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Lcom/android/systemui/statusbar/notification/collection/NotificationEntry;->getImportance()I
+
+    move-result v4
+    
+    const v5, 0x3
+
+    if-ne v4, v5, :cond_1
+
+    const/4 v1, 0x1
+
+    return v1
+
+    :cond_1
+    :goto_1
+    add-int/lit8 v2, v2, 0x1
+
+    goto :goto_0
+
+    :cond_2
+    return v1
+.end method
+
+.method protected hasActiveNoneImportanceNotifications()Z
+    .locals 6
+
+    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mStackScroller:Lcom/android/systemui/statusbar/notification/stack/NotificationStackScrollLayout;
+
+    invoke-virtual {v0}, Lcom/android/systemui/statusbar/notification/stack/NotificationStackScrollLayout;->getChildCount()I
+
+    move-result v0
+
+    const/4 v1, 0x0
+
+    move v2, v1
+
+    :goto_0
+    if-ge v2, v0, :cond_2
+
+    iget-object v3, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mStackScroller:Lcom/android/systemui/statusbar/notification/stack/NotificationStackScrollLayout;
+
+    invoke-virtual {v3, v2}, Lcom/android/systemui/statusbar/notification/stack/NotificationStackScrollLayout;->getChildAt(I)Landroid/view/View;
+
+    move-result-object v3
+
+    instance-of v4, v3, Lcom/android/systemui/statusbar/notification/row/ExpandableNotificationRow;
+
+    if-nez v4, :cond_0
+
+    goto :goto_1
+
+    :cond_0
+    move-object v4, v3
+
+    check-cast v4, Lcom/android/systemui/statusbar/notification/row/ExpandableNotificationRow;
+    
+    invoke-virtual {v4}, Lcom/android/systemui/statusbar/notification/row/ExpandableNotificationRow;->getEntry()Lcom/android/systemui/statusbar/notification/collection/NotificationEntry;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Lcom/android/systemui/statusbar/notification/collection/NotificationEntry;->getImportance()I
+
+    move-result v4
+    
+    const v5, 0x0
+
+    if-ne v4, v5, :cond_1
+
+    const/4 v1, 0x1
+
+    return v1
+
+    :cond_1
+    :goto_1
+    add-int/lit8 v2, v2, 0x1
+
+    goto :goto_0
+
+    :cond_2
+    return v1
+.end method
+
+.method protected hasActiveMinImportanceNotifications()Z
+    .locals 6
+
+    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mStackScroller:Lcom/android/systemui/statusbar/notification/stack/NotificationStackScrollLayout;
+
+    invoke-virtual {v0}, Lcom/android/systemui/statusbar/notification/stack/NotificationStackScrollLayout;->getChildCount()I
+
+    move-result v0
+
+    const/4 v1, 0x0
+
+    move v2, v1
+
+    :goto_0
+    if-ge v2, v0, :cond_2
+
+    iget-object v3, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mStackScroller:Lcom/android/systemui/statusbar/notification/stack/NotificationStackScrollLayout;
+
+    invoke-virtual {v3, v2}, Lcom/android/systemui/statusbar/notification/stack/NotificationStackScrollLayout;->getChildAt(I)Landroid/view/View;
+
+    move-result-object v3
+
+    instance-of v4, v3, Lcom/android/systemui/statusbar/notification/row/ExpandableNotificationRow;
+
+    if-nez v4, :cond_0
+
+    goto :goto_1
+
+    :cond_0
+    move-object v4, v3
+
+    check-cast v4, Lcom/android/systemui/statusbar/notification/row/ExpandableNotificationRow;
+    
+    invoke-virtual {v4}, Lcom/android/systemui/statusbar/notification/row/ExpandableNotificationRow;->getEntry()Lcom/android/systemui/statusbar/notification/collection/NotificationEntry;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Lcom/android/systemui/statusbar/notification/collection/NotificationEntry;->getImportance()I
+
+    move-result v4
+    
+    const v5, 0x1
+
+    if-ne v4, v5, :cond_1
+
+    const/4 v1, 0x1
+
+    return v1
+
+    :cond_1
+    :goto_1
+    add-int/lit8 v2, v2, 0x1
+
+    goto :goto_0
+
+    :cond_2
+    return v1
+.end method
+
+.method protected hasActiveMaxImportanceNotifications()Z
+    .locals 6
+
+    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mStackScroller:Lcom/android/systemui/statusbar/notification/stack/NotificationStackScrollLayout;
+
+    invoke-virtual {v0}, Lcom/android/systemui/statusbar/notification/stack/NotificationStackScrollLayout;->getChildCount()I
+
+    move-result v0
+
+    const/4 v1, 0x0
+
+    move v2, v1
+
+    :goto_0
+    if-ge v2, v0, :cond_2
+
+    iget-object v3, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mStackScroller:Lcom/android/systemui/statusbar/notification/stack/NotificationStackScrollLayout;
+
+    invoke-virtual {v3, v2}, Lcom/android/systemui/statusbar/notification/stack/NotificationStackScrollLayout;->getChildAt(I)Landroid/view/View;
+
+    move-result-object v3
+
+    instance-of v4, v3, Lcom/android/systemui/statusbar/notification/row/ExpandableNotificationRow;
+
+    if-nez v4, :cond_0
+
+    goto :goto_1
+
+    :cond_0
+    move-object v4, v3
+
+    check-cast v4, Lcom/android/systemui/statusbar/notification/row/ExpandableNotificationRow;
+    
+    invoke-virtual {v4}, Lcom/android/systemui/statusbar/notification/row/ExpandableNotificationRow;->getEntry()Lcom/android/systemui/statusbar/notification/collection/NotificationEntry;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Lcom/android/systemui/statusbar/notification/collection/NotificationEntry;->getImportance()I
+
+    move-result v4
+    
+    const v5, 0x5
+
+    if-ne v4, v5, :cond_1
+
+    const/4 v1, 0x1
+
+    return v1
+
+    :cond_1
+    :goto_1
+    add-int/lit8 v2, v2, 0x1
+
+    goto :goto_0
+
+    :cond_2
+    return v1
+.end method
+
+.method protected hasActiveUnspecifiedImportanceNotifications()Z
+    .locals 6
+
+    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mStackScroller:Lcom/android/systemui/statusbar/notification/stack/NotificationStackScrollLayout;
+
+    invoke-virtual {v0}, Lcom/android/systemui/statusbar/notification/stack/NotificationStackScrollLayout;->getChildCount()I
+
+    move-result v0
+
+    const/4 v1, 0x0
+
+    move v2, v1
+
+    :goto_0
+    if-ge v2, v0, :cond_2
+
+    iget-object v3, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mStackScroller:Lcom/android/systemui/statusbar/notification/stack/NotificationStackScrollLayout;
+
+    invoke-virtual {v3, v2}, Lcom/android/systemui/statusbar/notification/stack/NotificationStackScrollLayout;->getChildAt(I)Landroid/view/View;
+
+    move-result-object v3
+
+    instance-of v4, v3, Lcom/android/systemui/statusbar/notification/row/ExpandableNotificationRow;
+
+    if-nez v4, :cond_0
+
+    goto :goto_1
+
+    :cond_0
+    move-object v4, v3
+
+    check-cast v4, Lcom/android/systemui/statusbar/notification/row/ExpandableNotificationRow;
+    
+    invoke-virtual {v4}, Lcom/android/systemui/statusbar/notification/row/ExpandableNotificationRow;->getEntry()Lcom/android/systemui/statusbar/notification/collection/NotificationEntry;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Lcom/android/systemui/statusbar/notification/collection/NotificationEntry;->getImportance()I
+
+    move-result v4
+    
+    const v5, 0xfffffc18
+
+    if-ne v4, v5, :cond_1
+
+    const/4 v1, 0x1
+
+    return v1
+
+    :cond_1
+    :goto_1
+    add-int/lit8 v2, v2, 0x1
+
+    goto :goto_0
+
+    :cond_2
+    return v1
+.end method
+
+.method public hasActiveNotifications()Z
+    .locals 0
+
+    iget-object p0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mEntryManager:Lcom/android/systemui/statusbar/notification/NotificationEntryManager;
+
+    invoke-virtual {p0}, Lcom/android/systemui/statusbar/notification/NotificationEntryManager;->hasActiveNotifications()Z
+
+    move-result p0
+
+    return p0
 .end method
