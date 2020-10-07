@@ -4329,8 +4329,10 @@
 
     :goto_74
     if-ne v15, v7, :cond_88
+    
+    iget-object v6, v0, Lcom/android/systemui/statusbar/phone/NotificationPanelViewController;->mView:Lcom/android/systemui/statusbar/phone/NotificationPanelView;
 
-    invoke-virtual/range {p0 .. p0}, Lcom/android/systemui/statusbar/phone/NotificationPanelViewController;->isLayoutRtl()Z
+    invoke-virtual/range {v6 .. v6}, Lcom/android/systemui/statusbar/phone/NotificationPanelView;->isLayoutRtl()Z
 
     move-result v6
 
@@ -4354,7 +4356,9 @@
     :cond_88
     if-ne v15, v6, :cond_9c
 
-    invoke-virtual/range {p0 .. p0}, Lcom/android/systemui/statusbar/phone/NotificationPanelViewController;->isLayoutRtl()Z
+    iget-object v6, v0, Lcom/android/systemui/statusbar/phone/NotificationPanelViewController;->mView:Lcom/android/systemui/statusbar/phone/NotificationPanelView;
+
+    invoke-virtual/range {v6 .. v6}, Lcom/android/systemui/statusbar/phone/NotificationPanelView;->isLayoutRtl()Z
 
     move-result v6
 
