@@ -18,6 +18,10 @@
 .end annotation
 
 
+# static fields
+.field public static mIsExpanded:Z
+
+
 # instance fields
 .field private final mActivityManager:Landroid/app/IActivityManager;
 
@@ -1147,6 +1151,8 @@
     const/4 p0, 0x1
 
     :goto_1
+    sput-boolean p0, Lcom/android/systemui/statusbar/phone/NotificationShadeWindowController;->mIsExpanded:Z
+    
     return p0
 .end method
 
