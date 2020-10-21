@@ -1176,7 +1176,7 @@
 
     .line 285
     .local v0, "ContentResolver":Landroid/content/ContentResolver;
-    sget v1, Lcom/oneplus/util/ThemeColorUtils;->QS_PANEL_PRIMARY:I
+    const v1, 0x9
 
     invoke-static {v1}, Lcom/oneplus/util/ThemeColorUtils;->getColor(I)I
 
@@ -1748,7 +1748,7 @@
 
     .line 246
     .local v0, "ContentResolver":Landroid/content/ContentResolver;
-    sget v1, Lcom/oneplus/util/ThemeColorUtils;->QS_PANEL_PRIMARY:I
+    const v1, 0x9
 
     invoke-static {v1}, Lcom/oneplus/util/ThemeColorUtils;->getColor(I)I
 

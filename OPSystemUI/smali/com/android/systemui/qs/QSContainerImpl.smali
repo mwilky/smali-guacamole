@@ -479,7 +479,7 @@
     return-void
 .end method
 
-.method private updateThemeColor()V
+.method public updateThemeColor()V
     .locals 3
 
     invoke-static {}, Lcom/oneplus/util/OpUtils;->isREDVersion()Z
@@ -543,7 +543,14 @@
     invoke-static {v0}, Lcom/oneplus/util/ThemeColorUtils;->getColor(I)I
 
     move-result v0
+    
+    sget-boolean v1, Lcom/android/mwilky/Renovate;->mUnlockQsColors:Z
+    
+    if-eqz v1, :cond_stock
 
+    sget v0, Lcom/android/mwilky/Renovate;->mQsBackgroundColor:I
+
+    :cond_stock
     iget-object p0, p0, Lcom/android/systemui/qs/QSContainerImpl;->mBackground:Landroid/view/View;
 
     invoke-static {v0}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
@@ -708,7 +715,7 @@
 
     invoke-virtual {p1, v0, v0}, Landroid/graphics/Point;->set(II)V
 
-    invoke-direct {p0}, Lcom/android/systemui/qs/QSContainerImpl;->updateThemeColor()V
+    invoke-virtual {p0}, Lcom/android/systemui/qs/QSContainerImpl;->updateThemeColor()V
 
     return-void
 .end method
@@ -821,8 +828,12 @@
     const/4 v0, 0x2
 
     invoke-virtual {p0, v0}, Landroid/widget/FrameLayout;->setImportantForAccessibility(I)V
+    
+    iget-object v0, p0, Lcom/android/systemui/qs/QSContainerImpl;->mContext:Landroid/content/Context;
 
-    invoke-direct {p0}, Lcom/android/systemui/qs/QSContainerImpl;->updateThemeColor()V
+    invoke-static {v0}, Lcom/android/mwilky/Renovate;->setQsBackgroundColor(Landroid/content/Context;)V
+
+    invoke-virtual {p0}, Lcom/android/systemui/qs/QSContainerImpl;->updateThemeColor()V
 
     return-void
 .end method

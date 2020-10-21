@@ -1129,14 +1129,21 @@
 .end method
 
 .method protected updateThemeColor()V
-    .locals 6
+    .locals 7
 
     const/16 v0, 0x9
 
     invoke-static {v0}, Lcom/oneplus/util/ThemeColorUtils;->getColor(I)I
 
     move-result v0
+    
+    sget-boolean v6, Lcom/android/mwilky/Renovate;->mUnlockQsColors:Z
+    
+    if-eqz v6, :cond_stock
 
+    sget v0, Lcom/android/mwilky/Renovate;->mQsBackgroundColor:I
+
+    :cond_stock
     const/16 v1, 0xa
 
     invoke-static {v1}, Lcom/oneplus/util/ThemeColorUtils;->getColor(I)I
@@ -1236,6 +1243,8 @@
 
 .method public updateCustomizer()V
     .locals 1
+    
+    invoke-virtual {p0}, Lcom/android/systemui/qs/customize/QSCustomizer;->updateThemeColor()V
 
 	iget-object v0, p0, Lcom/android/systemui/qs/customize/QSCustomizer;->mTileQueryHelper:Lcom/android/systemui/qs/customize/TileQueryHelper;
 

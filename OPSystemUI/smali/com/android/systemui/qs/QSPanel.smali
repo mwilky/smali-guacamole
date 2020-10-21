@@ -3974,7 +3974,7 @@
 .end method
 
 .method public updateThemeColor()V
-    .locals 9
+    .locals 10
 
     invoke-static {}, Lcom/oneplus/util/ThemeColorUtils;->getCurrentTheme()I
 
@@ -4013,7 +4013,14 @@
     invoke-static {v3}, Lcom/oneplus/util/ThemeColorUtils;->getColor(I)I
 
     move-result v3
+    
+    sget-boolean v9, Lcom/android/mwilky/Renovate;->mUnlockQsColors:Z
 
+    if-eqz v9, :cond_stock
+
+    sget v3, Lcom/android/mwilky/Renovate;->mQsBackgroundColor:I
+
+    :cond_stock
     invoke-static {}, Lcom/oneplus/util/ThemeColorUtils;->getThumbBackground()I
 
     move-result v4
