@@ -484,6 +484,17 @@
     return-void
 
     :cond_0
+    sget-boolean v0, Lcom/android/mwilky/Renovate;->mUnlockNotificationColors:Z
+    
+    if-eqz v0, :cond_stock
+    
+    sget p1, Lcom/android/mwilky/Renovate;->mNotificationBackgroundColor:I
+    
+    invoke-static {p1}, Landroid/graphics/Color;->alpha(I)I
+
+    move-result p1
+    
+    :cond_stock
     iget-object p0, p0, Lcom/android/systemui/statusbar/notification/row/NotificationBackgroundView;->mBackground:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {p0, p1}, Landroid/graphics/drawable/Drawable;->setAlpha(I)V
@@ -756,28 +767,101 @@
 .end method
 
 .method public setTint(I)V
-    .locals 2
+    .registers 7
+    .param p1, "i"    # I
 
-    if-eqz p1, :cond_0
+    .line 18
+    sget v0, Lcom/android/mwilky/Renovate;->mNotificationBackgroundColor:I
 
+    const/4 v1, 0x0
+
+    const/4 v2, 0x1
+
+    const v3, -0xe2e2e3
+
+    if-ne v0, v3, :cond_b
+
+    move v0, v2
+
+    goto :goto_c
+
+    :cond_b
+    move v0, v1
+
+    :goto_c
+    sget v3, Lcom/android/mwilky/Renovate;->mNotificationBackgroundColor:I
+
+    const/4 v4, -0x1
+
+    if-ne v3, v4, :cond_12
+
+    move v1, v2
+
+    :cond_12
+    or-int/2addr v0, v1
+
+    sget-boolean v1, Lcom/android/mwilky/Renovate;->mUnlockNotificationColors:Z
+
+    xor-int/2addr v1, v2
+
+    or-int/2addr v0, v1
+
+    if-eqz v0, :cond_2b
+
+    .line 19
+    iput p1, p0, Lcom/android/systemui/statusbar/notification/row/NotificationBackgroundView;->mTintColor:I
+
+    .line 20
+    if-eqz p1, :cond_25
+
+    .line 21
     iget-object v0, p0, Lcom/android/systemui/statusbar/notification/row/NotificationBackgroundView;->mBackground:Landroid/graphics/drawable/Drawable;
 
     sget-object v1, Landroid/graphics/PorterDuff$Mode;->SRC_ATOP:Landroid/graphics/PorterDuff$Mode;
 
     invoke-virtual {v0, p1, v1}, Landroid/graphics/drawable/Drawable;->setColorFilter(ILandroid/graphics/PorterDuff$Mode;)V
 
-    goto :goto_0
+    goto :goto_43
 
-    :cond_0
+    .line 23
+    :cond_25
     iget-object v0, p0, Lcom/android/systemui/statusbar/notification/row/NotificationBackgroundView;->mBackground:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {v0}, Landroid/graphics/drawable/Drawable;->clearColorFilter()V
 
-    :goto_0
-    iput p1, p0, Lcom/android/systemui/statusbar/notification/row/NotificationBackgroundView;->mTintColor:I
+    goto :goto_43
 
-    invoke-virtual {p0}, Landroid/view/View;->invalidate()V
+    .line 26
+    :cond_2b
+    iget-object v0, p0, Lcom/android/systemui/statusbar/notification/row/NotificationBackgroundView;->mBackground:Landroid/graphics/drawable/Drawable;
 
+    sget v1, Lcom/android/mwilky/Renovate;->mNotificationBackgroundColor:I
+
+    sget-object v2, Landroid/graphics/PorterDuff$Mode;->SRC_ATOP:Landroid/graphics/PorterDuff$Mode;
+
+    invoke-virtual {v0, v1, v2}, Landroid/graphics/drawable/Drawable;->setColorFilter(ILandroid/graphics/PorterDuff$Mode;)V
+
+    .line 27
+    iget-object v0, p0, Lcom/android/systemui/statusbar/notification/row/NotificationBackgroundView;->mBackground:Landroid/graphics/drawable/Drawable;
+
+    sget v1, Lcom/android/mwilky/Renovate;->mNotificationBackgroundColor:I
+
+    invoke-static {v1}, Landroid/graphics/Color;->alpha(I)I
+
+    move-result v1
+
+    invoke-virtual {v0, v1}, Landroid/graphics/drawable/Drawable;->setAlpha(I)V
+
+    .line 28
+    sget v0, Lcom/android/mwilky/Renovate;->mNotificationBackgroundColor:I
+
+    iput v0, p0, Lcom/android/systemui/statusbar/notification/row/NotificationBackgroundView;->mTintColor:I
+
+    .line 30
+    :goto_43
+    invoke-virtual {p0}, Lcom/android/systemui/statusbar/notification/row/NotificationBackgroundView;->invalidate()V
+
+    .line 31
     return-void
 .end method
 

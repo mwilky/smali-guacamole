@@ -10012,7 +10012,22 @@
 
 .method private updateBackground()V
     .locals 5
+    
+    sget-boolean v0, Lcom/android/mwilky/Renovate;->mUnlockNotificationColors:Z
+    
+    if-eqz v0, :cond_stock
+    
+    sget v0, Lcom/android/mwilky/Renovate;->mNotificationBackgroundColor:I
+    
+    invoke-static {v0}, Landroid/graphics/Color;->alpha(I)I
 
+    move-result v0
+    
+    const v1, 0xff
+    
+    if-ne v0, v1, :cond_mw
+
+    :cond_stock
     iget-boolean v0, p0, Lcom/android/systemui/statusbar/notification/stack/NotificationStackScrollLayout;->mShouldDrawNotificationBackground:Z
 
     if-nez v0, :cond_0
@@ -10110,6 +10125,7 @@
 
     iput-boolean v1, p0, Lcom/android/systemui/statusbar/notification/stack/NotificationStackScrollLayout;->mAnimateNextSectionBoundsChange:Z
 
+    :cond_mw
     return-void
 .end method
 
@@ -10338,7 +10354,22 @@
 
 .method private updateBackgroundDimming()V
     .locals 4
+    
+    sget-boolean v0, Lcom/android/mwilky/Renovate;->mUnlockNotificationColors:Z
+    
+    if-eqz v0, :cond_stock
+    
+    sget v0, Lcom/android/mwilky/Renovate;->mNotificationBackgroundColor:I
+    
+    invoke-static {v0}, Landroid/graphics/Color;->alpha(I)I
 
+    move-result v0
+    
+    const v1, 0xff
+    
+    if-ne v0, v1, :cond_1
+
+    :cond_stock
     iget-boolean v0, p0, Lcom/android/systemui/statusbar/notification/stack/NotificationStackScrollLayout;->mShouldDrawNotificationBackground:Z
 
     const-string v1, "StackScroller"
@@ -15940,7 +15971,22 @@
 
 .method protected onDraw(Landroid/graphics/Canvas;)V
     .locals 3
+    
+    sget-boolean v0, Lcom/android/mwilky/Renovate;->mUnlockNotificationColors:Z
+    
+    if-eqz v0, :cond_stock
+    
+    sget v0, Lcom/android/mwilky/Renovate;->mNotificationBackgroundColor:I
+    
+    invoke-static {v0}, Landroid/graphics/Color;->alpha(I)I
 
+    move-result v0
+    
+    const v1, 0xff
+    
+    if-ne v0, v1, :cond_1
+
+    :cond_stock
     iget-boolean v0, p0, Lcom/android/systemui/statusbar/notification/stack/NotificationStackScrollLayout;->mShouldDrawNotificationBackground:Z
 
     if-eqz v0, :cond_1
