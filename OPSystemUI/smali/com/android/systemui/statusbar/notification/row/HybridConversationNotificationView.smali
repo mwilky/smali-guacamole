@@ -238,7 +238,16 @@
     move-result-object v1
 
     invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+    
+    iget-object v0, p0, Lcom/android/systemui/statusbar/notification/row/HybridConversationNotificationView;->mConversationSenderName:Landroid/widget/TextView;
+    
+    if-eqz v0, :cond_mw
+    
+    sget v1, Lcom/android/mwilky/Renovate;->mNotificationTitleTextColor:I
+    
+    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setTextColor(I)V
 
+    :cond_mw
     :goto_2
     invoke-virtual {p3}, Lcom/android/internal/widget/ConversationLayout;->getConversationText()Ljava/lang/CharSequence;
 

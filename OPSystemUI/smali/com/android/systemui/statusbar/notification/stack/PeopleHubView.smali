@@ -278,6 +278,8 @@
     invoke-virtual {p0, v1}, Landroid/content/Context;->getColor(I)I
 
     move-result p0
+    
+    sget p0, Lcom/android/mwilky/Renovate;->mNotificationOtherTextColor:I
 
     invoke-virtual {v0, p0}, Landroid/widget/TextView;->setTextColor(I)V
 

@@ -261,6 +261,8 @@
     invoke-virtual {v1, v2}, Landroid/content/Context;->getColor(I)I
 
     move-result v1
+    
+    sget v1, Lcom/android/mwilky/Renovate;->mNotificationOtherTextColor:I
 
     invoke-virtual {v0, v1}, Landroid/widget/TextView;->setTextColor(I)V
 
@@ -327,6 +329,8 @@
     move-result v0
 
     iget-object p0, p0, Lcom/android/systemui/statusbar/notification/stack/SectionHeaderView;->mClearAllButton:Landroid/widget/ImageView;
+    
+    sget v0, Lcom/android/mwilky/Renovate;->mNotificationOtherButtonColor:I
 
     invoke-virtual {p0, v0}, Landroid/widget/ImageView;->setColorFilter(I)V
 
@@ -344,6 +348,8 @@
     move-result v0
 
     iget-object p0, p0, Lcom/android/systemui/statusbar/notification/stack/SectionHeaderView;->mClearAllButton:Landroid/widget/ImageView;
+    
+    sget v0, Lcom/android/mwilky/Renovate;->mNotificationOtherButtonColor:I
 
     invoke-virtual {p0, v0}, Landroid/widget/ImageView;->setColorFilter(I)V
 

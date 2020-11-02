@@ -144,6 +144,8 @@
 
 .method private final resolveViews()V
     .locals 6
+    
+    invoke-virtual {p0}, Lcom/android/systemui/statusbar/notification/row/wrapper/NotificationConversationTemplateViewWrapper;->updateTextColors()V
 
     iget-object v0, p0, Lcom/android/systemui/statusbar/notification/row/wrapper/NotificationConversationTemplateViewWrapper;->conversationLayout:Lcom/android/internal/widget/ConversationLayout;
 
@@ -841,4 +843,65 @@
     invoke-static {p0}, Lkotlin/jvm/internal/Intrinsics;->throwUninitializedPropertyAccessException(Ljava/lang/String;)V
 
     throw v3
+.end method
+
+.method public updateTextColors()V
+    .registers 7
+
+    .line 17
+    iget-object v0, p0, Lcom/android/systemui/statusbar/notification/row/wrapper/NotificationConversationTemplateViewWrapper;->conversationLayout:Lcom/android/internal/widget/ConversationLayout;
+
+    invoke-virtual {v0}, Lcom/android/internal/widget/ConversationLayout;->getMessagingGroups()Ljava/util/ArrayList;
+
+    move-result-object v0
+
+    .line 18
+    .local v0, "messagingGroups":Ljava/util/ArrayList;
+    invoke-virtual {v0}, Ljava/util/ArrayList;->size()I
+
+    move-result v1
+
+    .line 19
+    .local v1, "size":I
+    const/4 v2, 0x0
+
+    .local v2, "i2":I
+    :goto_b
+    if-ge v2, v1, :cond_1f
+
+    .line 20
+    invoke-virtual {v0, v2}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Lcom/android/internal/widget/MessagingGroup;
+
+    .line 21
+    .local v3, "messagingGroup":Lcom/android/internal/widget/MessagingGroup;
+    if-eqz v3, :cond_1c
+
+    .line 22
+    sget v4, Lcom/android/mwilky/Renovate;->mNotificationTitleTextColor:I
+
+    .line 23
+    .local v4, "textColor":I
+    sget v5, Lcom/android/mwilky/Renovate;->mNotificationSummaryTextColor:I
+
+    .line 24
+    .local v5, "textColor2":I
+    invoke-virtual {v3, v4, v5}, Lcom/android/internal/widget/MessagingGroup;->setTextColors(II)V
+
+    .line 19
+    .end local v3    # "messagingGroup":Lcom/android/internal/widget/MessagingGroup;
+    .end local v4    # "textColor":I
+    .end local v5    # "textColor2":I
+    :cond_1c
+    add-int/lit8 v2, v2, 0x1
+
+    goto :goto_b
+
+    .line 27
+    .end local v2    # "i2":I
+    :cond_1f
+    return-void
 .end method
