@@ -753,6 +753,8 @@
     invoke-virtual {p2}, Lcom/android/systemui/statusbar/phone/ClockController;->getClock()Lcom/android/systemui/statusbar/policy/Clock;
 
     move-result-object p2
+    
+    if-eqz p2, :cond_7
 
     invoke-virtual {p2}, Landroid/view/View;->getVisibility()I
 
