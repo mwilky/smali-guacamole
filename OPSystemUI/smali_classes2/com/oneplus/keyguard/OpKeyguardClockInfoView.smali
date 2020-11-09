@@ -2788,7 +2788,7 @@
     
     if-eqz v0, :cond_show
     
-    iget-object v0, p0, Lcom/oneplus/keyguard/OpKeyguardClockInfoView;->mTextViewDateOfWeekLineOne:Landroid/widget/TextView;
+    iget-object v0, p0, Lcom/oneplus/keyguard/OpKeyguardClockInfoView;->mTextViewDateOfWeekLineOne:Lcom/oneplus/keyguard/OpKeyguardOneplusTextView;
 
     if-eqz v0, :cond_mw
 
