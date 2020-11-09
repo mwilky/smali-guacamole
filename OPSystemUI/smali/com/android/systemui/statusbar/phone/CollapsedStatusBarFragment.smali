@@ -1338,6 +1338,8 @@
     
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/CollapsedStatusBarFragment;->mClockController:Lcom/android/systemui/statusbar/phone/ClockController;
     
+    if-eqz v0, :cond_mw
+    
     invoke-virtual {v0}, Lcom/android/systemui/statusbar/phone/ClockController;->hideClock()V
 
     goto :goto_mw
