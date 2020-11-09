@@ -1986,9 +1986,9 @@
 
     if-nez p1, :cond_0
 
-    new-instance p1, Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView$3;
+    new-instance p1, Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView$6;
 
-    invoke-direct {p1, p0, v0}, Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView$3;-><init>(Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView;Landroid/content/Intent;)V
+    invoke-direct {p1, p0, v0}, Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView$6;-><init>(Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView;Landroid/content/Intent;)V
 
     invoke-static {p1}, Landroid/os/AsyncTask;->execute(Ljava/lang/Runnable;)V
 
@@ -1999,9 +1999,9 @@
 
     const/4 v1, 0x0
 
-    new-instance v2, Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView$4;
+    new-instance v2, Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView$7;
 
-    invoke-direct {v2, p0}, Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView$4;-><init>(Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView;)V
+    invoke-direct {v2, p0}, Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView$7;-><init>(Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView;)V
 
     invoke-interface {p1, v0, v1, v2}, Lcom/android/systemui/plugins/ActivityStarter;->startActivity(Landroid/content/Intent;ZLcom/android/systemui/plugins/ActivityStarter$Callback;)V
 

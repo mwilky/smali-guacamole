@@ -8,7 +8,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView;->launchOpCamera(Ljava/lang/String;)V
+    value = Lcom/android/systemui/statusbar/phone/KeyguardBottomAreaView;->launchCamera(Ljava/lang/String;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
