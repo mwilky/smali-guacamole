@@ -13238,6 +13238,8 @@
     
     iget-object v0, p0, Lcom/android/systemui/SystemUI;->mContext:Landroid/content/Context;
     
+    invoke-static {v0}, Lcom/android/mwilky/Renovate;->setRiceType(Landroid/content/Context;)V
+    
     invoke-static {v0}, Lcom/android/mwilky/Renovate;->setColorChanges(Landroid/content/Context;)V
     
     invoke-static {v0}, Lcom/android/mwilky/Renovate;->setQsTileLayout(Landroid/content/Context;)V
