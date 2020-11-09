@@ -47,6 +47,8 @@
 
 
 # instance fields
+.field private mClockController:Lcom/android/systemui/statusbar/phone/ClockController;
+
 .field private mQs:Lcom/android/systemui/plugins/qs/QS;
 
 .field protected mEntryManager:Lcom/android/systemui/statusbar/notification/NotificationEntryManager;
@@ -2498,6 +2500,14 @@
     invoke-virtual {p1, p2}, Lcom/android/systemui/statusbar/phone/NotificationShadeWindowViewController;->setStatusBarView(Lcom/android/systemui/statusbar/phone/PhoneStatusBarView;)V
 
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/StatusBar;->checkBarModes()V
+    
+    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mStatusBarView:Lcom/android/systemui/statusbar/phone/PhoneStatusBarView;
+   
+    new-instance v1, Lcom/android/systemui/statusbar/phone/ClockController;
+    
+    invoke-direct {v1, v0}, Lcom/android/systemui/statusbar/phone/ClockController;-><init>(Landroid/view/View;)V
+    
+    iput-object v1, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mClockController:Lcom/android/systemui/statusbar/phone/ClockController;
 
     return-void
 .end method
@@ -10223,6 +10233,8 @@
 
 .method public onConfigChanged(Landroid/content/res/Configuration;)V
     .locals 2
+    
+    invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/StatusBar;->updateClockView()V
 
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/StatusBar;->updateResources()V
 
@@ -13281,6 +13293,8 @@
     invoke-static {v0}, Lcom/android/mwilky/Renovate;->setNotificationTextColors(Landroid/content/Context;)V
     
     invoke-static {v0}, Lcom/android/mwilky/Renovate;->setStatusbarPeek(Landroid/content/Context;)V
+    
+    invoke-static {v0}, Lcom/android/mwilky/Renovate;->setClockPosition(Landroid/content/Context;)V
 
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mScreenLifecycle:Lcom/android/systemui/keyguard/ScreenLifecycle;
 
@@ -15781,6 +15795,10 @@
     const-string v1, "tweaks_statusbar_peek"
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+    
+    const-string v1, "tweaks_clock_position"
+
+    invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
     .line 102
     new-instance v1, Lcom/android/wubydax/GearContentObserver;
@@ -16760,6 +16778,21 @@
     invoke-static {v0}, Lcom/android/mwilky/Renovate;->setStatusbarPeek(Landroid/content/Context;)V
 
     :cond_mwilky57
+    const-string v0, "tweaks_clock_position"
+
+    invoke-virtual {v0, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_mwilky58
+
+    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mContext:Landroid/content/Context;
+
+    invoke-static {v0}, Lcom/android/mwilky/Renovate;->setClockPosition(Landroid/content/Context;)V
+
+    invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/StatusBar;->updateClockView()V
+
+    :cond_mwilky58
     return-void
 .end method
 
@@ -17698,4 +17731,13 @@
     const/4 v1, -0x1
 
     return v1
+.end method
+
+.method updateClockView()V
+    .locals 2
+    
+    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mClockController:Lcom/android/systemui/statusbar/phone/ClockController;
+    
+    invoke-virtual {v0}, Lcom/android/systemui/statusbar/phone/ClockController;->updateActiveClock()V
+    return-void
 .end method

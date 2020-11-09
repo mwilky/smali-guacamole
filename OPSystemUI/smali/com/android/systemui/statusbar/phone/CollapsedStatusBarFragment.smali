@@ -5,12 +5,13 @@
 # interfaces
 .implements Lcom/android/systemui/statusbar/CommandQueue$Callbacks;
 .implements Lcom/android/systemui/plugins/statusbar/StatusBarStateController$StateListener;
+.implements Lcom/android/systemui/tuner/TunerService$Tunable;
 
 
 # instance fields
 .field private mCenteredIconArea:Landroid/view/View;
 
-.field private mClockView:Landroid/view/View;
+.field private mClockController:Lcom/android/systemui/statusbar/phone/ClockController;
 
 .field private mCommandQueue:Lcom/android/systemui/statusbar/CommandQueue;
 
@@ -39,7 +40,7 @@
 
 # direct methods
 .method public constructor <init>()V
-    .locals 1
+    .locals 2
 
     invoke-direct {p0}, Lcom/oneplus/systemui/statusbar/phone/OpCollapsedStatusBarFragment;-><init>()V
 
@@ -48,6 +49,22 @@
     invoke-direct {v0, p0}, Lcom/android/systemui/statusbar/phone/CollapsedStatusBarFragment$1;-><init>(Lcom/android/systemui/statusbar/phone/CollapsedStatusBarFragment;)V
 
     iput-object v0, p0, Lcom/android/systemui/statusbar/phone/CollapsedStatusBarFragment;->mSignalCallback:Lcom/android/systemui/statusbar/policy/NetworkController$SignalCallback;
+    
+    const-class v0, Lcom/android/systemui/tuner/TunerService;
+
+    invoke-static {v0}, Lcom/android/systemui/Dependency;->get(Ljava/lang/Class;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/android/systemui/tuner/TunerService;
+
+    const-string v1, "icon_blacklist"
+
+    filled-new-array {v1}, [Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, p0, v1}, Lcom/android/systemui/tuner/TunerService;->addTunable(Lcom/android/systemui/tuner/TunerService$Tunable;[Ljava/lang/String;)V
 
     return-void
 .end method
@@ -729,11 +746,19 @@
 
     if-nez p2, :cond_5
 
-    iget-object p2, p0, Lcom/android/systemui/statusbar/phone/CollapsedStatusBarFragment;->mClockView:Landroid/view/View;
+    iget-object p2, p0, Lcom/android/systemui/statusbar/phone/CollapsedStatusBarFragment;->mClockController:Lcom/android/systemui/statusbar/phone/ClockController;
+    
+    invoke-virtual {p2}, Lcom/android/systemui/statusbar/phone/ClockController;->updateActiveClock()V
+
+    invoke-virtual {p2}, Lcom/android/systemui/statusbar/phone/ClockController;->getClock()Lcom/android/systemui/statusbar/policy/Clock;
+
+    move-result-object p2
 
     invoke-virtual {p2}, Landroid/view/View;->getVisibility()I
 
     move-result p2
+    
+    if-eqz p2, :cond_7
 
     invoke-direct {p0}, Lcom/android/systemui/statusbar/phone/CollapsedStatusBarFragment;->clockHiddenMode()I
 
@@ -759,16 +784,40 @@
 .end method
 
 .method public hideClock(Z)V
-    .locals 2
+    .locals 4
 
-    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/CollapsedStatusBarFragment;->mClockView:Landroid/view/View;
+    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/CollapsedStatusBarFragment;->mClockController:Lcom/android/systemui/statusbar/phone/ClockController;
+    
+    invoke-virtual {v0}, Lcom/android/systemui/statusbar/phone/ClockController;->updateActiveClock()V
+    
+    invoke-virtual {v0}, Lcom/android/systemui/statusbar/phone/ClockController;->getClock()Lcom/android/systemui/statusbar/policy/Clock;
 
+    move-result-object v0
+    
+    if-eqz v0, :cond_exit
+    
+    iget-object v3, p0, Lcom/android/systemui/statusbar/phone/CollapsedStatusBarFragment;->mKeyguardStateController:Lcom/android/systemui/statusbar/policy/KeyguardStateController;
+
+    invoke-interface {v3}, Lcom/android/systemui/statusbar/policy/KeyguardStateController;->isShowing()Z
+    
+    move-result v3
+    
+    if-nez v3, :cond_keyguard
+    
+    iget-object v3, p0, Lcom/android/systemui/statusbar/phone/CollapsedStatusBarFragment;->mClockController:Lcom/android/systemui/statusbar/phone/ClockController;
+    
+    iget-object v3, v3, Lcom/android/systemui/statusbar/phone/ClockController;->mLeftClock:Lcom/android/systemui/statusbar/policy/Clock;
+    
+    if-ne v3, v0, :cond_exit
+    
+    :cond_keyguard
     invoke-direct {p0}, Lcom/android/systemui/statusbar/phone/CollapsedStatusBarFragment;->clockHiddenMode()I
 
     move-result v1
 
     invoke-direct {p0, v0, v1, p1}, Lcom/android/systemui/statusbar/phone/CollapsedStatusBarFragment;->animateHiddenState(Landroid/view/View;IZ)V
 
+    :cond_exit
     return-void
 .end method
 
@@ -1168,13 +1217,11 @@
 
     iget-object p2, p0, Lcom/android/systemui/statusbar/phone/CollapsedStatusBarFragment;->mStatusBar:Lcom/android/systemui/statusbar/phone/PhoneStatusBarView;
 
-    sget v0, Lcom/android/systemui/R$id;->clock:I
-
-    invoke-virtual {p2, v0}, Landroid/widget/FrameLayout;->findViewById(I)Landroid/view/View;
-
-    move-result-object p2
-
-    iput-object p2, p0, Lcom/android/systemui/statusbar/phone/CollapsedStatusBarFragment;->mClockView:Landroid/view/View;
+    new-instance v0, Lcom/android/systemui/statusbar/phone/ClockController;
+    
+    invoke-direct {v0, p1}, Lcom/android/systemui/statusbar/phone/ClockController;-><init>(Landroid/view/View;)V
+    
+    iput-object v0, p0, Lcom/android/systemui/statusbar/phone/CollapsedStatusBarFragment;->mClockController:Lcom/android/systemui/statusbar/phone/ClockController;
 
     const/4 p2, 0x0
 
@@ -1208,10 +1255,17 @@
 .method public showClock(Z)V
     .locals 1
 
-    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/CollapsedStatusBarFragment;->mClockView:Landroid/view/View;
+    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/CollapsedStatusBarFragment;->mClockController:Lcom/android/systemui/statusbar/phone/ClockController;
+
+    invoke-virtual {v0}, Lcom/android/systemui/statusbar/phone/ClockController;->getClock()Lcom/android/systemui/statusbar/policy/Clock;
+
+    move-result-object v0
+    
+    if-eqz v0, :cond_exit
 
     invoke-direct {p0, v0, p1}, Lcom/android/systemui/statusbar/phone/CollapsedStatusBarFragment;->animateShow(Landroid/view/View;Z)V
 
+    :cond_exit
     return-void
 .end method
 
@@ -1249,5 +1303,59 @@
 
     invoke-direct {p0, v0, p1}, Lcom/android/systemui/statusbar/phone/CollapsedStatusBarFragment;->animateShow(Landroid/view/View;Z)V
 
+    return-void
+.end method
+
+.method public onTuningChanged(Ljava/lang/String;Ljava/lang/String;)V
+    .locals 3
+
+    const-string v0, "icon_blacklist"
+
+    invoke-virtual {v0, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    return-void
+
+    :cond_0
+    invoke-static {}, Lcom/android/systemui/SystemUIApplication;->getContext()Landroid/content/Context;
+    
+    move-result-object v0
+
+    invoke-static {v0, p2}, Lcom/android/systemui/statusbar/phone/StatusBarIconController;->getIconBlacklist(Landroid/content/Context;Ljava/lang/String;)Landroid/util/ArraySet;
+
+    move-result-object v0
+
+    const-string v1, "clock"
+
+    invoke-virtual {v0, v1}, Landroid/util/ArraySet;->contains(Ljava/lang/Object;)Z
+
+    move-result v0
+    
+    if-eqz v0, :cond_clock
+    
+    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/CollapsedStatusBarFragment;->mClockController:Lcom/android/systemui/statusbar/phone/ClockController;
+    
+    invoke-virtual {v0}, Lcom/android/systemui/statusbar/phone/ClockController;->hideClock()V
+
+    goto :goto_mw
+    
+    :cond_clock
+    invoke-static {}, Lcom/android/systemui/SystemUIApplication;->getContext()Landroid/content/Context;
+    
+    move-result-object v0
+
+	invoke-static {v0}, Lcom/android/mwilky/Renovate;->setClockPosition(Landroid/content/Context;)V
+
+    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/CollapsedStatusBarFragment;->mStatusBarComponent:Lcom/android/systemui/statusbar/phone/StatusBar;
+    
+    if-eqz v0, :cond_mw
+
+    invoke-virtual {v0}, Lcom/android/systemui/statusbar/phone/StatusBar;->updateClockView()V
+    
+    :cond_mw
+    :goto_mw
     return-void
 .end method

@@ -1520,30 +1520,7 @@
 
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/policy/Clock;->updateMinWidth()V
 
-    goto :goto_0
-
     :cond_1
-    invoke-virtual {p0}, Landroid/widget/TextView;->getContext()Landroid/content/Context;
-
-    move-result-object p1
-
-    invoke-static {p1, p2}, Lcom/android/systemui/statusbar/phone/StatusBarIconController;->getIconBlacklist(Landroid/content/Context;Ljava/lang/String;)Landroid/util/ArraySet;
-
-    move-result-object p1
-
-    const-string p2, "clock"
-
-    invoke-virtual {p1, p2}, Landroid/util/ArraySet;->contains(Ljava/lang/Object;)Z
-
-    move-result p1
-
-    xor-int/lit8 p1, p1, 0x1
-
-    invoke-virtual {p0, p1}, Lcom/android/systemui/statusbar/policy/Clock;->setClockVisibleByUser(Z)V
-
-    invoke-direct {p0}, Lcom/android/systemui/statusbar/policy/Clock;->updateClockVisibility()V
-
-    :goto_0
     return-void
 .end method
 
