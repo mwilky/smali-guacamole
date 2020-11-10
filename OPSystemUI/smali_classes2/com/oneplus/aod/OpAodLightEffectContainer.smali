@@ -1757,3 +1757,34 @@
     :goto_1
     return-void
 .end method
+
+.method public setCustomEdgeColors()V
+    .registers 4
+
+    .line 469
+    sget-boolean v0, Lcom/android/mwilky/Renovate;->mUseAppColorForEdgeNotifications:Z
+
+    if-eqz v0, :cond_16
+
+    .line 470
+    iget-object v0, p0, Lcom/oneplus/aod/OpAodLightEffectContainer;->mLeftView:Landroid/widget/ImageView;
+
+    sget v1, Lcom/oneplus/aod/OpSingleNotificationView;->mAppIconColor:I
+
+    sget-object v2, Landroid/graphics/PorterDuff$Mode;->SRC_ATOP:Landroid/graphics/PorterDuff$Mode;
+
+    invoke-virtual {v0, v1, v2}, Landroid/widget/ImageView;->setColorFilter(ILandroid/graphics/PorterDuff$Mode;)V
+
+    .line 471
+    iget-object v0, p0, Lcom/oneplus/aod/OpAodLightEffectContainer;->mRightView:Landroid/widget/ImageView;
+
+    sget v1, Lcom/oneplus/aod/OpSingleNotificationView;->mAppIconColor:I
+
+    sget-object v2, Landroid/graphics/PorterDuff$Mode;->SRC_ATOP:Landroid/graphics/PorterDuff$Mode;
+
+    invoke-virtual {v0, v1, v2}, Landroid/widget/ImageView;->setColorFilter(ILandroid/graphics/PorterDuff$Mode;)V
+
+    .line 474
+    :cond_16
+    return-void
+.end method

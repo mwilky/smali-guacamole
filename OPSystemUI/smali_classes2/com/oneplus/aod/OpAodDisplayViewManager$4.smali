@@ -358,12 +358,18 @@
 .end method
 
 .method public onScreenTurnedOff()V
-    .locals 2
+    .locals 3
 
     invoke-super {p0}, Lcom/android/keyguard/KeyguardUpdateMonitorCallback;->onScreenTurnedOff()V
 
     iget-object v0, p0, Lcom/oneplus/aod/OpAodDisplayViewManager$4;->this$0:Lcom/oneplus/aod/OpAodDisplayViewManager;
-
+    
+    invoke-static {v0}, Lcom/oneplus/aod/OpAodDisplayViewManager;->aaccess$1600(Lcom/oneplus/aod/OpAodDisplayViewManager;)Lcom/oneplus/aod/OpAodLightEffectContainer;
+    
+    move-object v2, v0
+    
+    invoke-virtual {v2}, Lcom/oneplus/aod/OpAodLightEffectContainer;->setCustomEdgeColors()V
+    
     const/4 v1, 0x0
 
     invoke-static {v0, v1}, Lcom/oneplus/aod/OpAodDisplayViewManager;->access$1202(Lcom/oneplus/aod/OpAodDisplayViewManager;Z)Z
