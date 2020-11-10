@@ -299,6 +299,8 @@
     const/high16 v0, 0x3f800000    # 1.0f
 
     :goto_1
+    sget v1, Lcom/android/mwilky/Renovate;->mCarrierTextColor:I
+
     iget-object v2, p0, Lcom/android/systemui/statusbar/phone/KeyguardStatusBarView;->mCarrierLabel:Landroid/widget/TextView;
 
     invoke-virtual {v2, v1}, Landroid/widget/TextView;->setTextColor(I)V

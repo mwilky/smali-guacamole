@@ -203,3 +203,6 @@
 
 .method public abstract setTraceView(Landroid/view/View;)V
 .end method
+
+.method public abstract updateViews()V
+.end method

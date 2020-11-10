@@ -141,7 +141,7 @@
 
     if-ne v0, v1, :cond_0
 
-    const/4 p1, -0x1
+    sget p1, Lcom/android/mwilky/Renovate;->mBatteryIconColor:I
 
     const p2, -0x7f000001
 
@@ -168,5 +168,13 @@
 
     invoke-direct {p0}, Lcom/oneplus/systemui/OpBatteryMeterView;->updateAllBatteryColors()V
 
+    return-void
+.end method
+
+.method public updateViews(F)V
+    .registers 6
+    .param p1, "f"    # F
+
+    .line 161
     return-void
 .end method

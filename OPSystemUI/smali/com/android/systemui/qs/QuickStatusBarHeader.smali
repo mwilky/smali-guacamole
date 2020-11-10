@@ -55,7 +55,7 @@
 
 .field private mHeaderTextContainerView:Landroid/view/View;
 
-.field private mIconManager:Lcom/android/systemui/statusbar/phone/StatusBarIconController$TintedIconManager;
+.field public mIconManager:Lcom/android/systemui/statusbar/phone/StatusBarIconController$TintedIconManager;
 
 .field private mIsLandscape:Z
 
@@ -1410,7 +1410,7 @@
     return-void
 .end method
 
-.method private updateThemeColor()V
+.method public updateThemeColor()V
     .locals 6
 
     const/4 v0, 0x0
@@ -1455,8 +1455,10 @@
 
     :cond_0
     iget-object v3, p0, Lcom/android/systemui/qs/QuickStatusBarHeader;->mDateView:Lcom/android/systemui/statusbar/policy/DateView;
+    
+    sget v5, Lcom/android/mwilky/Renovate;->mQsDateColor:I
 
-    invoke-virtual {v3, v2}, Landroid/widget/TextView;->setTextColor(I)V
+    invoke-virtual {v3, v5}, Landroid/widget/TextView;->setTextColor(I)V
 
     :goto_0
     iget-object v3, p0, Lcom/android/systemui/qs/QuickStatusBarHeader;->mNextAlarmIcon:Landroid/widget/ImageView;
@@ -1497,6 +1499,18 @@
     iget-object v3, p0, Lcom/android/systemui/qs/QuickStatusBarHeader;->mBatteryRemainingIcon:Lcom/android/systemui/BatteryMeterView;
 
     invoke-virtual {v3, v0, v1, v0}, Lcom/android/systemui/BatteryMeterView;->updateColors(III)V
+    
+    iget-object v5, v3, Lcom/android/systemui/BatteryMeterView;->mBatteryPercentView:Landroid/widget/TextView;
+    
+    sget v3, Lcom/android/mwilky/Renovate;->mBatteryPercentColor:I
+    
+    invoke-virtual {v5, v3}, Landroid/widget/TextView;->setTextColor(I)V
+    
+    iget-object v3, p0, Lcom/android/systemui/qs/QuickStatusBarHeader;->mClockView:Lcom/android/systemui/statusbar/policy/Clock;
+    
+    sget v0, Lcom/android/mwilky/Renovate;->mClockColor:I
+
+    invoke-virtual {v3, v0}, Landroid/widget/TextView;->setTextColor(I)V
 
     iget-object p0, p0, Lcom/android/systemui/qs/QuickStatusBarHeader;->mIconManager:Lcom/android/systemui/statusbar/phone/StatusBarIconController$TintedIconManager;
 
@@ -2147,7 +2161,7 @@
 
     invoke-virtual {v0, v1}, Landroid/widget/TextView;->setSelected(Z)V
 
-    invoke-direct {p0}, Lcom/android/systemui/qs/QuickStatusBarHeader;->updateThemeColor()V
+    invoke-virtual {p0}, Lcom/android/systemui/qs/QuickStatusBarHeader;->updateThemeColor()V
 
     return-void
 .end method

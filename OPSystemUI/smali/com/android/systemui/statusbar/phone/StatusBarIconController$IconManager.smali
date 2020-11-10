@@ -18,6 +18,8 @@
 
 
 # instance fields
+.field protected mTag:Ljava/lang/String;
+
 .field protected final mContext:Landroid/content/Context;
 
 .field protected mDemoStatusIcons:Lcom/android/systemui/statusbar/phone/DemoStatusIcons;
@@ -97,6 +99,8 @@
     .locals 0
 
     invoke-direct {p0, p1, p2}, Lcom/android/systemui/statusbar/phone/StatusBarIconController$IconManager;-><init>(Landroid/view/ViewGroup;Lcom/android/systemui/statusbar/CommandQueue;)V
+    
+    iput-object p3, p0, Lcom/android/systemui/statusbar/phone/StatusBarIconController$IconManager;->mTag:Ljava/lang/String;
 
     return-void
 .end method

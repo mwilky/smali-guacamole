@@ -16,6 +16,10 @@
 
 
 # instance fields
+.field public mSignalIconColor:I
+
+.field public mDarkIconColor:I
+
 .field private mDarkIntensity:F
 
 .field private mDirty:Z
@@ -173,7 +177,7 @@
 .end method
 
 .method private applyColors()V
-    .locals 4
+    .locals 5
 
     iget-object v0, p0, Lcom/android/systemui/statusbar/StatusBarMobileView;->mRect:Landroid/graphics/Rect;
 
@@ -186,13 +190,18 @@
 
     iget v2, p0, Lcom/android/systemui/statusbar/StatusBarMobileView;->mTint:I
 
+    float-to-int v4, v1
+    
+    iget v0, p0, Lcom/android/systemui/statusbar/StatusBarMobileView;->mDarkIconColor:I
+
+    if-nez v4, :cond_mw
+    
+    iget v0, p0, Lcom/android/systemui/statusbar/StatusBarMobileView;->mSignalIconColor:I
+    
+    :cond_mw
     iget-object v3, p0, Lcom/android/systemui/statusbar/StatusBarMobileView;->mMobileDrawable:Lcom/android/settingslib/graph/SignalDrawable;
-
+    
     invoke-virtual {v3, v1}, Lcom/android/settingslib/graph/SignalDrawable;->setDarkIntensity(F)V
-
-    invoke-static {v0, p0, v2}, Lcom/android/systemui/plugins/DarkIconDispatcher;->getTint(Landroid/graphics/Rect;Landroid/view/View;I)I
-
-    move-result v0
 
     invoke-static {v0}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
 
@@ -656,6 +665,12 @@
     iput-object v0, p0, Lcom/android/systemui/statusbar/StatusBarMobileView;->mMobileVzwType:Landroid/widget/ImageView;
 
     :cond_1
+    const/4 v0, 0x0
+    
+    int-to-float v0, v0
+
+    invoke-virtual {p0, v0}, Lcom/android/systemui/statusbar/StatusBarMobileView;->updateViews(F)V
+
     return-void
 .end method
 
@@ -2613,4 +2628,46 @@
     move-result-object p0
 
     return-object p0
+.end method
+
+.method public updateViews(F)V
+	.locals 1
+
+	invoke-virtual {p0}, Lcom/android/systemui/statusbar/StatusBarMobileView;->readRenovateMods()V
+
+	invoke-direct {p0}, Lcom/android/systemui/statusbar/StatusBarMobileView;->applyColors()V
+
+	return-void
+.end method
+
+.method public readRenovateMods()V
+    .locals 1
+
+    sget v0, Lcom/android/mwilky/Renovate;->mSignalIconColor:I
+
+    iput v0, p0, Lcom/android/systemui/statusbar/StatusBarMobileView;->mSignalIconColor:I
+
+    sget v0, Lcom/android/mwilky/Renovate;->mDarkIconColor:I
+
+    iput v0, p0, Lcom/android/systemui/statusbar/StatusBarMobileView;->mDarkIconColor:I
+
+    return-void
+.end method
+
+.method public getLockscreenIconColors(Ljava/lang/String;)I
+    .locals 2
+    
+    const-string v0, "qs"
+
+    if-eq p1, v0, :cond_qs
+    
+    sget v0, Lcom/android/mwilky/Renovate;->mSignalIconColor:I
+    
+    goto :goto_return
+    
+    :cond_qs
+    sget v0, Lcom/android/mwilky/Renovate;->mQsSignalIconColor:I
+
+    :goto_return
+    return v0
 .end method

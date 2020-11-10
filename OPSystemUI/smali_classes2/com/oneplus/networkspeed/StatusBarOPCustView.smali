@@ -16,6 +16,12 @@
 
 
 # instance fields
+.field private mDarkIntensity:F
+
+.field private mNetSpeedColor:I
+
+.field private mDarkIconColor:I
+
 .field private mDirty:Z
 
 .field private mDotView:Lcom/android/systemui/statusbar/StatusBarIconView;
@@ -67,7 +73,7 @@
 .end method
 
 .method private applyColors()V
-    .locals 3
+    .locals 4
 
     iget-object v0, p0, Lcom/oneplus/networkspeed/StatusBarOPCustView;->mRect:Landroid/graphics/Rect;
 
@@ -78,10 +84,17 @@
     :cond_0
     iget v1, p0, Lcom/oneplus/networkspeed/StatusBarOPCustView;->mTint:I
 
-    invoke-static {v0, p0, v1}, Lcom/android/systemui/plugins/DarkIconDispatcher;->getTint(Landroid/graphics/Rect;Landroid/view/View;I)I
+    iget v3, p0, Lcom/oneplus/networkspeed/StatusBarOPCustView;->mDarkIntensity:F
 
-    move-result v0
-
+    float-to-int v3, v3
+    
+    iget v0, p0, Lcom/oneplus/networkspeed/StatusBarOPCustView;->mDarkIconColor:I
+    
+    if-nez v3, :cond_mw
+    
+    iget v0, p0, Lcom/oneplus/networkspeed/StatusBarOPCustView;->mNetSpeedColor:I
+    
+	:cond_mw
     iget-object v2, p0, Lcom/oneplus/networkspeed/StatusBarOPCustView;->mOPCustView:Lcom/oneplus/networkspeed/StatusBarOPCustView$OPCustView;
 
     invoke-virtual {v2, v0}, Lcom/oneplus/networkspeed/StatusBarOPCustView$OPCustView;->setColor(I)V
@@ -131,6 +144,12 @@
     invoke-direct {v0, p1, p0}, Lcom/oneplus/networkspeed/StatusBarOPCustView;->setView(Landroid/view/View;Landroid/content/Context;)Z
 
     invoke-direct {v0}, Lcom/oneplus/networkspeed/StatusBarOPCustView;->initDotView()V
+    
+    const/4 v1, 0x0
+
+    int-to-float v1, v1
+
+    invoke-virtual {v0, v1}, Lcom/oneplus/networkspeed/StatusBarOPCustView;->updateViews(F)V
 
     return-object v0
 .end method
@@ -340,6 +359,8 @@
 
 .method public onDarkChanged(Landroid/graphics/Rect;FI)V
     .locals 1
+    
+    iput p2, p0, Lcom/oneplus/networkspeed/StatusBarOPCustView;->mDarkIntensity:F
 
     iget-object v0, p0, Lcom/oneplus/networkspeed/StatusBarOPCustView;->mRect:Landroid/graphics/Rect;
 
@@ -517,4 +538,46 @@
     invoke-virtual {p0, p1}, Lcom/oneplus/networkspeed/StatusBarOPCustView;->setVisibleState(I)V
 
     return-void
+.end method
+
+.method public updateViews(F)V
+    .locals 1
+
+    invoke-virtual {p0}, Lcom/oneplus/networkspeed/StatusBarOPCustView;->readRenovateMods()V
+
+    invoke-direct {p0}, Lcom/oneplus/networkspeed/StatusBarOPCustView;->applyColors()V
+
+    return-void
+.end method
+
+.method public readRenovateMods()V
+    .locals 1
+
+    sget v0, Lcom/android/mwilky/Renovate;->mNetSpeedColor:I
+
+    iput v0, p0, Lcom/oneplus/networkspeed/StatusBarOPCustView;->mNetSpeedColor:I
+
+    sget v0, Lcom/android/mwilky/Renovate;->mDarkIconColor:I
+
+    iput v0, p0, Lcom/oneplus/networkspeed/StatusBarOPCustView;->mDarkIconColor:I
+
+    return-void
+.end method
+
+.method public getLockscreenIconColors(Ljava/lang/String;)I
+    .locals 2
+    
+    const-string v0, "qs"
+
+    if-eq p1, v0, :cond_qs
+    
+    sget v0, Lcom/android/mwilky/Renovate;->mNetSpeedColor:I
+    
+    goto :goto_return
+    
+    :cond_qs
+    sget v0, Lcom/android/mwilky/Renovate;->mQsNetSpeedColor:I
+
+    :goto_return
+    return v0
 .end method

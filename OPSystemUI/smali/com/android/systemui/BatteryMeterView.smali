@@ -12,13 +12,19 @@
 
 
 # instance fields
+.field private mDarkIconColor:I
+
+.field private mBatteryPercentColor:I
+
+.field private mBatteryIconColor:I
+
 .field private mBatteryController:Lcom/android/systemui/statusbar/policy/BatteryController;
 
 .field private final mBatteryIconView:Landroid/widget/ImageView;
 
 .field private mBatteryPercentShow:Z
 
-.field private mBatteryPercentView:Landroid/widget/TextView;
+.field public mBatteryPercentView:Landroid/widget/TextView;
 
 .field private mCharging:Z
 
@@ -409,6 +415,8 @@
     move-result-object p2
 
     invoke-interface {p1, p2, p0}, Lcom/android/systemui/statusbar/policy/CallbackController;->observe(Landroidx/lifecycle/LifecycleOwner;Ljava/lang/Object;)Ljava/lang/Object;
+    
+    invoke-virtual {p0}, Lcom/android/systemui/BatteryMeterView;->readRenovateMods()V
 
     const-class p1, Lcom/android/systemui/keyguard/WakefulnessLifecycle;
 
@@ -944,8 +952,8 @@
     return-void
 .end method
 
-.method private updateAllBatteryColors()V
-    .locals 3
+.method public updateAllBatteryColors()V
+    .locals 4
 
     iget-object v0, p0, Lcom/android/systemui/BatteryMeterView;->mRect:Landroid/graphics/Rect;
 
@@ -968,6 +976,18 @@
     const/4 v0, 0x0
 
     :goto_0
+    float-to-int v3, v0
+
+    if-nez v3, :cond_dark
+
+    const v3, 0x0
+
+    goto :goto_mw
+
+    :cond_dark
+    const v3, 0x1
+
+    :goto_mw
     iget-object v1, p0, Lcom/android/systemui/BatteryMeterView;->mDualToneHandler:Lcom/android/systemui/DualToneHandler;
 
     invoke-virtual {v1, v0}, Lcom/android/systemui/DualToneHandler;->getSingleColor(F)I
@@ -988,18 +1008,24 @@
 
     iput v0, p0, Lcom/android/systemui/BatteryMeterView;->mNonAdaptedBackgroundColor:I
 
-    iget-object v0, p0, Lcom/android/systemui/BatteryMeterView;->mRect:Landroid/graphics/Rect;
-
-    iget v1, p0, Lcom/android/systemui/BatteryMeterView;->mTint:I
-
-    invoke-static {v0, p0, v1}, Lcom/android/systemui/plugins/DarkIconDispatcher;->getTint(Landroid/graphics/Rect;Landroid/view/View;I)I
-
-    move-result v0
-
+    iget v0, p0, Lcom/android/systemui/BatteryMeterView;->mDarkIconColor:I
+    
+    if-nez v3, :cond_percent
+    
+    iget v0, p0, Lcom/android/systemui/BatteryMeterView;->mBatteryPercentColor:I
+    
+    :cond_percent
     invoke-virtual {p0, v0}, Lcom/android/systemui/BatteryMeterView;->setTextColor(I)V
 
     iget-object v1, p0, Lcom/oneplus/systemui/OpBatteryMeterView;->mBatteryDashChargeView:Lcom/oneplus/battery/OpBatteryDashChargeView;
+    
+    iget v0, p0, Lcom/android/systemui/BatteryMeterView;->mDarkIconColor:I
 
+    if-nez v3, :cond_icon
+
+    iget v0, p0, Lcom/android/systemui/BatteryMeterView;->mBatteryIconColor:I
+
+    :cond_icon
     invoke-virtual {v1, v0}, Lcom/oneplus/battery/OpBatteryDashChargeView;->setIconTint(I)V
 
     iget v1, p0, Lcom/android/systemui/BatteryMeterView;->mNonAdaptedBackgroundColor:I
@@ -1757,8 +1783,10 @@
     iput p2, p0, Lcom/android/systemui/BatteryMeterView;->mDarkIntensity:F
 
     iput p3, p0, Lcom/android/systemui/BatteryMeterView;->mTint:I
+    
+    invoke-virtual {p0}, Lcom/android/systemui/BatteryMeterView;->readRenovateMods()V
 
-    invoke-direct {p0}, Lcom/android/systemui/BatteryMeterView;->updateAllBatteryColors()V
+    invoke-virtual {p0}, Lcom/android/systemui/BatteryMeterView;->updateAllBatteryColors()V
 
     return-void
 .end method
@@ -1961,7 +1989,7 @@
 
     if-lez p1, :cond_0
 
-    invoke-direct {p0}, Lcom/android/systemui/BatteryMeterView;->updateAllBatteryColors()V
+    invoke-virtual {p0}, Lcom/android/systemui/BatteryMeterView;->updateAllBatteryColors()V
 
     const/4 p1, 0x0
 
@@ -2240,5 +2268,23 @@
     :cond_0
     invoke-direct {p0}, Lcom/android/systemui/BatteryMeterView;->updateShowPercent()V
 
+    return-void
+.end method
+
+.method public readRenovateMods()V
+    .locals 1
+    
+    sget v0, Lcom/android/mwilky/Renovate;->mBatteryPercentColor:I
+    
+    iput v0, p0, Lcom/android/systemui/BatteryMeterView;->mBatteryPercentColor:I
+    
+    sget v0, Lcom/android/mwilky/Renovate;->mBatteryIconColor:I
+    
+    iput v0, p0, Lcom/android/systemui/BatteryMeterView;->mBatteryIconColor:I
+
+    sget v0, Lcom/android/mwilky/Renovate;->mDarkIconColor:I
+    
+    iput v0, p0, Lcom/android/systemui/BatteryMeterView;->mDarkIconColor:I
+	
     return-void
 .end method
