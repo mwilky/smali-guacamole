@@ -364,9 +364,9 @@
 
     iget-object v0, p0, Lcom/oneplus/aod/OpAodDisplayViewManager$4;->this$0:Lcom/oneplus/aod/OpAodDisplayViewManager;
     
-    invoke-static {v0}, Lcom/oneplus/aod/OpAodDisplayViewManager;->aaccess$1600(Lcom/oneplus/aod/OpAodDisplayViewManager;)Lcom/oneplus/aod/OpAodLightEffectContainer;
+    invoke-static {v0}, Lcom/oneplus/aod/OpAodDisplayViewManager;->access$1600(Lcom/oneplus/aod/OpAodDisplayViewManager;)Lcom/oneplus/aod/OpAodLightEffectContainer;
     
-    move-object v2, v0
+    move-result-object v2
     
     invoke-virtual {v2}, Lcom/oneplus/aod/OpAodLightEffectContainer;->setCustomEdgeColors()V
     
