@@ -359,6 +359,10 @@
 
 .method public onScreenTurnedOff()V
     .locals 3
+    
+    const/4 v0, 0x1
+    
+    sput-boolean v0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mFirstTimeChange:Z
 
     invoke-super {p0}, Lcom/android/keyguard/KeyguardUpdateMonitorCallback;->onScreenTurnedOff()V
 

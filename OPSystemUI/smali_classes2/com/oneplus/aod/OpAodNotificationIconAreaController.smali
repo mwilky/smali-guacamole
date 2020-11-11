@@ -3,6 +3,10 @@
 .source "OpAodNotificationIconAreaController.java"
 
 
+# static fields
+.field public static mActiveNotifications:Z
+
+
 # instance fields
 .field private mContext:Landroid/content/Context;
 
@@ -228,7 +232,7 @@
 .end method
 
 .method public updateNotificationIcons(Lcom/android/systemui/statusbar/phone/NotificationIconContainer;)V
-    .locals 11
+    .locals 12
 
     iget-object v0, p0, Lcom/oneplus/aod/OpAodNotificationIconAreaController;->mOpClockViewCtrl:Lcom/oneplus/aod/OpClockViewCtrl;
 
@@ -255,6 +259,10 @@
     goto/16 :goto_5
 
     :cond_0
+    const/4 v11, 0x1
+    
+    sput-boolean v11,  Lcom/oneplus/aod/OpAodNotificationIconAreaController;->mActiveNotifications:Z
+
     invoke-direct {p0}, Lcom/oneplus/aod/OpAodNotificationIconAreaController;->reloadDimens()V
 
     invoke-virtual {p1}, Landroid/widget/FrameLayout;->getChildCount()I
@@ -315,6 +323,10 @@
 
     :cond_2
     if-nez v0, :cond_3
+
+    const/4 v11, 0x0
+
+    sput-boolean v11,  Lcom/oneplus/aod/OpAodNotificationIconAreaController;->mActiveNotifications:Z
 
     const-string p1, "updateNotificationIcons: setVisibility to gone"
 

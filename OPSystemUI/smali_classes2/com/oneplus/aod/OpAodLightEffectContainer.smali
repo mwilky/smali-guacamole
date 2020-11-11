@@ -1853,3 +1853,44 @@
     :goto_4f
     return-void
 .end method
+
+.method public doContinuousHorizonLights()V
+    .registers 2
+
+    .line 507
+    sget-boolean v0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mFirstTimeChange:Z
+
+    if-eqz v0, :cond_8
+
+    .line 509
+    const/4 v0, 0x0
+
+    sput-boolean v0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mFirstTimeChange:Z
+
+    goto :goto_18
+
+    .line 512
+    :cond_8
+    sget-boolean v0, Lcom/oneplus/aod/OpAodNotificationIconAreaController;->mActiveNotifications:Z
+
+    if-eqz v0, :cond_18
+
+    .line 513
+    invoke-virtual {p0}, Lcom/oneplus/aod/OpAodLightEffectContainer;->showLight()V
+
+    .line 514
+    sget-boolean v0, Lcom/android/mwilky/Renovate;->mContinuousHorizonLightsVibration:Z
+
+    if-eqz v0, :cond_18
+
+    .line 515
+    const/16 v0, 0x3ff
+
+    invoke-static {v0}, Lcom/android/systemui/statusbar/phone/StatusBar;->vibrate(I)V
+
+    .line 519
+    :cond_18
+    :goto_18
+    return-void
+.end method
+

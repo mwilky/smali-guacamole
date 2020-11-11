@@ -13301,6 +13301,8 @@
     invoke-static {v0}, Lcom/android/mwilky/Renovate;->setStatusbarIconColors(Landroid/content/Context;)V
     
     invoke-static {v0}, Lcom/android/mwilky/Renovate;->setCustomEdgeAnimColors(Landroid/content/Context;)V
+    
+    invoke-static {v0}, Lcom/android/mwilky/Renovate;->setContinuousHorizon(Landroid/content/Context;)V
 
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mScreenLifecycle:Lcom/android/systemui/keyguard/ScreenLifecycle;
 
@@ -15953,6 +15955,14 @@
     const-string v1, "tweaks_unlock_edge_notif_colors"
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+    
+    const-string v1, "tweaks_continuous_horizon"
+
+    invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+    
+    const-string v1, "tweaks_continuous_horizon_vibrate"
+
+    invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
     .line 102
     new-instance v1, Lcom/android/wubydax/GearContentObserver;
@@ -17503,6 +17513,32 @@
     invoke-static {v0}, Lcom/android/mwilky/Renovate;->setCustomEdgeAnimColors(Landroid/content/Context;)V
 
     :cond_mwilky94
+    const-string v0, "tweaks_continuous_horizon"
+    
+    invoke-virtual {v0, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_mwilky95
+
+    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mContext:Landroid/content/Context;
+    
+    invoke-static {v0}, Lcom/android/mwilky/Renovate;->setContinuousHorizon(Landroid/content/Context;)V
+
+    :cond_mwilky95
+    const-string v0, "tweaks_continuous_horizon_vibrate"
+    
+    invoke-virtual {v0, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_mwilky96
+
+    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mContext:Landroid/content/Context;
+    
+    invoke-static {v0}, Lcom/android/mwilky/Renovate;->setContinuousHorizon(Landroid/content/Context;)V
+
+    :cond_mwilky96
     return-void
 .end method
 

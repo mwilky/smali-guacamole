@@ -95,16 +95,55 @@
 
     if-eqz v0, :cond_0
 
-    iget-object p0, p0, Lcom/oneplus/aod/OpAodDisplayViewManager$4$1;->this$1:Lcom/oneplus/aod/OpAodDisplayViewManager$4;
+    iget-object v0, p0, Lcom/oneplus/aod/OpAodDisplayViewManager$4$1;->this$1:Lcom/oneplus/aod/OpAodDisplayViewManager$4;
 
-    iget-object p0, p0, Lcom/oneplus/aod/OpAodDisplayViewManager$4;->this$0:Lcom/oneplus/aod/OpAodDisplayViewManager;
+    iget-object v0, v0, Lcom/oneplus/aod/OpAodDisplayViewManager$4;->this$0:Lcom/oneplus/aod/OpAodDisplayViewManager;
 
     invoke-static {p0}, Lcom/oneplus/aod/OpAodDisplayViewManager;->access$1000(Lcom/oneplus/aod/OpAodDisplayViewManager;)Lcom/oneplus/aod/bg/OpAodCanvas;
 
-    move-result-object p0
+    move-result-object v0
 
-    invoke-virtual {p0}, Lcom/oneplus/aod/bg/OpAodCanvas;->onTimeChanged()V
+    invoke-virtual {v0}, Lcom/oneplus/aod/bg/OpAodCanvas;->onTimeChanged()V
 
     :cond_0
+    sget-boolean v0, Lcom/android/mwilky/Renovate;->mContinuousHorizonLights:Z
+    
+    if-eqz v0, :cond_mw
+    
+    iget-object v0, p0, Lcom/oneplus/aod/OpAodDisplayViewManager$4$1;->this$1:Lcom/oneplus/aod/OpAodDisplayViewManager$4;
+
+    iget-object v0, v0, Lcom/oneplus/aod/OpAodDisplayViewManager$4;->this$0:Lcom/oneplus/aod/OpAodDisplayViewManager;
+
+    invoke-static {v0}, Lcom/oneplus/aod/OpAodDisplayViewManager;->access$800(Lcom/oneplus/aod/OpAodDisplayViewManager;)Lcom/android/keyguard/KeyguardUpdateMonitor;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Lcom/oneplus/keyguard/OpKeyguardUpdateMonitor;->isAlwaysOnEnabled()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_mw
+    
+    iget-object v0, p0, Lcom/oneplus/aod/OpAodDisplayViewManager$4$1;->this$1:Lcom/oneplus/aod/OpAodDisplayViewManager$4;
+
+    iget-object v0, v0, Lcom/oneplus/aod/OpAodDisplayViewManager$4;->this$0:Lcom/oneplus/aod/OpAodDisplayViewManager;
+
+    invoke-static {v0}, Lcom/oneplus/aod/OpAodDisplayViewManager;->access$1300(Lcom/oneplus/aod/OpAodDisplayViewManager;)Z
+    
+    move-result v0
+    
+    if-eqz v0, :cond_mw
+
+    iget-object v0, p0, Lcom/oneplus/aod/OpAodDisplayViewManager$4$1;->this$1:Lcom/oneplus/aod/OpAodDisplayViewManager$4;
+
+    iget-object v0, v0, Lcom/oneplus/aod/OpAodDisplayViewManager$4;->this$0:Lcom/oneplus/aod/OpAodDisplayViewManager;
+    
+    invoke-static {v0}, Lcom/oneplus/aod/OpAodDisplayViewManager;->access$1600(Lcom/oneplus/aod/OpAodDisplayViewManager;)Lcom/oneplus/aod/OpAodLightEffectContainer;
+    
+    move-result-object v0
+    
+    invoke-virtual {v0}, Lcom/oneplus/aod/OpAodLightEffectContainer;->doContinuousHorizonLights()V
+    
+    :cond_mw
     return-void
 .end method

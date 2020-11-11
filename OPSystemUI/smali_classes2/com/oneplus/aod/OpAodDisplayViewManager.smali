@@ -17,6 +17,8 @@
 # static fields
 .field private static final AOD_SCRIM_ALPHA_VALUE:F
 
+.field public static mFirstTimeChange:Z
+
 .field public static mPulseStatus:I
 
 
