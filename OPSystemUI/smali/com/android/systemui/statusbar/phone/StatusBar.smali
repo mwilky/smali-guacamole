@@ -13303,6 +13303,10 @@
     invoke-static {v0}, Lcom/android/mwilky/Renovate;->setCustomEdgeAnimColors(Landroid/content/Context;)V
     
     invoke-static {v0}, Lcom/android/mwilky/Renovate;->setContinuousHorizon(Landroid/content/Context;)V
+    
+    invoke-static {v0}, Lcom/android/mwilky/Renovate;->setEdgeAnimRepeatCount(Landroid/content/Context;)V
+    
+    invoke-static {v0}, Lcom/android/mwilky/Renovate;->setAnimScale(Landroid/content/Context;)V
 
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mScreenLifecycle:Lcom/android/systemui/keyguard/ScreenLifecycle;
 
@@ -15963,6 +15967,14 @@
     const-string v1, "tweaks_continuous_horizon_vibrate"
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+    
+    const-string v1, "tweaks_edge_notif_repeat_count"
+
+    invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+    
+    const-string v1, "tweaks_horizon_repeat_mode"
+
+    invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
     .line 102
     new-instance v1, Lcom/android/wubydax/GearContentObserver;
@@ -16024,6 +16036,10 @@
     .line 111
     .local v4, "GlobalSettings":Ljava/util/ArrayList;
     const-string v6, "rice_type"
+
+    invoke-virtual {v4, v6}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+    
+    const-string v6, "animator_duration_scale"
 
     invoke-virtual {v4, v6}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
@@ -17539,6 +17555,45 @@
     invoke-static {v0}, Lcom/android/mwilky/Renovate;->setContinuousHorizon(Landroid/content/Context;)V
 
     :cond_mwilky96
+    const-string v0, "tweaks_edge_notif_repeat_count"
+    
+    invoke-virtual {v0, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_mwilky97
+
+    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mContext:Landroid/content/Context;
+    
+    invoke-static {v0}, Lcom/android/mwilky/Renovate;->setEdgeAnimRepeatCount(Landroid/content/Context;)V
+
+    :cond_mwilky97
+    const-string v0, "tweaks_horizon_repeat_mode"
+    
+    invoke-virtual {v0, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_mwilky98
+
+    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mContext:Landroid/content/Context;
+    
+    invoke-static {v0}, Lcom/android/mwilky/Renovate;->setEdgeAnimRepeatCount(Landroid/content/Context;)V
+
+    :cond_mwilky98
+    const-string v0, "animator_duration_scale"
+    
+    invoke-virtual {v0, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_mwilky99
+
+    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mContext:Landroid/content/Context;
+    
+    invoke-static {v0}, Lcom/android/mwilky/Renovate;->setEdgeAnimRepeatCount(Landroid/content/Context;)V
+
+    :cond_mwilky99
     return-void
 .end method
 
@@ -18495,7 +18550,11 @@
     
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/StatusBar;->mClockController:Lcom/android/systemui/statusbar/phone/ClockController;
     
+    if-eqz v0, :cond_mw
+    
     invoke-virtual {v0}, Lcom/android/systemui/statusbar/phone/ClockController;->updateActiveClock()V
+    
+    :cond_mw
     return-void
 .end method
 
