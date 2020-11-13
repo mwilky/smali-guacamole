@@ -572,7 +572,7 @@
     return-void
 .end method
 
-.method private updateState()V
+.method public updateState()V
     .locals 0
 
     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NotificationIconContainer;->resetViewStates()V
@@ -663,7 +663,7 @@
 
     if-eqz v3, :cond_1
 
-    const/16 v3, 0x28
+    sget v3, Lcom/android/mwilky/Renovate;->mMaxNotifications:I
 
     goto :goto_0
 
@@ -1693,7 +1693,7 @@
 
     if-eqz p1, :cond_2
 
-    invoke-direct {p0}, Lcom/android/systemui/statusbar/phone/NotificationIconContainer;->updateState()V
+    invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NotificationIconContainer;->updateState()V
 
     :cond_2
     return-void
@@ -2167,7 +2167,7 @@
 
     if-eqz p2, :cond_0
 
-    invoke-direct {p0}, Lcom/android/systemui/statusbar/phone/NotificationIconContainer;->updateState()V
+    invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NotificationIconContainer;->updateState()V
 
     :cond_0
     return-void
@@ -2235,7 +2235,7 @@
     :cond_1
     iput-object p1, p0, Lcom/android/systemui/statusbar/phone/NotificationIconContainer;->mIsolatedIcon:Lcom/android/systemui/statusbar/StatusBarIconView;
 
-    invoke-direct {p0}, Lcom/android/systemui/statusbar/phone/NotificationIconContainer;->updateState()V
+    invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/NotificationIconContainer;->updateState()V
 
     return-void
 .end method
