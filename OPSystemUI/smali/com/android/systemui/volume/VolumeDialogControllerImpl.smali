@@ -1603,7 +1603,18 @@
 
 .method private onShowSafetyWarningW(I)V
     .locals 3
+    
+    sget-boolean v0, Lcom/android/mwilky/Renovate;->mHideVolumeWarning:Z
 
+    if-eqz v0, :cond_mw
+    
+    iget-object v0, p0, Lcom/android/systemui/volume/VolumeDialogControllerImpl;->mAudio:Landroid/media/AudioManager;
+
+    invoke-virtual {v0}, Landroid/media/AudioManager;->disableSafeMediaVolume()V
+    
+    return-void
+    
+	:cond_mw
     sget-object v0, Lcom/android/systemui/volume/VolumeDialogControllerImpl;->TAG:Ljava/lang/String;
 
     new-instance v1, Ljava/lang/StringBuilder;
