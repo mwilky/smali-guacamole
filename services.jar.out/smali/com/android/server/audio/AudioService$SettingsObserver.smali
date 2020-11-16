@@ -29,6 +29,20 @@
     invoke-direct {v0}, Landroid/os/Handler;-><init>()V
 
     invoke-direct {p0, v0}, Landroid/database/ContentObserver;-><init>(Landroid/os/Handler;)V
+    
+    invoke-static {p1}, Lcom/android/server/audio/AudioService;->access$2900(Lcom/android/server/audio/AudioService;)Landroid/content/ContentResolver;
+
+    move-result-object v0
+
+    const-string/jumbo v1, "tweaks_unlink_volume"
+
+    invoke-static {v1}, Landroid/provider/Settings$System;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
+
+    move-result-object v1
+
+    const/4 v2, 0x0
+
+    invoke-virtual {v0, v1, v2, p0}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;)V
 
     invoke-static {p1}, Lcom/android/server/audio/AudioService;->access$2900(Lcom/android/server/audio/AudioService;)Landroid/content/ContentResolver;
 
@@ -388,6 +402,16 @@
     invoke-static {v1}, Lcom/android/server/audio/AudioService;->access$7700(Lcom/android/server/audio/AudioService;)V
 
     :cond_1
+    iget-object v1, p0, Lcom/android/server/audio/AudioService$SettingsObserver;->this$0:Lcom/android/server/audio/AudioService;
+
+    invoke-virtual {v1}, Lcom/android/server/audio/AudioService;->setUnlinkVolume()V
+
+    const/4 v2, 0x1
+
+    const-string v3, ""
+
+    invoke-virtual {v1, v2, v3}, Lcom/android/server/audio/AudioService;->updateStreamVolumeAlias(ZLjava/lang/String;)V
+
     monitor-exit v0
 
     return-void
