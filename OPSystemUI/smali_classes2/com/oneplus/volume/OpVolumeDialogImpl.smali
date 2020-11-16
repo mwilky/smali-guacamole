@@ -1364,7 +1364,7 @@
 .end method
 
 .method protected loadOpDimens()V
-    .locals 6
+    .locals 7
 
     iget-object v0, p0, Lcom/oneplus/volume/OpVolumeDialogImpl;->mContext:Landroid/content/Context;
 
@@ -1442,7 +1442,14 @@
 
     :cond_0
     const/4 v2, 0x3
+    
+    sget-boolean v6, Lcom/android/mwilky/Renovate;->mUnlinkVolume:Z
 
+    if-eqz v6, :cond_stock
+
+    const/4 v2, 0x4
+
+    :cond_stock
     :try_start_0
     iget-object v4, p0, Lcom/oneplus/volume/OpVolumeDialogImpl;->mContext:Landroid/content/Context;
 
