@@ -47,6 +47,8 @@
     invoke-static {v0}, Lcom/oneplus/settings/notification/OPSeekBarVolumizer;->access$1700(Lcom/oneplus/settings/notification/OPSeekBarVolumizer;)Z
 
     move-result v0
+    
+    const/4 v0, 0x0
 
     const/4 v1, 0x1
 
