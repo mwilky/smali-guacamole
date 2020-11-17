@@ -72,7 +72,7 @@
 
     iput-object v0, p0, Lcom/android/systemui/qs/TileLayout;->mRecords:Ljava/util/ArrayList;
 
-    const/4 v0, 0x3
+    sget v0, Lcom/android/mwilky/Renovate;->mQsRows:I
 
     iput v0, p0, Lcom/android/systemui/qs/TileLayout;->mMaxAllowedRows:I
 
@@ -165,7 +165,17 @@
 
     iput v1, p0, Lcom/android/systemui/qs/TileLayout;->mColumns:I
 
-    return v1
+    if-eq v0, v1, :cond_0
+
+    const/4 p0, 0x1
+
+    goto :goto_0
+
+    :cond_0
+    const/4 p0, 0x0
+
+    :goto_0
+    return p0
 .end method
 
 
@@ -647,13 +657,15 @@
 .end method
 
 .method public setMinRows(I)Z
-    .locals 1
+    .locals 2
+    
+    const/4 v1, 0x2
 
     iget v0, p0, Lcom/android/systemui/qs/TileLayout;->mMinRows:I
 
-    if-eq v0, p1, :cond_0
+    if-eq v0, v1, :cond_0
 
-    iput p1, p0, Lcom/android/systemui/qs/TileLayout;->mMinRows:I
+    iput v1, p0, Lcom/android/systemui/qs/TileLayout;->mMinRows:I
 
     invoke-virtual {p0}, Lcom/android/systemui/qs/TileLayout;->updateResources()Z
 
@@ -823,7 +835,7 @@
     invoke-static {v2, v0}, Ljava/lang/Math;->max(II)I
 
     move-result v0
-    
+
     sget v0, Lcom/android/mwilky/Renovate;->mQsRows:I
 
     iput v0, p0, Lcom/android/systemui/qs/TileLayout;->mMaxAllowedRows:I
