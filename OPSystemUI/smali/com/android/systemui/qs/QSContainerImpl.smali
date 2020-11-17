@@ -831,7 +831,7 @@
     
     iget-object v0, p0, Lcom/android/systemui/qs/QSContainerImpl;->mContext:Landroid/content/Context;
 
-    invoke-static {v0}, Lcom/android/mwilky/Renovate;->setQsBackgroundColor(Landroid/content/Context;)V
+    invoke-static {v0}, Lcom/android/mwilky/Renovate;->setQsColors(Landroid/content/Context;)V
 
     invoke-virtual {p0}, Lcom/android/systemui/qs/QSContainerImpl;->updateThemeColor()V
 

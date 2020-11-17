@@ -256,6 +256,8 @@
 
     move-result-object v1
 
+    invoke-static {v1}, Lcom/android/mwilky/Renovate;->setNotificationColors(Landroid/content/Context;)V
+
     sget v2, Lcom/android/systemui/R$color;->op_notification_info_primary_color:I
 
     invoke-virtual {v1, v2}, Landroid/content/Context;->getColor(I)I
