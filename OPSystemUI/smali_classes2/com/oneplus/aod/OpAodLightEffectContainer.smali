@@ -1945,31 +1945,34 @@
 
     sput-boolean v0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mFirstTimeChange:Z
 
-    goto :goto_19
+    goto :goto_1c
 
     .line 512
     :cond_8
     sget-boolean v0, Lcom/oneplus/aod/OpAodNotificationIconAreaController;->mActiveNotifications:Z
 
-    if-eqz v0, :cond_19
+    if-eqz v0, :cond_1c
 
     .line 513
+    invoke-virtual {p0}, Lcom/oneplus/aod/OpAodLightEffectContainer;->resetNotificationAnimView()V
+
+    .line 514
     const/4 v0, 0x1
 
     invoke-virtual {p0, v0}, Lcom/oneplus/aod/OpAodLightEffectContainer;->showLight(Z)V
 
-    .line 514
+    .line 515
     sget-boolean v0, Lcom/android/mwilky/Renovate;->mContinuousHorizonLightsVibration:Z
 
-    if-eqz v0, :cond_19
+    if-eqz v0, :cond_1c
 
-    .line 515
+    .line 516
     const/16 v0, 0x3ff
 
     invoke-static {v0}, Lcom/android/systemui/statusbar/phone/StatusBar;->vibrate(I)V
 
-    .line 519
-    :cond_19
-    :goto_19
+    .line 520
+    :cond_1c
+    :goto_1c
     return-void
 .end method
