@@ -304,10 +304,10 @@
 .end method
 
 .method public getPulseVisibleDuration(I)I
-    .registers 24
+    .registers 25
     .param p1, "i"    # I
 
-    .line 215
+    .line 190
     move-object/from16 v0, p0
 
     move/from16 v1, p1
@@ -318,32 +318,32 @@
 
     if-eqz v2, :cond_e
 
-    .line 216
+    .line 191
     const v2, 0x7fffffff
 
     return v2
 
-    .line 218
+    .line 193
     :cond_e
     sget v2, Lcom/android/mwilky/Renovate;->mAnimScale:F
 
     float-to-double v2, v2
 
-    .line 219
+    .line 194
     .local v2, "anim_scale":D
     sget v4, Lcom/oneplus/aod/OpAodLightEffectContainer;->mTotalRuntime:I
 
-    .line 220
+    .line 195
     .local v4, "runtime":I
     int-to-double v5, v4
 
     mul-double/2addr v5, v2
 
-    .line 221
+    .line 196
     .local v5, "total_length_double":D
     double-to-int v7, v5
 
-    .line 223
+    .line 197
     .local v7, "total_length":I
     sget-boolean v8, Lcom/android/mwilky/Renovate;->mContinuousHorizonLights:Z
 
@@ -383,22 +383,49 @@
 
     .end local v5    # "total_length_double":D
     .local v19, "total_length_double":D
-    const/16 v6, 0xa
+    const/16 v5, 0x14
 
-    const-string v5, "integer"
+    const/16 v21, 0x0
 
-    if-eqz v8, :cond_7a
+    const-string v6, "integer"
 
-    .line 224
+    if-eqz v8, :cond_8e
+
+    .line 198
     const/16 v8, 0xbb8
 
-    if-ge v7, v8, :cond_79
+    if-ge v7, v8, :cond_43
 
-    .line 227
-    if-ne v1, v6, :cond_4a
+    const/4 v8, 0x1
 
-    .line 228
-    invoke-static {v3, v5}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
+    goto :goto_45
+
+    :cond_43
+    move/from16 v8, v21
+
+    :goto_45
+    move/from16 v22, v7
+
+    .end local v7    # "total_length":I
+    .local v22, "total_length":I
+    sget v7, Lcom/oneplus/aod/OpAodLightEffectContainer;->mLightIndex:I
+
+    if-ne v7, v5, :cond_4d
+
+    const/16 v21, 0x1
+
+    :cond_4d
+    and-int v5, v8, v21
+
+    if-eqz v5, :cond_8d
+
+    .line 199
+    const/16 v5, 0xa
+
+    if-ne v1, v5, :cond_5e
+
+    .line 200
+    invoke-static {v3, v6}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
 
     move-result v2
 
@@ -408,14 +435,14 @@
 
     return v2
 
-    .line 229
-    :cond_4a
+    .line 201
+    :cond_5e
     const/4 v3, 0x3
 
-    if-ne v1, v3, :cond_56
+    if-ne v1, v3, :cond_6a
 
-    .line 230
-    invoke-static {v15, v5}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
+    .line 202
+    invoke-static {v15, v6}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
 
     move-result v3
 
@@ -425,14 +452,14 @@
 
     return v2
 
-    .line 231
-    :cond_56
+    .line 203
+    :cond_6a
     const/16 v2, 0xc
 
-    if-ne v1, v2, :cond_63
+    if-ne v1, v2, :cond_77
 
-    .line 232
-    invoke-static {v13, v5}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
+    .line 204
+    invoke-static {v13, v6}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
 
     move-result v2
 
@@ -442,14 +469,14 @@
 
     return v2
 
-    .line 233
-    :cond_63
+    .line 205
+    :cond_77
     const/16 v2, 0xd
 
-    if-ne v1, v2, :cond_70
+    if-ne v1, v2, :cond_84
 
-    .line 234
-    invoke-static {v9, v5}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
+    .line 206
+    invoke-static {v9, v6}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
 
     move-result v2
 
@@ -459,9 +486,9 @@
 
     return v2
 
-    .line 236
-    :cond_70
-    invoke-static {v11, v5}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
+    .line 208
+    :cond_84
+    invoke-static {v11, v6}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
 
     move-result v2
 
@@ -471,49 +498,68 @@
 
     return v2
 
-    .line 240
-    :cond_79
-    return v7
-
-    .line 243
-    :cond_7a
-    const/4 v8, 0x1
-
-    if-ne v1, v8, :cond_80
-
-    move/from16 v21, v8
-
-    goto :goto_82
-
-    :cond_80
-    const/16 v21, 0x0
-
-    :goto_82
-    sget v6, Lcom/android/mwilky/Renovate;->mNotifAnimRepeatCount:I
-
-    if-lt v6, v8, :cond_87
-
-    goto :goto_88
-
-    :cond_87
-    const/4 v8, 0x0
-
-    :goto_88
-    and-int v6, v21, v8
-
-    if-eqz v6, :cond_8d
-
-    .line 245
-    return v7
-
-    .line 248
+    .line 211
     :cond_8d
-    const/16 v6, 0xa
+    return v22
 
-    if-ne v1, v6, :cond_9a
+    .line 214
+    .end local v22    # "total_length":I
+    .restart local v7    # "total_length":I
+    :cond_8e
+    move/from16 v22, v7
 
-    .line 249
-    invoke-static {v3, v5}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
+    .end local v7    # "total_length":I
+    .restart local v22    # "total_length":I
+    const/4 v7, 0x1
+
+    if-ne v1, v7, :cond_95
+
+    move v8, v7
+
+    goto :goto_97
+
+    :cond_95
+    move/from16 v8, v21
+
+    :goto_97
+    sget v5, Lcom/android/mwilky/Renovate;->mNotifAnimRepeatCount:I
+
+    if-lt v5, v7, :cond_9d
+
+    move v5, v7
+
+    goto :goto_9f
+
+    :cond_9d
+    move/from16 v5, v21
+
+    :goto_9f
+    and-int/2addr v5, v8
+
+    sget v8, Lcom/oneplus/aod/OpAodLightEffectContainer;->mLightIndex:I
+
+    const/16 v7, 0x14
+
+    if-eq v8, v7, :cond_a8
+
+    const/16 v21, 0x1
+
+    :cond_a8
+    and-int v5, v5, v21
+
+    if-eqz v5, :cond_ad
+
+    .line 215
+    return v22
+
+    .line 217
+    :cond_ad
+    const/16 v5, 0xa
+
+    if-ne v1, v5, :cond_ba
+
+    .line 218
+    invoke-static {v3, v6}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
 
     move-result v2
 
@@ -523,14 +569,14 @@
 
     return v2
 
-    .line 250
-    :cond_9a
+    .line 219
+    :cond_ba
     const/4 v3, 0x3
 
-    if-ne v1, v3, :cond_a6
+    if-ne v1, v3, :cond_c6
 
-    .line 251
-    invoke-static {v15, v5}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
+    .line 220
+    invoke-static {v15, v6}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
 
     move-result v3
 
@@ -540,14 +586,14 @@
 
     return v2
 
-    .line 252
-    :cond_a6
+    .line 221
+    :cond_c6
     const/16 v2, 0xc
 
-    if-ne v1, v2, :cond_b3
+    if-ne v1, v2, :cond_d3
 
-    .line 253
-    invoke-static {v13, v5}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
+    .line 222
+    invoke-static {v13, v6}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
 
     move-result v2
 
@@ -557,14 +603,14 @@
 
     return v2
 
-    .line 254
-    :cond_b3
+    .line 223
+    :cond_d3
     const/16 v2, 0xd
 
-    if-ne v1, v2, :cond_c0
+    if-ne v1, v2, :cond_e0
 
-    .line 255
-    invoke-static {v9, v5}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
+    .line 224
+    invoke-static {v9, v6}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
 
     move-result v2
 
@@ -574,9 +620,9 @@
 
     return v2
 
-    .line 257
-    :cond_c0
-    invoke-static {v11, v5}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
+    .line 226
+    :cond_e0
+    invoke-static {v11, v6}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
 
     move-result v2
 
@@ -586,6 +632,7 @@
 
     return v2
 .end method
+
 
 .method public getScreenBrightnessDoze()F
     .locals 1

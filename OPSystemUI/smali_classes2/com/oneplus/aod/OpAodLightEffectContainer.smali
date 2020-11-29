@@ -8,7 +8,7 @@
 
 .field public static mTotalRuntime:I
 
-.field private static mLightIndex:I
+.field public static mLightIndex:I
 
 
 # instance fields
