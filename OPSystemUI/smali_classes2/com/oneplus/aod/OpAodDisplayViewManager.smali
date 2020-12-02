@@ -618,7 +618,7 @@
 
     const/4 v4, 0x4
 
-    if-eqz v0, :cond_12f
+    if-eqz v0, :cond_11e
 
     iget-object v0, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mKeyguardUpdateMonitor:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
@@ -632,7 +632,7 @@
 
     if-nez v0, :cond_68
 
-    goto/16 :goto_12f
+    goto/16 :goto_11e
 
     .line 307
     :cond_68
@@ -665,7 +665,7 @@
 
     invoke-virtual {v0, v4}, Lcom/oneplus/aod/OpAodThreeKeyStatusView;->setVisibility(I)V
 
-    goto/16 :goto_14d
+    goto/16 :goto_13c
 
     .line 314
     :cond_87
@@ -811,14 +811,7 @@
 
     .line 342
     :cond_102
-    const-string v1, "mwilky"
-
-    if-ne v0, v2, :cond_111
-
-    .line 343
-    const-string v2, "status = 2 so show lights"
-
-    invoke-static {v1, v2}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+    if-ne v0, v2, :cond_10a
 
     .line 344
     iget-object v1, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mLightEffectContainer:Lcom/oneplus/aod/OpAodLightEffectContainer;
@@ -829,44 +822,34 @@
     return-void
 
     .line 347
-    :cond_111
-    sget-boolean v2, Lcom/android/mwilky/Renovate;->mContinuousHorizonLights:Z
+    :cond_10a
+    sget-boolean v1, Lcom/android/mwilky/Renovate;->mContinuousHorizonLights:Z
 
-    if-eqz v2, :cond_124
+    if-eqz v1, :cond_118
 
-    sget-boolean v2, Lcom/oneplus/aod/OpAodNotificationIconAreaController;->mActiveNotifications:Z
+    sget-boolean v1, Lcom/oneplus/aod/OpAodNotificationIconAreaController;->mActiveNotifications:Z
 
-    if-eqz v2, :cond_124
-
-    .line 348
-    const-string v2, "continuous and active so show lights"
-
-    invoke-static {v1, v2}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+    if-eqz v1, :cond_118
 
     .line 349
     iget-object v1, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mLightEffectContainer:Lcom/oneplus/aod/OpAodLightEffectContainer;
 
     invoke-virtual {v1, v3}, Lcom/oneplus/aod/OpAodLightEffectContainer;->showLight(Z)V
 
-    goto :goto_14d
-
-    .line 351
-    :cond_124
-    const-string v2, "reset view"
-
-    invoke-static {v1, v2}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+    goto :goto_13c
 
     .line 352
+    :cond_118
     iget-object v1, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mLightEffectContainer:Lcom/oneplus/aod/OpAodLightEffectContainer;
 
     invoke-virtual {v1}, Lcom/oneplus/aod/OpAodLightEffectContainer;->resetNotificationAnimView()V
 
-    goto :goto_14d
+    goto :goto_13c
 
     .line 301
     .end local v0    # "i":I
-    :cond_12f
-    :goto_12f
+    :cond_11e
+    :goto_11e
     const-string v0, "screen is not turned off yet."
 
     invoke-static {v2, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
@@ -897,7 +880,7 @@
     invoke-virtual {v0, v4}, Lcom/oneplus/aod/OpAodThreeKeyStatusView;->setVisibility(I)V
 
     .line 355
-    :goto_14d
+    :goto_13c
     return-void
 .end method
 

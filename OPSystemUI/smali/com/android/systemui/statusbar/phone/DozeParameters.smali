@@ -304,7 +304,7 @@
 .end method
 
 .method public getPulseVisibleDuration(I)I
-    .registers 25
+    .registers 24
     .param p1, "i"    # I
 
     .line 190
@@ -379,43 +379,32 @@
 
     .end local v5    # "total_length_double":D
     .local v19, "total_length_double":D
-    const-string v6, "mwilky"
+    const/16 v5, 0x14
 
-    const-string v5, "integer"
+    const-string v6, "integer"
 
-    if-eqz v8, :cond_91
+    if-eqz v8, :cond_81
 
     sget-boolean v8, Lcom/oneplus/aod/OpAodNotificationIconAreaController;->mActiveNotifications:Z
 
-    if-eqz v8, :cond_91
+    if-eqz v8, :cond_81
 
     .line 198
     const/16 v8, 0xbb8
 
-    if-ge v7, v8, :cond_89
+    if-ge v7, v8, :cond_80
 
     sget v8, Lcom/oneplus/aod/OpAodLightEffectContainer;->mLightIndex:I
 
-    move/from16 v21, v7
-
-    const/16 v7, 0x14
-
-    .end local v7    # "total_length":I
-    .local v21, "total_length":I
-    if-ne v8, v7, :cond_8b
-
-    .line 199
-    const-string v7, "stock doze duration because quick animation and we dont repeat cyberpunk"
-
-    invoke-static {v6, v7}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+    if-ne v8, v5, :cond_80
 
     .line 200
-    const/16 v6, 0xa
+    const/16 v5, 0xa
 
-    if-ne v1, v6, :cond_5a
+    if-ne v1, v5, :cond_51
 
     .line 201
-    invoke-static {v3, v5}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v3, v6}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
 
     move-result v2
 
@@ -426,13 +415,13 @@
     return v2
 
     .line 202
-    :cond_5a
+    :cond_51
     const/4 v3, 0x3
 
-    if-ne v1, v3, :cond_66
+    if-ne v1, v3, :cond_5d
 
     .line 203
-    invoke-static {v15, v5}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v15, v6}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
 
     move-result v3
 
@@ -443,13 +432,13 @@
     return v2
 
     .line 204
-    :cond_66
+    :cond_5d
     const/16 v2, 0xc
 
-    if-ne v1, v2, :cond_73
+    if-ne v1, v2, :cond_6a
 
     .line 205
-    invoke-static {v13, v5}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v13, v6}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
 
     move-result v2
 
@@ -460,13 +449,13 @@
     return v2
 
     .line 206
-    :cond_73
+    :cond_6a
     const/16 v2, 0xd
 
-    if-ne v1, v2, :cond_80
+    if-ne v1, v2, :cond_77
 
     .line 207
-    invoke-static {v9, v5}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v9, v6}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
 
     move-result v2
 
@@ -477,8 +466,8 @@
     return v2
 
     .line 209
-    :cond_80
-    invoke-static {v11, v5}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
+    :cond_77
+    invoke-static {v11, v6}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
 
     move-result v2
 
@@ -488,87 +477,55 @@
 
     return v2
 
-    .line 198
-    .end local v21    # "total_length":I
-    .restart local v7    # "total_length":I
-    :cond_89
-    move/from16 v21, v7
-
-    .line 212
-    .end local v7    # "total_length":I
-    .restart local v21    # "total_length":I
-    :cond_8b
-    const-string v2, "continuous lights and long animation time so return full anim length"
-
-    invoke-static {v6, v2}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
     .line 213
-    return v21
-
-    .line 197
-    .end local v21    # "total_length":I
-    .restart local v7    # "total_length":I
-    :cond_91
-    move/from16 v21, v7
+    :cond_80
+    return v7
 
     .line 216
-    .end local v7    # "total_length":I
-    .restart local v21    # "total_length":I
+    :cond_81
     const/4 v8, 0x1
 
-    if-ne v1, v8, :cond_99
+    if-ne v1, v8, :cond_87
 
-    move/from16 v22, v8
+    move/from16 v21, v8
 
-    goto :goto_9b
+    goto :goto_89
 
-    :cond_99
-    const/16 v22, 0x0
+    :cond_87
+    const/16 v21, 0x0
 
-    :goto_9b
-    sget v7, Lcom/android/mwilky/Renovate;->mNotifAnimRepeatCount:I
+    :goto_89
+    sget v5, Lcom/android/mwilky/Renovate;->mNotifAnimRepeatCount:I
 
-    if-lt v7, v8, :cond_a1
+    if-lt v5, v8, :cond_8e
 
-    move v7, v8
+    goto :goto_8f
 
-    goto :goto_a2
+    :cond_8e
+    const/4 v8, 0x0
 
-    :cond_a1
-    const/4 v7, 0x0
+    :goto_8f
+    and-int v5, v21, v8
 
-    :goto_a2
-    and-int v7, v22, v7
+    if-eqz v5, :cond_9a
 
-    if-eqz v7, :cond_b2
-
-    sget v7, Lcom/oneplus/aod/OpAodLightEffectContainer;->mLightIndex:I
+    sget v5, Lcom/oneplus/aod/OpAodLightEffectContainer;->mLightIndex:I
 
     const/16 v8, 0x14
 
-    if-eq v7, v8, :cond_b2
-
-    .line 217
-    const-string v2, "not continous but long anim due to repeat + no cyberpunk"
-
-    invoke-static {v6, v2}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+    if-eq v5, v8, :cond_9a
 
     .line 218
-    return v21
-
-    .line 220
-    :cond_b2
-    const-string v7, "stock due to no continuous + cyberpunk"
-
-    invoke-static {v6, v7}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+    return v7
 
     .line 221
-    const/16 v6, 0xa
+    :cond_9a
+    const/16 v5, 0xa
 
-    if-ne v1, v6, :cond_c4
+    if-ne v1, v5, :cond_a7
 
     .line 222
-    invoke-static {v3, v5}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v3, v6}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
 
     move-result v2
 
@@ -579,13 +536,13 @@
     return v2
 
     .line 223
-    :cond_c4
+    :cond_a7
     const/4 v3, 0x3
 
-    if-ne v1, v3, :cond_d0
+    if-ne v1, v3, :cond_b3
 
     .line 224
-    invoke-static {v15, v5}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v15, v6}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
 
     move-result v3
 
@@ -596,13 +553,13 @@
     return v2
 
     .line 225
-    :cond_d0
+    :cond_b3
     const/16 v2, 0xc
 
-    if-ne v1, v2, :cond_dd
+    if-ne v1, v2, :cond_c0
 
     .line 226
-    invoke-static {v13, v5}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v13, v6}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
 
     move-result v2
 
@@ -613,13 +570,13 @@
     return v2
 
     .line 227
-    :cond_dd
+    :cond_c0
     const/16 v2, 0xd
 
-    if-ne v1, v2, :cond_ea
+    if-ne v1, v2, :cond_cd
 
     .line 228
-    invoke-static {v9, v5}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v9, v6}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
 
     move-result v2
 
@@ -630,8 +587,8 @@
     return v2
 
     .line 230
-    :cond_ea
-    invoke-static {v11, v5}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
+    :cond_cd
+    invoke-static {v11, v6}, Lcom/android/wubydax/GearUtils;->getIdentifier(Ljava/lang/String;Ljava/lang/String;)I
 
     move-result v2
 
