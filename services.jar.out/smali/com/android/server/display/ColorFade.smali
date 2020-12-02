@@ -3,6 +3,10 @@
 .source "ColorFade.java"
 
 
+# interfaces
+.implements Lcom/android/server/display/ScreenStateAnimator;
+
+
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {

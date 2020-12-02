@@ -53,7 +53,7 @@
 
     iget-object v0, p0, Lcom/android/server/display/DisplayPowerState$4;->this$0:Lcom/android/server/display/DisplayPowerState;
 
-    invoke-static {v0}, Lcom/android/server/display/DisplayPowerState;->access$900(Lcom/android/server/display/DisplayPowerState;)Lcom/android/server/display/ColorFade;
+    invoke-static {v0}, Lcom/android/server/display/DisplayPowerState;->access$900(Lcom/android/server/display/DisplayPowerState;)Lcom/android/server/display/ScreenStateAnimator;
 
     move-result-object v0
 
@@ -63,7 +63,7 @@
 
     move-result v1
 
-    invoke-virtual {v0, v1}, Lcom/android/server/display/ColorFade;->draw(F)Z
+    invoke-interface {v0, v1}, Lcom/android/server/display/ScreenStateAnimator;->draw(F)Z
 
     const-wide/32 v0, 0x20000
 

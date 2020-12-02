@@ -46,7 +46,7 @@
 
 .field private mCleanListener:Ljava/lang/Runnable;
 
-.field private final mColorFade:Lcom/android/server/display/ColorFade;
+.field private mColorFade:Lcom/android/server/display/ScreenStateAnimator;
 
 .field private mColorFadeDrawPending:Z
 
@@ -104,7 +104,7 @@
     return-void
 .end method
 
-.method public constructor <init>(Lcom/android/server/display/DisplayBlanker;Lcom/android/server/display/ColorFade;)V
+.method public constructor <init>(Lcom/android/server/display/DisplayBlanker;I)V
     .locals 3
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -137,7 +137,7 @@
 
     iput-object p1, p0, Lcom/android/server/display/DisplayPowerState;->mBlanker:Lcom/android/server/display/DisplayBlanker;
 
-    iput-object p2, p0, Lcom/android/server/display/DisplayPowerState;->mColorFade:Lcom/android/server/display/ColorFade;
+    invoke-virtual {p0, p2}, Lcom/android/server/display/DisplayPowerState;->setScreenStateAnimator(I)V
 
     new-instance v0, Lcom/android/server/display/DisplayPowerState$PhotonicModulator;
 
@@ -272,10 +272,10 @@
     return v0
 .end method
 
-.method static synthetic access$900(Lcom/android/server/display/DisplayPowerState;)Lcom/android/server/display/ColorFade;
+.method static synthetic access$900(Lcom/android/server/display/DisplayPowerState;)Lcom/android/server/display/ScreenStateAnimator;
     .locals 1
 
-    iget-object v0, p0, Lcom/android/server/display/DisplayPowerState;->mColorFade:Lcom/android/server/display/ColorFade;
+    iget-object v0, p0, Lcom/android/server/display/DisplayPowerState;->mColorFade:Lcom/android/server/display/ScreenStateAnimator;
 
     return-object v0
 .end method
@@ -378,11 +378,11 @@
 
     invoke-static {v1, v2, v0, v3}, Landroid/os/Trace;->traceCounter(JLjava/lang/String;I)V
 
-    iget-object v0, p0, Lcom/android/server/display/DisplayPowerState;->mColorFade:Lcom/android/server/display/ColorFade;
+    iget-object v0, p0, Lcom/android/server/display/DisplayPowerState;->mColorFade:Lcom/android/server/display/ScreenStateAnimator;
 
     if-eqz v0, :cond_0
 
-    invoke-virtual {v0}, Lcom/android/server/display/ColorFade;->dismiss()V
+    invoke-interface {v0}, Lcom/android/server/display/ScreenStateAnimator;->dismiss()V
 
     :cond_0
     const/4 v0, 0x0
@@ -399,11 +399,11 @@
 .method public dismissColorFadeResources()V
     .locals 1
 
-    iget-object v0, p0, Lcom/android/server/display/DisplayPowerState;->mColorFade:Lcom/android/server/display/ColorFade;
+    iget-object v0, p0, Lcom/android/server/display/DisplayPowerState;->mColorFade:Lcom/android/server/display/ScreenStateAnimator;
 
     if-eqz v0, :cond_0
 
-    invoke-virtual {v0}, Lcom/android/server/display/ColorFade;->dismissResources()V
+    invoke-interface {v0}, Lcom/android/server/display/ScreenStateAnimator;->dismissResources()V
 
     :cond_0
     return-void
@@ -570,11 +570,11 @@
 
     invoke-virtual {v0, p1}, Lcom/android/server/display/DisplayPowerState$PhotonicModulator;->dump(Ljava/io/PrintWriter;)V
 
-    iget-object v0, p0, Lcom/android/server/display/DisplayPowerState;->mColorFade:Lcom/android/server/display/ColorFade;
+    iget-object v0, p0, Lcom/android/server/display/DisplayPowerState;->mColorFade:Lcom/android/server/display/ScreenStateAnimator;
 
     if-eqz v0, :cond_0
 
-    invoke-virtual {v0, p1}, Lcom/android/server/display/ColorFade;->dump(Ljava/io/PrintWriter;)V
+    invoke-virtual {v0, p1}, Lcom/android/server/display/ScreenStateAnimator;->dump(Ljava/io/PrintWriter;)V
 
     :cond_0
     return-void
@@ -607,7 +607,7 @@
 .method public prepareColorFade(Landroid/content/Context;I)Z
     .locals 3
 
-    iget-object v0, p0, Lcom/android/server/display/DisplayPowerState;->mColorFade:Lcom/android/server/display/ColorFade;
+    iget-object v0, p0, Lcom/android/server/display/DisplayPowerState;->mColorFade:Lcom/android/server/display/ScreenStateAnimator;
 
     const/4 v1, 0x1
 
@@ -615,7 +615,7 @@
 
     if-eqz v0, :cond_1
 
-    invoke-virtual {v0, p1, p2}, Lcom/android/server/display/ColorFade;->prepare(Landroid/content/Context;I)Z
+    invoke-interface {v0, p1, p2}, Lcom/android/server/display/ScreenStateAnimator;->prepare(Landroid/content/Context;I)Z
 
     move-result v0
 
@@ -821,4 +821,37 @@
     const/4 v0, 0x0
 
     return v0
+.end method
+
+.method public setScreenStateAnimator(I)V
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/server/display/DisplayPowerState;->mColorFade:Lcom/android/server/display/ScreenStateAnimator;
+
+    if-eqz v0, :cond_0
+
+    invoke-interface {v0}, Lcom/android/server/display/ScreenStateAnimator;->dismiss()V
+
+    :cond_0
+    const/4 v0, 0x0
+
+    if-nez p1, :cond_1
+
+    new-instance p1, Lcom/android/server/display/ColorFade;
+
+    invoke-direct {p1, v0}, Lcom/android/server/display/ColorFade;-><init>(I)V
+
+    iput-object p1, p0, Lcom/android/server/display/DisplayPowerState;->mColorFade:Lcom/android/server/display/ScreenStateAnimator;
+
+    goto :goto_0
+
+    :cond_1
+    new-instance p1, Lcom/android/server/display/ElectronBeam;
+
+    invoke-direct {p1, v0}, Lcom/android/server/display/ElectronBeam;-><init>(I)V
+
+    iput-object p1, p0, Lcom/android/server/display/DisplayPowerState;->mColorFade:Lcom/android/server/display/ScreenStateAnimator;
+
+    :goto_0
+    return-void
 .end method
