@@ -538,72 +538,87 @@
     .registers 7
 
     .line 296
+    iget v0, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mStatus:I
+
+    sput v0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mPulseStatus:I
+
+    .line 297
+    iget-object v0, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mLightEffectContainer:Lcom/oneplus/aod/OpAodLightEffectContainer;
+
+    invoke-virtual {v0}, Lcom/oneplus/aod/OpAodLightEffectContainer;->resetNotificationAnimView()V
+
+    .line 298
+    iget-object v0, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mLightEffectContainer:Lcom/oneplus/aod/OpAodLightEffectContainer;
+
+    const/4 v1, 0x0
+
+    invoke-virtual {v0, v1}, Lcom/oneplus/aod/OpAodLightEffectContainer;->showLight(Z)V
+
+    .line 299
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "updateView: state = "
+    const-string v2, "updateView: state = "
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    iget v1, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mStatus:I
+    iget v2, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mStatus:I
 
-    invoke-direct {p0, v1}, Lcom/oneplus/aod/OpAodDisplayViewManager;->getStateString(I)Ljava/lang/String;
+    invoke-direct {p0, v2}, Lcom/oneplus/aod/OpAodDisplayViewManager;->getStateString(I)Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object v2
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-string v1, " mIsPlayFingerprintUnlockAnimation:"
+    const-string v2, " mIsPlayFingerprintUnlockAnimation:"
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    iget-boolean v1, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mIsPlayFingerprintUnlockAnimation:Z
+    iget-boolean v2, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mIsPlayFingerprintUnlockAnimation:Z
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
 
-    const-string v1, " mIsPress:"
+    const-string v2, " mIsPress:"
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    iget-boolean v1, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mIsPress:Z
+    iget-boolean v2, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mIsPress:Z
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
 
-    const-string v1, " mIsScreenTurnedOff:"
+    const-string v2, " mIsScreenTurnedOff:"
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    iget-boolean v1, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mIsScreenTurnedOff:Z
+    iget-boolean v2, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mIsScreenTurnedOff:Z
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
 
-    const-string v1, " mScreenTurnedOn: "
+    const-string v2, " mScreenTurnedOn: "
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    iget-boolean v1, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mScreenTurnedOn:Z
+    iget-boolean v2, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mScreenTurnedOn:Z
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v0
 
-    const-string v1, "AodDisplayViewManager"
+    const-string v2, "AodDisplayViewManager"
 
-    invoke-static {v1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v2, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 297
+    .line 300
     iget-boolean v0, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mIsScreenTurnedOff:Z
 
-    const/high16 v2, 0x3f800000    # 1.0f
-
-    const/4 v3, 0x0
+    const/high16 v3, 0x3f800000    # 1.0f
 
     const/4 v4, 0x4
 
-    if-eqz v0, :cond_11a
+    if-eqz v0, :cond_12f
 
     iget-object v0, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mKeyguardUpdateMonitor:Lcom/android/keyguard/KeyguardUpdateMonitor;
 
@@ -611,34 +626,34 @@
 
     move-result v0
 
-    if-eqz v0, :cond_5a
+    if-eqz v0, :cond_68
 
     iget-boolean v0, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mScreenTurnedOn:Z
 
-    if-nez v0, :cond_5a
+    if-nez v0, :cond_68
 
-    goto/16 :goto_11a
+    goto/16 :goto_12f
 
     .line 307
-    :cond_5a
+    :cond_68
     iget v0, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mStatus:I
 
-    if-nez v0, :cond_79
+    if-nez v0, :cond_87
 
     .line 308
     iget-object v0, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mScrimView:Landroid/view/View;
 
-    invoke-virtual {v0, v2}, Landroid/view/View;->setAlpha(F)V
+    invoke-virtual {v0, v3}, Landroid/view/View;->setAlpha(F)V
 
     .line 309
     iget-object v0, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mAodCanvas:Lcom/oneplus/aod/bg/OpAodCanvas;
 
-    invoke-virtual {v0, v3}, Lcom/oneplus/aod/bg/OpAodCanvas;->setVisibility(I)V
+    invoke-virtual {v0, v1}, Lcom/oneplus/aod/bg/OpAodCanvas;->setVisibility(I)V
 
     .line 310
     iget-object v0, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mAodMainView:Lcom/oneplus/aod/OpAodMain;
 
-    invoke-virtual {v0, v3}, Lcom/oneplus/aod/OpAodMain;->setVisibility(I)V
+    invoke-virtual {v0, v1}, Lcom/oneplus/aod/OpAodMain;->setVisibility(I)V
 
     .line 311
     iget-object v0, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mSingleNotificationView:Lcom/oneplus/aod/OpSingleNotificationView;
@@ -650,13 +665,13 @@
 
     invoke-virtual {v0, v4}, Lcom/oneplus/aod/OpAodThreeKeyStatusView;->setVisibility(I)V
 
-    goto/16 :goto_146
+    goto/16 :goto_14d
 
     .line 314
-    :cond_79
+    :cond_87
     iget-object v0, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mContainer:Landroid/view/ViewGroup;
 
-    invoke-virtual {v0, v3}, Landroid/view/ViewGroup;->setVisibility(I)V
+    invoke-virtual {v0, v1}, Landroid/view/ViewGroup;->setVisibility(I)V
 
     invoke-direct {p0}, Lcom/oneplus/aod/OpAodDisplayViewManager;->setScrimAlphaDependOnEnvironmentLight()V
 
@@ -665,74 +680,74 @@
 
     .line 317
     .local v0, "i":I
-    const/4 v1, 0x2
+    const/4 v2, 0x2
 
-    const/4 v2, 0x1
+    const/4 v3, 0x1
 
-    if-ne v0, v2, :cond_bf
+    if-ne v0, v3, :cond_cd
 
     .line 318
     invoke-static {}, Lcom/oneplus/aod/OpAodUtils;->isAlwaysOnEnabled()Z
 
     move-result v5
 
-    if-eqz v5, :cond_aa
+    if-eqz v5, :cond_b8
 
     invoke-static {}, Lcom/oneplus/aod/OpAodUtils;->isAlwaysOnEnabled()Z
 
     move-result v5
 
-    if-eqz v5, :cond_9f
+    if-eqz v5, :cond_ad
 
     invoke-static {}, Lcom/oneplus/aod/OpAodUtils;->isAlwaysOnEnabledWithTimer()Z
 
     move-result v5
 
-    if-eqz v5, :cond_9f
+    if-eqz v5, :cond_ad
 
-    goto :goto_aa
+    goto :goto_b8
 
     .line 322
-    :cond_9f
-    iget-object v5, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mAodCanvas:Lcom/oneplus/aod/bg/OpAodCanvas;
+    :cond_ad
+    iget-object v1, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mAodCanvas:Lcom/oneplus/aod/bg/OpAodCanvas;
 
-    invoke-virtual {v5, v4}, Lcom/oneplus/aod/bg/OpAodCanvas;->setVisibility(I)V
+    invoke-virtual {v1, v4}, Lcom/oneplus/aod/bg/OpAodCanvas;->setVisibility(I)V
 
     .line 323
-    iget-object v5, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mAodMainView:Lcom/oneplus/aod/OpAodMain;
+    iget-object v1, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mAodMainView:Lcom/oneplus/aod/OpAodMain;
 
-    invoke-virtual {v5, v4}, Lcom/oneplus/aod/OpAodMain;->setVisibility(I)V
+    invoke-virtual {v1, v4}, Lcom/oneplus/aod/OpAodMain;->setVisibility(I)V
 
-    goto :goto_b4
+    goto :goto_c2
 
     .line 319
-    :cond_aa
-    :goto_aa
+    :cond_b8
+    :goto_b8
     iget-object v5, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mAodCanvas:Lcom/oneplus/aod/bg/OpAodCanvas;
 
-    invoke-virtual {v5, v3}, Lcom/oneplus/aod/bg/OpAodCanvas;->setVisibility(I)V
+    invoke-virtual {v5, v1}, Lcom/oneplus/aod/bg/OpAodCanvas;->setVisibility(I)V
 
     .line 320
     iget-object v5, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mAodMainView:Lcom/oneplus/aod/OpAodMain;
 
-    invoke-virtual {v5, v3}, Lcom/oneplus/aod/OpAodMain;->setVisibility(I)V
+    invoke-virtual {v5, v1}, Lcom/oneplus/aod/OpAodMain;->setVisibility(I)V
 
     .line 325
-    :goto_b4
-    iget-object v5, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mSingleNotificationView:Lcom/oneplus/aod/OpSingleNotificationView;
+    :goto_c2
+    iget-object v1, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mSingleNotificationView:Lcom/oneplus/aod/OpSingleNotificationView;
 
-    invoke-virtual {v5, v4}, Lcom/oneplus/aod/OpSingleNotificationView;->setVisibility(I)V
+    invoke-virtual {v1, v4}, Lcom/oneplus/aod/OpSingleNotificationView;->setVisibility(I)V
 
     .line 326
-    iget-object v5, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mThreeKeyView:Lcom/oneplus/aod/OpAodThreeKeyStatusView;
+    iget-object v1, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mThreeKeyView:Lcom/oneplus/aod/OpAodThreeKeyStatusView;
 
-    invoke-virtual {v5, v4}, Lcom/oneplus/aod/OpAodThreeKeyStatusView;->setVisibility(I)V
+    invoke-virtual {v1, v4}, Lcom/oneplus/aod/OpAodThreeKeyStatusView;->setVisibility(I)V
 
-    goto :goto_ed
+    goto :goto_fb
 
     .line 327
-    :cond_bf
-    if-ne v0, v1, :cond_d6
+    :cond_cd
+    if-ne v0, v2, :cond_e4
 
     .line 328
     iget-object v5, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mAodCanvas:Lcom/oneplus/aod/bg/OpAodCanvas;
@@ -747,20 +762,20 @@
     .line 330
     iget-object v5, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mSingleNotificationView:Lcom/oneplus/aod/OpSingleNotificationView;
 
-    invoke-virtual {v5, v3}, Lcom/oneplus/aod/OpSingleNotificationView;->setVisibility(I)V
+    invoke-virtual {v5, v1}, Lcom/oneplus/aod/OpSingleNotificationView;->setVisibility(I)V
 
     .line 331
-    iget-object v5, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mThreeKeyView:Lcom/oneplus/aod/OpAodThreeKeyStatusView;
+    iget-object v1, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mThreeKeyView:Lcom/oneplus/aod/OpAodThreeKeyStatusView;
 
-    invoke-virtual {v5, v4}, Lcom/oneplus/aod/OpAodThreeKeyStatusView;->setVisibility(I)V
+    invoke-virtual {v1, v4}, Lcom/oneplus/aod/OpAodThreeKeyStatusView;->setVisibility(I)V
 
-    goto :goto_ed
+    goto :goto_fb
 
     .line 332
-    :cond_d6
+    :cond_e4
     const/4 v5, 0x3
 
-    if-ne v0, v5, :cond_ed
+    if-ne v0, v5, :cond_fb
 
     .line 333
     iget-object v5, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mAodCanvas:Lcom/oneplus/aod/bg/OpAodCanvas;
@@ -780,124 +795,109 @@
     .line 336
     iget-object v4, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mThreeKeyView:Lcom/oneplus/aod/OpAodThreeKeyStatusView;
 
-    invoke-virtual {v4, v3}, Lcom/oneplus/aod/OpAodThreeKeyStatusView;->setVisibility(I)V
+    invoke-virtual {v4, v1}, Lcom/oneplus/aod/OpAodThreeKeyStatusView;->setVisibility(I)V
 
     .line 338
-    :cond_ed
-    :goto_ed
+    :cond_fb
+    :goto_fb
     invoke-static {}, Lcom/oneplus/aod/OpAodUtils;->isNotificationLightEnabled()Z
 
-    move-result v4
+    move-result v1
 
-    if-nez v4, :cond_f4
+    if-nez v1, :cond_102
 
     .line 339
     return-void
 
     .line 342
-    :cond_f4
-    sget-boolean v4, Lcom/android/mwilky/Renovate;->mContinuousHorizonLights:Z
+    :cond_102
+    const-string v1, "mwilky"
 
-    sget-boolean v5, Lcom/oneplus/aod/OpAodNotificationIconAreaController;->mActiveNotifications:Z
-
-    and-int/2addr v4, v5
-
-    if-eqz v4, :cond_103
+    if-ne v0, v2, :cond_111
 
     .line 343
-    iget-object v1, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mLightEffectContainer:Lcom/oneplus/aod/OpAodLightEffectContainer;
+    const-string v2, "status = 2 so show lights"
 
-    invoke-virtual {v1, v2}, Lcom/oneplus/aod/OpAodLightEffectContainer;->showLight(Z)V
+    invoke-static {v1, v2}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 344
-    iput-boolean v3, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mShouldPlayLightEffect:Z
+    iget-object v1, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mLightEffectContainer:Lcom/oneplus/aod/OpAodLightEffectContainer;
+
+    invoke-virtual {v1, v3}, Lcom/oneplus/aod/OpAodLightEffectContainer;->showLight(Z)V
 
     .line 345
     return-void
 
+    .line 347
+    :cond_111
+    sget-boolean v2, Lcom/android/mwilky/Renovate;->mContinuousHorizonLights:Z
+
+    if-eqz v2, :cond_124
+
+    sget-boolean v2, Lcom/oneplus/aod/OpAodNotificationIconAreaController;->mActiveNotifications:Z
+
+    if-eqz v2, :cond_124
+
     .line 348
-    :cond_103
-    iget v4, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mStatus:I
+    const-string v2, "continuous and active so show lights"
 
-    if-ne v4, v1, :cond_114
-
-    iget-boolean v1, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mShouldPlayLightEffect:Z
-
-    if-nez v1, :cond_10c
-
-    goto :goto_114
-
-    .line 352
-    :cond_10c
-    iget-object v1, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mLightEffectContainer:Lcom/oneplus/aod/OpAodLightEffectContainer;
-
-    invoke-virtual {v1, v2}, Lcom/oneplus/aod/OpAodLightEffectContainer;->showLight(Z)V
-
-    .line 353
-    iput-boolean v3, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mShouldPlayLightEffect:Z
-
-    goto :goto_146
+    invoke-static {v1, v2}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 349
-    :cond_114
-    :goto_114
+    iget-object v1, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mLightEffectContainer:Lcom/oneplus/aod/OpAodLightEffectContainer;
+
+    invoke-virtual {v1, v3}, Lcom/oneplus/aod/OpAodLightEffectContainer;->showLight(Z)V
+
+    goto :goto_14d
+
+    .line 351
+    :cond_124
+    const-string v2, "reset view"
+
+    invoke-static {v1, v2}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 352
     iget-object v1, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mLightEffectContainer:Lcom/oneplus/aod/OpAodLightEffectContainer;
 
     invoke-virtual {v1}, Lcom/oneplus/aod/OpAodLightEffectContainer;->resetNotificationAnimView()V
 
-    .line 350
-    return-void
+    goto :goto_14d
 
-    .line 298
+    .line 301
     .end local v0    # "i":I
-    :cond_11a
-    :goto_11a
+    :cond_12f
+    :goto_12f
     const-string v0, "screen is not turned off yet."
 
-    invoke-static {v1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v2, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 299
+    .line 302
     iget-object v0, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mScrimView:Landroid/view/View;
 
-    invoke-virtual {v0, v2}, Landroid/view/View;->setAlpha(F)V
+    invoke-virtual {v0, v3}, Landroid/view/View;->setAlpha(F)V
 
-    .line 300
+    .line 303
     iget-object v0, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mAodCanvas:Lcom/oneplus/aod/bg/OpAodCanvas;
 
     invoke-virtual {v0, v4}, Lcom/oneplus/aod/bg/OpAodCanvas;->setVisibility(I)V
 
-    .line 301
+    .line 304
     iget-object v0, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mAodMainView:Lcom/oneplus/aod/OpAodMain;
 
     invoke-virtual {v0, v4}, Lcom/oneplus/aod/OpAodMain;->setVisibility(I)V
 
-    .line 302
+    .line 305
     iget-object v0, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mSingleNotificationView:Lcom/oneplus/aod/OpSingleNotificationView;
 
     invoke-virtual {v0, v4}, Lcom/oneplus/aod/OpSingleNotificationView;->setVisibility(I)V
 
-    .line 303
+    .line 306
     iget-object v0, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mThreeKeyView:Lcom/oneplus/aod/OpAodThreeKeyStatusView;
 
     invoke-virtual {v0, v4}, Lcom/oneplus/aod/OpAodThreeKeyStatusView;->setVisibility(I)V
 
-    .line 304
-    iget v0, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mStatus:I
-
-    sput v0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mPulseStatus:I
-
-    .line 305
-    iget-object v0, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mLightEffectContainer:Lcom/oneplus/aod/OpAodLightEffectContainer;
-
-    invoke-virtual {v0}, Lcom/oneplus/aod/OpAodLightEffectContainer;->resetNotificationAnimView()V
-
-    .line 306
-    iget-object v0, p0, Lcom/oneplus/aod/OpAodDisplayViewManager;->mLightEffectContainer:Lcom/oneplus/aod/OpAodLightEffectContainer;
-
-    invoke-virtual {v0, v3}, Lcom/oneplus/aod/OpAodLightEffectContainer;->showLight(Z)V
-
     .line 355
-    :goto_146
+    :goto_14d
     return-void
 .end method
 
