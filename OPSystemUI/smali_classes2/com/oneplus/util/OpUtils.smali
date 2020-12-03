@@ -3542,31 +3542,72 @@
 .end method
 
 .method public static isSupportREDCharging()Z
-    .locals 2
+    .registers 5
 
-    new-instance v0, Ljava/lang/StringBuilder;
+    .line 56
+    sget-object v0, Lcom/oneplus/custom/utils/OpCustomizeSettings$CUSTOM_TYPE;->RED:Lcom/oneplus/custom/utils/OpCustomizeSettings$CUSTOM_TYPE;
 
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-static {}, Lcom/oneplus/custom/utils/OpCustomizeSettings;->getCustomType()Lcom/oneplus/custom/utils/OpCustomizeSettings$CUSTOM_TYPE;
 
-    const-string v1, "isSupportREDCharging:"
+    move-result-object v1
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v1}, Lcom/oneplus/custom/utils/OpCustomizeSettings$CUSTOM_TYPE;->equals(Ljava/lang/Object;)Z
 
-    sget-boolean v1, Lcom/oneplus/util/OpUtils;->sIsREDCustomType:Z
+    move-result v0
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+    .line 57
+    .local v0, "equals":Z
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    move-result-object v0
+    const-string v2, "isSupportREDCharging:"
 
-    const-string v1, "OpUtils"
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-static {v1, v0}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
 
-    sget-boolean v0, Lcom/oneplus/util/OpUtils;->sIsREDCustomType:Z
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    return v0
+    move-result-object v1
+
+    const-string v2, "OpUtils"
+
+    invoke-static {v2, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 58
+    const-string v1, "oem_special_theme"
+
+    const/4 v2, 0x0
+
+    invoke-static {v1, v2}, Lcom/android/wubydax/GearUtils;->getDbIntForKey(Ljava/lang/String;I)I
+
+    move-result v1
+
+    .line 59
+    .local v1, "specialTheme":I
+    const/4 v3, 0x1
+
+    if-ne v1, v3, :cond_2c
+
+    move v4, v3
+
+    goto :goto_2d
+
+    :cond_2c
+    move v4, v2
+
+    :goto_2d
+    and-int/2addr v4, v0
+
+    if-eqz v4, :cond_31
+
+    .line 61
+    return v3
+
+    .line 64
+    :cond_31
+    return v2
 .end method
 
 .method public static isSupportRefreshRateSwitch()Z
