@@ -23,8 +23,6 @@
 
 
 # static fields
-.field private mScreenOffAnimation:I
-
 .field static final synthetic $assertionsDisabled:Z = false
 
 .field private static final ADFR_ENABLED:Z
@@ -137,6 +135,8 @@
 
 
 # instance fields
+.field private mScreenOffAnimation:I
+
 .field private final BRIGHTNESS_STATICS_NITS:F
 
 .field private mAdjustBrightnessInterval:F
@@ -2661,15 +2661,18 @@
 .end method
 
 .method private animateScreenStateChange(IZ)V
-    .locals 7
+    .registers 9
+    .param p1, "target"    # I
+    .param p2, "performScreenOffTransition"    # Z
 
+    .line 79
     iget-boolean v0, p0, Lcom/android/server/display/DisplayPowerController;->mColorFadeEnabled:Z
 
     const/4 v1, 0x0
 
     const/4 v2, 0x2
 
-    if-eqz v0, :cond_2
+    if-eqz v0, :cond_1c
 
     iget-object v0, p0, Lcom/android/server/display/DisplayPowerController;->mColorFadeOnAnimator:Landroid/animation/ObjectAnimator;
 
@@ -2677,7 +2680,7 @@
 
     move-result v0
 
-    if-nez v0, :cond_0
+    if-nez v0, :cond_16
 
     iget-object v0, p0, Lcom/android/server/display/DisplayPowerController;->mColorFadeOffAnimator:Landroid/animation/ObjectAnimator;
 
@@ -2685,22 +2688,29 @@
 
     move-result v0
 
-    if-eqz v0, :cond_2
+    if-eqz v0, :cond_1c
 
-    :cond_0
-    if-eq p1, v2, :cond_1
+    .line 80
+    :cond_16
+    if-ne p1, v2, :cond_1b
 
-    return-void
-
-    :cond_1
+    .line 81
     iput-boolean v1, p0, Lcom/android/server/display/DisplayPowerController;->mPendingScreenOff:Z
 
-    :cond_2
+    goto :goto_1c
+
+    .line 83
+    :cond_1b
+    return-void
+
+    .line 86
+    :cond_1c
+    :goto_1c
     iget-boolean v0, p0, Lcom/android/server/display/DisplayPowerController;->mDisplayBlanksAfterDozeConfig:Z
 
     const/4 v3, 0x1
 
-    if-eqz v0, :cond_6
+    if-eqz v0, :cond_48
 
     iget-object v0, p0, Lcom/android/server/display/DisplayPowerController;->mPowerState:Lcom/android/server/display/DisplayPowerState;
 
@@ -2712,14 +2722,15 @@
 
     move-result v0
 
-    if-eqz v0, :cond_6
+    if-eqz v0, :cond_48
 
     invoke-static {p1}, Landroid/view/Display;->isDozeState(I)Z
 
     move-result v0
 
-    if-nez v0, :cond_6
+    if-nez v0, :cond_48
 
+    .line 87
     iget-object v0, p0, Lcom/android/server/display/DisplayPowerController;->mPowerState:Lcom/android/server/display/DisplayPowerState;
 
     iget-object v4, p0, Lcom/android/server/display/DisplayPowerController;->mContext:Landroid/content/Context;
@@ -2730,76 +2741,79 @@
 
     invoke-virtual {v0, v4, v5}, Lcom/android/server/display/DisplayPowerState;->prepareColorFade(Landroid/content/Context;I)Z
 
+    .line 88
     iget-object v0, p0, Lcom/android/server/display/DisplayPowerController;->mColorFadeOffAnimator:Landroid/animation/ObjectAnimator;
 
-    if-eqz v0, :cond_4
+    .line 89
+    .local v0, "objectAnimator":Landroid/animation/ObjectAnimator;
+    if-eqz v0, :cond_45
 
+    .line 90
     invoke-virtual {v0}, Landroid/animation/ObjectAnimator;->end()V
 
-    :cond_4
-    if-eq p1, v3, :cond_5
-
-    move v0, v3
-
-    goto :goto_1
-
-    :cond_5
-    move v0, v1
-
-    :goto_1
-    invoke-direct {p0, v3, v0}, Lcom/android/server/display/DisplayPowerController;->setScreenState(IZ)Z
-
-    :cond_6
-    iget-boolean v0, p0, Lcom/android/server/display/DisplayPowerController;->mPendingScreenOff:Z
-
-    if-eqz v0, :cond_7
-
-    if-eq p1, v3, :cond_7
-
+    .line 92
+    :cond_45
     invoke-direct {p0, v3}, Lcom/android/server/display/DisplayPowerController;->setScreenState(I)Z
 
+    .line 94
+    .end local v0    # "objectAnimator":Landroid/animation/ObjectAnimator;
+    :cond_48
+    iget-boolean v0, p0, Lcom/android/server/display/DisplayPowerController;->mPendingScreenOff:Z
+
+    if-eqz v0, :cond_58
+
+    if-eq p1, v3, :cond_58
+
+    .line 95
+    invoke-direct {p0, v3}, Lcom/android/server/display/DisplayPowerController;->setScreenState(I)Z
+
+    .line 96
     iput-boolean v1, p0, Lcom/android/server/display/DisplayPowerController;->mPendingScreenOff:Z
 
+    .line 97
     iget-object v0, p0, Lcom/android/server/display/DisplayPowerController;->mPowerState:Lcom/android/server/display/DisplayPowerState;
 
     invoke-virtual {v0}, Lcom/android/server/display/DisplayPowerState;->dismissColorFadeResources()V
 
-    :cond_7
+    .line 99
+    :cond_58
     const/high16 v0, 0x3f800000    # 1.0f
 
-    if-ne p1, v2, :cond_9
+    if-ne p1, v2, :cond_6e
 
+    .line 100
     invoke-direct {p0, v2}, Lcom/android/server/display/DisplayPowerController;->setScreenState(I)Z
 
     move-result v1
 
-    if-nez v1, :cond_8
+    if-eqz v1, :cond_15e
 
-    return-void
-
-    :cond_8
+    .line 101
     iget-object v1, p0, Lcom/android/server/display/DisplayPowerController;->mPowerState:Lcom/android/server/display/DisplayPowerState;
 
     invoke-virtual {v1, v0}, Lcom/android/server/display/DisplayPowerState;->setColorFadeLevel(F)V
 
+    .line 102
     iget-object v0, p0, Lcom/android/server/display/DisplayPowerController;->mPowerState:Lcom/android/server/display/DisplayPowerState;
 
     invoke-virtual {v0}, Lcom/android/server/display/DisplayPowerState;->dismissColorFade()V
 
-    goto/16 :goto_3
+    goto/16 :goto_15e
 
-    :cond_9
+    .line 104
+    :cond_6e
     const/4 v4, 0x5
 
-    if-ne p1, v4, :cond_c
+    if-ne p1, v4, :cond_93
 
+    .line 105
     iget-object v1, p0, Lcom/android/server/display/DisplayPowerController;->mScreenBrightnessRampAnimator:Lcom/android/server/display/RampAnimator;
 
     invoke-virtual {v1}, Lcom/android/server/display/RampAnimator;->isAnimating()Z
 
     move-result v1
 
-    if-eqz v1, :cond_a
+    if-eqz v1, :cond_81
 
     iget-object v1, p0, Lcom/android/server/display/DisplayPowerController;->mPowerState:Lcom/android/server/display/DisplayPowerState;
 
@@ -2807,42 +2821,41 @@
 
     move-result v1
 
-    if-ne v1, v2, :cond_a
+    if-eq v1, v2, :cond_15e
 
-    return-void
-
-    :cond_a
+    :cond_81
     invoke-direct {p0, v4}, Lcom/android/server/display/DisplayPowerController;->setScreenState(I)Z
 
     move-result v1
 
-    if-nez v1, :cond_b
+    if-eqz v1, :cond_15e
 
-    return-void
-
-    :cond_b
+    .line 106
     iget-object v1, p0, Lcom/android/server/display/DisplayPowerController;->mPowerState:Lcom/android/server/display/DisplayPowerState;
 
     invoke-virtual {v1, v0}, Lcom/android/server/display/DisplayPowerState;->setColorFadeLevel(F)V
 
+    .line 107
     iget-object v0, p0, Lcom/android/server/display/DisplayPowerController;->mPowerState:Lcom/android/server/display/DisplayPowerState;
 
     invoke-virtual {v0}, Lcom/android/server/display/DisplayPowerState;->dismissColorFade()V
 
-    goto/16 :goto_3
+    goto/16 :goto_15e
 
-    :cond_c
+    .line 109
+    :cond_93
     const/4 v4, 0x3
 
-    if-ne p1, v4, :cond_f
+    if-ne p1, v4, :cond_b8
 
+    .line 110
     iget-object v1, p0, Lcom/android/server/display/DisplayPowerController;->mScreenBrightnessRampAnimator:Lcom/android/server/display/RampAnimator;
 
     invoke-virtual {v1}, Lcom/android/server/display/RampAnimator;->isAnimating()Z
 
     move-result v1
 
-    if-eqz v1, :cond_d
+    if-eqz v1, :cond_a6
 
     iget-object v1, p0, Lcom/android/server/display/DisplayPowerController;->mPowerState:Lcom/android/server/display/DisplayPowerState;
 
@@ -2850,42 +2863,41 @@
 
     move-result v1
 
-    if-ne v1, v2, :cond_d
+    if-eq v1, v2, :cond_15e
 
-    return-void
-
-    :cond_d
+    :cond_a6
     invoke-direct {p0, v4}, Lcom/android/server/display/DisplayPowerController;->setScreenState(I)Z
 
     move-result v1
 
-    if-nez v1, :cond_e
+    if-eqz v1, :cond_15e
 
-    return-void
-
-    :cond_e
+    .line 111
     iget-object v1, p0, Lcom/android/server/display/DisplayPowerController;->mPowerState:Lcom/android/server/display/DisplayPowerState;
 
     invoke-virtual {v1, v0}, Lcom/android/server/display/DisplayPowerState;->setColorFadeLevel(F)V
 
+    .line 112
     iget-object v0, p0, Lcom/android/server/display/DisplayPowerController;->mPowerState:Lcom/android/server/display/DisplayPowerState;
 
     invoke-virtual {v0}, Lcom/android/server/display/DisplayPowerState;->dismissColorFade()V
 
-    goto/16 :goto_3
+    goto/16 :goto_15e
 
-    :cond_f
+    .line 114
+    :cond_b8
     const/4 v5, 0x4
 
-    if-ne p1, v5, :cond_13
+    if-ne p1, v5, :cond_ea
 
+    .line 115
     iget-object v1, p0, Lcom/android/server/display/DisplayPowerController;->mScreenBrightnessRampAnimator:Lcom/android/server/display/RampAnimator;
 
     invoke-virtual {v1}, Lcom/android/server/display/RampAnimator;->isAnimating()Z
 
     move-result v1
 
-    if-eqz v1, :cond_10
+    if-eqz v1, :cond_cb
 
     iget-object v1, p0, Lcom/android/server/display/DisplayPowerController;->mPowerState:Lcom/android/server/display/DisplayPowerState;
 
@@ -2893,166 +2905,207 @@
 
     move-result v1
 
-    if-eq v1, v5, :cond_10
+    if-ne v1, v5, :cond_15e
 
-    return-void
-
-    :cond_10
+    .line 116
+    :cond_cb
     iget-object v1, p0, Lcom/android/server/display/DisplayPowerController;->mPowerState:Lcom/android/server/display/DisplayPowerState;
 
     invoke-virtual {v1}, Lcom/android/server/display/DisplayPowerState;->getScreenState()I
 
     move-result v1
 
-    if-eq v1, v5, :cond_12
+    if-eq v1, v5, :cond_de
 
+    .line 117
     invoke-direct {p0, v4}, Lcom/android/server/display/DisplayPowerController;->setScreenState(I)Z
 
     move-result v1
 
-    if-nez v1, :cond_11
+    if-eqz v1, :cond_dd
 
-    return-void
-
-    :cond_11
+    .line 118
     invoke-direct {p0, v5}, Lcom/android/server/display/DisplayPowerController;->setScreenState(I)Z
 
-    :cond_12
+    goto :goto_de
+
+    .line 120
+    :cond_dd
+    return-void
+
+    .line 123
+    :cond_de
+    :goto_de
     iget-object v1, p0, Lcom/android/server/display/DisplayPowerController;->mPowerState:Lcom/android/server/display/DisplayPowerState;
 
     invoke-virtual {v1, v0}, Lcom/android/server/display/DisplayPowerState;->setColorFadeLevel(F)V
 
+    .line 124
     iget-object v0, p0, Lcom/android/server/display/DisplayPowerController;->mPowerState:Lcom/android/server/display/DisplayPowerState;
 
     invoke-virtual {v0}, Lcom/android/server/display/DisplayPowerState;->dismissColorFade()V
 
-    goto/16 :goto_3
+    goto/16 :goto_15e
 
-    :cond_13
+    .line 126
+    :cond_ea
     const/4 v4, 0x6
 
-    if-ne p1, v4, :cond_17
+    if-eq p1, v4, :cond_131
 
-    iget-object v1, p0, Lcom/android/server/display/DisplayPowerController;->mScreenBrightnessRampAnimator:Lcom/android/server/display/RampAnimator;
-
-    invoke-virtual {v1}, Lcom/android/server/display/RampAnimator;->isAnimating()Z
-
-    move-result v1
-
-    if-eqz v1, :cond_14
-
-    iget-object v1, p0, Lcom/android/server/display/DisplayPowerController;->mPowerState:Lcom/android/server/display/DisplayPowerState;
-
-    invoke-virtual {v1}, Lcom/android/server/display/DisplayPowerState;->getScreenState()I
-
-    move-result v1
-
-    if-eq v1, v4, :cond_14
-
-    return-void
-
-    :cond_14
-    iget-object v1, p0, Lcom/android/server/display/DisplayPowerController;->mPowerState:Lcom/android/server/display/DisplayPowerState;
-
-    invoke-virtual {v1}, Lcom/android/server/display/DisplayPowerState;->getScreenState()I
-
-    move-result v1
-
-    if-eq v1, v4, :cond_16
-
-    invoke-direct {p0, v2}, Lcom/android/server/display/DisplayPowerController;->setScreenState(I)Z
-
-    move-result v1
-
-    if-nez v1, :cond_15
-
-    return-void
-
-    :cond_15
-    invoke-direct {p0, v4}, Lcom/android/server/display/DisplayPowerController;->setScreenState(I)Z
-
-    :cond_16
-    iget-object v1, p0, Lcom/android/server/display/DisplayPowerController;->mPowerState:Lcom/android/server/display/DisplayPowerState;
-
-    invoke-virtual {v1, v0}, Lcom/android/server/display/DisplayPowerState;->setColorFadeLevel(F)V
-
-    iget-object v0, p0, Lcom/android/server/display/DisplayPowerController;->mPowerState:Lcom/android/server/display/DisplayPowerState;
-
-    invoke-virtual {v0}, Lcom/android/server/display/DisplayPowerState;->dismissColorFade()V
-
-    goto :goto_3
-
-    :cond_17
+    .line 127
     iput-boolean v3, p0, Lcom/android/server/display/DisplayPowerController;->mPendingScreenOff:Z
 
+    .line 128
     iget-boolean v0, p0, Lcom/android/server/display/DisplayPowerController;->mColorFadeEnabled:Z
 
-    const/4 v4, 0x0
+    const/4 v2, 0x0
 
-    if-nez v0, :cond_18
+    if-nez v0, :cond_f9
 
+    .line 129
     iget-object v0, p0, Lcom/android/server/display/DisplayPowerController;->mPowerState:Lcom/android/server/display/DisplayPowerState;
 
-    invoke-virtual {v0, v4}, Lcom/android/server/display/DisplayPowerState;->setColorFadeLevel(F)V
+    invoke-virtual {v0, v2}, Lcom/android/server/display/DisplayPowerState;->setColorFadeLevel(F)V
 
-    :cond_18
+    .line 131
+    :cond_f9
     iget-object v0, p0, Lcom/android/server/display/DisplayPowerController;->mPowerState:Lcom/android/server/display/DisplayPowerState;
 
     invoke-virtual {v0}, Lcom/android/server/display/DisplayPowerState;->getColorFadeLevel()F
 
     move-result v0
 
-    cmpl-float v0, v0, v4
+    cmpl-float v0, v0, v2
 
-    if-nez v0, :cond_19
+    if-nez v0, :cond_10e
 
+    .line 132
     invoke-direct {p0, v3}, Lcom/android/server/display/DisplayPowerController;->setScreenState(I)Z
 
+    .line 133
     iput-boolean v1, p0, Lcom/android/server/display/DisplayPowerController;->mPendingScreenOff:Z
 
+    .line 134
     iget-object v0, p0, Lcom/android/server/display/DisplayPowerController;->mPowerState:Lcom/android/server/display/DisplayPowerState;
 
     invoke-virtual {v0}, Lcom/android/server/display/DisplayPowerState;->dismissColorFadeResources()V
 
-    goto :goto_3
+    .line 135
+    return-void
 
-    :cond_19
-    if-eqz p2, :cond_1b
+    .line 137
+    :cond_10e
+    if-ne p1, v3, :cond_115
 
+    .line 138
+    iget v0, p0, Lcom/android/server/display/DisplayPowerController;->mScreenOffAnimation:I
+
+    if-eqz v0, :cond_115
+
+    .line 139
+    const/4 p2, 0x1
+
+    .line 142
+    :cond_115
+    if-eqz p2, :cond_12b
+
+    .line 143
     iget-object v0, p0, Lcom/android/server/display/DisplayPowerController;->mPowerState:Lcom/android/server/display/DisplayPowerState;
 
+    .line 144
+    .local v0, "displayPowerState":Lcom/android/server/display/DisplayPowerState;
     iget-object v1, p0, Lcom/android/server/display/DisplayPowerController;->mContext:Landroid/content/Context;
 
+    .line 145
+    .local v1, "context":Landroid/content/Context;
     invoke-direct {p0, v3}, Lcom/android/server/display/DisplayPowerController;->getScreenAnimationModeForDisplayState(I)I
 
-	move-result v6
+    move-result v2
 
-    invoke-virtual {v0, v1, v6}, Lcom/android/server/display/DisplayPowerState;->prepareColorFade(Landroid/content/Context;I)Z
+    invoke-virtual {v0, v1, v2}, Lcom/android/server/display/DisplayPowerState;->prepareColorFade(Landroid/content/Context;I)Z
 
-    move-result v0
+    move-result v2
 
-    if-eqz v0, :cond_1b
+    if-eqz v2, :cond_12b
 
-    iget-object v0, p0, Lcom/android/server/display/DisplayPowerController;->mPowerState:Lcom/android/server/display/DisplayPowerState;
+    .line 146
+    iget-object v2, p0, Lcom/android/server/display/DisplayPowerController;->mColorFadeOffAnimator:Landroid/animation/ObjectAnimator;
 
-    invoke-virtual {v0}, Lcom/android/server/display/DisplayPowerState;->getScreenState()I
+    invoke-virtual {v2}, Landroid/animation/ObjectAnimator;->start()V
 
-    move-result v0
+    .line 147
+    return-void
 
-    if-eq v0, v3, :cond_1b
-
-    iget-object v0, p0, Lcom/android/server/display/DisplayPowerController;->mColorFadeOffAnimator:Landroid/animation/ObjectAnimator;
-
-    invoke-virtual {v0}, Landroid/animation/ObjectAnimator;->start()V
-
-    goto :goto_3
-
-    :cond_1b
+    .line 150
+    .end local v0    # "displayPowerState":Lcom/android/server/display/DisplayPowerState;
+    .end local v1    # "context":Landroid/content/Context;
+    :cond_12b
     iget-object v0, p0, Lcom/android/server/display/DisplayPowerController;->mColorFadeOffAnimator:Landroid/animation/ObjectAnimator;
 
     invoke-virtual {v0}, Landroid/animation/ObjectAnimator;->end()V
 
-    :goto_3
+    goto :goto_15e
+
+    .line 151
+    :cond_131
+    iget-object v1, p0, Lcom/android/server/display/DisplayPowerController;->mScreenBrightnessRampAnimator:Lcom/android/server/display/RampAnimator;
+
+    invoke-virtual {v1}, Lcom/android/server/display/RampAnimator;->isAnimating()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_141
+
+    iget-object v1, p0, Lcom/android/server/display/DisplayPowerController;->mPowerState:Lcom/android/server/display/DisplayPowerState;
+
+    invoke-virtual {v1}, Lcom/android/server/display/DisplayPowerState;->getScreenState()I
+
+    move-result v1
+
+    if-ne v1, v4, :cond_15e
+
+    .line 152
+    :cond_141
+    iget-object v1, p0, Lcom/android/server/display/DisplayPowerController;->mPowerState:Lcom/android/server/display/DisplayPowerState;
+
+    invoke-virtual {v1}, Lcom/android/server/display/DisplayPowerState;->getScreenState()I
+
+    move-result v1
+
+    if-eq v1, v4, :cond_154
+
+    .line 153
+    invoke-direct {p0, v2}, Lcom/android/server/display/DisplayPowerController;->setScreenState(I)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_153
+
+    .line 154
+    invoke-direct {p0, v4}, Lcom/android/server/display/DisplayPowerController;->setScreenState(I)Z
+
+    goto :goto_154
+
+    .line 156
+    :cond_153
+    return-void
+
+    .line 159
+    :cond_154
+    :goto_154
+    iget-object v1, p0, Lcom/android/server/display/DisplayPowerController;->mPowerState:Lcom/android/server/display/DisplayPowerState;
+
+    invoke-virtual {v1, v0}, Lcom/android/server/display/DisplayPowerState;->setColorFadeLevel(F)V
+
+    .line 160
+    iget-object v0, p0, Lcom/android/server/display/DisplayPowerController;->mPowerState:Lcom/android/server/display/DisplayPowerState;
+
+    invoke-virtual {v0}, Lcom/android/server/display/DisplayPowerState;->dismissColorFade()V
+
+    .line 162
+    :cond_15e
+    :goto_15e
     return-void
 .end method
 
@@ -10684,41 +10737,45 @@
 .end method
 
 .method private getScreenAnimationModeForDisplayState(I)I
-    .locals 3
+    .registers 5
+    .param p1, "displayState"    # I
 
+    .line 47
     iget v0, p0, Lcom/android/server/display/DisplayPowerController;->mScreenOffAnimation:I
 
     const/4 v1, 0x2
 
-    if-eqz v0, :cond_4
-
     const/4 v2, 0x1
 
-    if-eq v0, v2, :cond_2
+    if-eq v0, v2, :cond_e
 
-    if-eq v0, v1, :cond_0
+    if-eq v0, v1, :cond_9
 
+    .line 73
     return v1
 
-    :cond_0
-    if-ne p1, v2, :cond_1
+    .line 65
+    :cond_9
+    if-ne p1, v2, :cond_d
 
-    const/4 p1, 0x3
+    .line 67
+    const/4 v0, 0x3
 
-    return p1
+    return v0
 
-    :cond_1
+    .line 70
+    :cond_d
     return v1
 
-    :cond_2
-    if-ne p1, v2, :cond_3
+    .line 52
+    :cond_e
+    if-ne p1, v2, :cond_11
 
+    .line 54
     return v2
 
-    :cond_3
-    return v1
-
-    :cond_4
+    .line 61
+    :cond_11
     return v1
 .end method
 
