@@ -76,37 +76,11 @@
 
     iget-object v1, p0, Lcom/oneplus/systemui/qs/OpQSWidgetAdapter$WidgetViewHolder;->mRootView:Landroid/view/View;
 
-    invoke-static {}, Lcom/oneplus/util/ThemeColorUtils;->getCurrentTheme()I
-
-    move-result p1
-
-    if-nez p1, :cond_0
-
-    sget p1, Lcom/android/systemui/R$drawable;->op_qs_widget_bg_light:I
-
-    goto :goto_0
-
-    :cond_0
-    invoke-static {}, Lcom/oneplus/util/OpUtils;->isREDVersion()Z
-
-    move-result p1
-
-    if-eqz p1, :cond_1
-
     sget p1, Lcom/android/systemui/R$drawable;->op_qs_red_all:I
-
-    sget-boolean v0, Lcom/android/mwilky/Renovate;->mUnlockQsColors:Z
-    
-    if-eqz v0, :cond_1
     
     invoke-virtual {v1, p1}, Landroid/view/View;->setBackgroundResource(I)V
 
-    invoke-virtual {p0}, Lcom/oneplus/systemui/qs/OpQSWidgetAdapter$WidgetViewHolder;->updateColorForCyberpunk()V
-    
-    return-void
-
-    :cond_1
-    sget p1, Lcom/android/systemui/R$drawable;->op_qs_widget_bg_dark:I
+    invoke-virtual {p0}, Lcom/oneplus/systemui/qs/OpQSWidgetAdapter$WidgetViewHolder;->updateQsPanel()V
 
     :goto_0
     invoke-virtual {v1, p1}, Landroid/view/View;->setBackgroundResource(I)V
@@ -152,8 +126,8 @@
     return-void
 .end method
 
-.method public updateColorForCyberpunk()V
-    .registers 3
+.method public updateQsPanel()V
+    .registers 4
 
     .line 18
     iget-object v0, p0, Lcom/oneplus/systemui/qs/OpQSWidgetAdapter$WidgetViewHolder;->mRootView:Landroid/view/View;
@@ -166,14 +140,21 @@
 
     .line 19
     .local v0, "shape":Landroid/graphics/drawable/GradientDrawable;
-    if-eqz v0, :cond_f
+    if-eqz v0, :cond_16
 
     .line 20
     sget v1, Lcom/android/mwilky/Renovate;->mQsBackgroundColor:I
 
     invoke-virtual {v0, v1}, Landroid/graphics/drawable/GradientDrawable;->setColor(I)V
 
-    .line 22
-    :cond_f
+    .line 21
+    sget v1, Lcom/android/mwilky/Renovate;->mQsOutlineWidth:I
+
+    sget v2, Lcom/android/mwilky/Renovate;->mQsOutlineColor:I
+
+    invoke-virtual {v0, v1, v2}, Landroid/graphics/drawable/GradientDrawable;->setStroke(II)V
+
+    .line 23
+    :cond_16
     return-void
 .end method

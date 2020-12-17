@@ -486,8 +486,33 @@
 
     move-result v0
 
-    if-eqz v0, :cond_1
+    if-eqz v0, :cond_0
 
+    sget v0, Lcom/android/systemui/R$id;->op_qs_drag_handle:I
+
+    invoke-virtual {p0, v0}, Landroid/widget/FrameLayout;->findViewById(I)Landroid/view/View;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_0
+
+    invoke-virtual {p0}, Landroid/widget/FrameLayout;->getContext()Landroid/content/Context;
+
+    move-result-object v2
+
+    sget v1, Lcom/android/systemui/R$color;->op_turquoise:I
+
+    invoke-virtual {v2, v1}, Landroid/content/Context;->getColor(I)I
+
+    move-result v2
+
+    invoke-static {v2}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
+
+    move-result-object v2
+
+    invoke-virtual {v0, v2}, Landroid/view/View;->setBackgroundTintList(Landroid/content/res/ColorStateList;)V
+
+    :cond_0
     iget-object v0, p0, Lcom/android/systemui/qs/QSContainerImpl;->mBackground:Landroid/view/View;
 
     invoke-virtual {v0}, Landroid/view/View;->getTop()I
@@ -509,62 +534,8 @@
     iget v1, p0, Lcom/android/systemui/qs/QSContainerImpl;->mBackgroundBottom:I
 
     invoke-virtual {v0, v1}, Landroid/view/View;->setBottom(I)V
-    
-    sget-boolean v1, Lcom/android/mwilky/Renovate;->mUnlockQsColors:Z
-    
-    if-eqz v1, :cond_stockcb
 
-    invoke-virtual {p0}, Lcom/android/systemui/qs/QSContainerImpl;->updateColorForCyberpunk()V
-
-    :cond_stockcb
-    sget v0, Lcom/android/systemui/R$id;->op_qs_drag_handle:I
-
-    invoke-virtual {p0, v0}, Landroid/widget/FrameLayout;->findViewById(I)Landroid/view/View;
-
-    move-result-object v0
-
-    if-eqz v0, :cond_0
-
-    invoke-virtual {p0}, Landroid/widget/FrameLayout;->getContext()Landroid/content/Context;
-
-    move-result-object p0
-
-    sget v1, Lcom/android/systemui/R$color;->op_turquoise:I
-
-    invoke-virtual {p0, v1}, Landroid/content/Context;->getColor(I)I
-
-    move-result p0
-
-    invoke-static {p0}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
-
-    move-result-object p0
-
-    invoke-virtual {v0, p0}, Landroid/view/View;->setBackgroundTintList(Landroid/content/res/ColorStateList;)V
-
-    :cond_0
-    return-void
-
-    :cond_1
-    const/16 v0, 0x9
-
-    invoke-static {v0}, Lcom/oneplus/util/ThemeColorUtils;->getColor(I)I
-
-    move-result v0
-    
-    sget-boolean v1, Lcom/android/mwilky/Renovate;->mUnlockQsColors:Z
-    
-    if-eqz v1, :cond_stock
-
-    sget v0, Lcom/android/mwilky/Renovate;->mQsBackgroundColor:I
-
-    :cond_stock
-    iget-object p0, p0, Lcom/android/systemui/qs/QSContainerImpl;->mBackground:Landroid/view/View;
-
-    invoke-static {v0}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
-
-    move-result-object v0
-
-    invoke-virtual {p0, v0}, Landroid/view/View;->setBackgroundTintList(Landroid/content/res/ColorStateList;)V
+    invoke-virtual {p0}, Lcom/android/systemui/qs/QSContainerImpl;->updateQsPanel()V
 
     return-void
 .end method
@@ -1153,8 +1124,8 @@
     return-void
 .end method
 
-.method public updateColorForCyberpunk()V
-    .registers 3
+.method public updateQsPanel()V
+    .registers 4
 
     .line 18
     iget-object v0, p0, Lcom/android/systemui/qs/QSContainerImpl;->mBackground:Landroid/view/View;
@@ -1167,14 +1138,21 @@
 
     .line 19
     .local v0, "shape":Landroid/graphics/drawable/GradientDrawable;
-    if-eqz v0, :cond_f
+    if-eqz v0, :cond_16
 
     .line 20
     sget v1, Lcom/android/mwilky/Renovate;->mQsBackgroundColor:I
 
     invoke-virtual {v0, v1}, Landroid/graphics/drawable/GradientDrawable;->setColor(I)V
 
-    .line 22
-    :cond_f
+    .line 21
+    sget v1, Lcom/android/mwilky/Renovate;->mQsOutlineWidth:I
+
+    sget v2, Lcom/android/mwilky/Renovate;->mQsOutlineColor:I
+
+    invoke-virtual {v0, v1, v2}, Landroid/graphics/drawable/GradientDrawable;->setStroke(II)V
+
+    .line 23
+    :cond_16
     return-void
 .end method
