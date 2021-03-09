@@ -521,6 +521,10 @@
     iget-boolean v0, p0, Lcom/oneplus/aod/slice/OpWeatherSlice;->mReady:Z
 
     if-eqz v0, :cond_0
+    
+    sget-boolean v0, Lcom/android/mwilky/Renovate;->mAmbientWeather:Z
+
+    if-nez v0, :cond_mw
 
     iget-object v0, p0, Lcom/oneplus/aod/slice/OpWeatherSlice;->mUserActiveTime:Ljava/time/LocalDateTime;
 
@@ -543,7 +547,8 @@
     move-result v0
 
     if-eqz v0, :cond_0
-
+    
+    :cond_mw
     const/4 v0, 0x1
 
     invoke-virtual {p0, v0}, Lcom/oneplus/aod/slice/OpSlice;->setActive(Z)V
