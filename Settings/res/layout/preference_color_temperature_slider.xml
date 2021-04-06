@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.UnPressableLinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false" android:paddingStart="@dimen/op_control_margin_screen_left3" android:paddingEnd="@dimen/op_control_margin_screen_right3"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:id="@id/header" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/oneplus_screen_better_cold" android:layout_alignParentStart="true" style="@style/op_theme_customziation_summary_style" />
+        <TextView android:id="@id/end" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/oneplus_screen_better_warm" android:layout_alignParentEnd="true" style="@style/op_theme_customziation_summary_style" />
+    </RelativeLayout>
+    <FrameLayout android:paddingBottom="@dimen/op_control_margin_screen_bottom3" android:layout_width="fill_parent" android:layout_height="@dimen/op_preference_color_layout_linearLayout_height">
+        <com.oneplus.settings.ui.OPOneLabelSeekBar android:id="@id/screen_color_mode_seekbar2" android:layout_width="fill_parent" android:layout_height="fill_parent" android:thumb="@drawable/op_seekbar_thumb" android:paddingStart="@dimen/op_control_margin_list_top1" android:paddingEnd="@dimen/op_control_margin_list_top1" />
+    </FrameLayout>
+    <TextView android:textColor="@color/oneplus_contorl_text_color_secondary" android:id="@id/tv_temperature_summary" android:paddingBottom="@dimen/oneplus_contorl_margin_text_bottom4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/oplus_temperature_unenable_summary" style="@style/oneplus_contorl_text_style_body1" />
+</androidx.preference.UnPressableLinearLayout>

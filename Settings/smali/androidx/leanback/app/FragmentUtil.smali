@@ -1,0 +1,28 @@
+.class Landroidx/leanback/app/FragmentUtil;
+.super Ljava/lang/Object;
+.source "FragmentUtil.java"
+
+
+# direct methods
+.method static getContext(Landroid/app/Fragment;)Landroid/content/Context;
+    .locals 2
+
+    sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
+
+    const/16 v1, 0x17
+
+    if-lt v0, v1, :cond_0
+
+    invoke-virtual {p0}, Landroid/app/Fragment;->getContext()Landroid/content/Context;
+
+    move-result-object p0
+
+    return-object p0
+
+    :cond_0
+    invoke-virtual {p0}, Landroid/app/Fragment;->getActivity()Landroid/app/Activity;
+
+    move-result-object p0
+
+    return-object p0
+.end method
