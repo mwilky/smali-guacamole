@@ -761,7 +761,7 @@
 
     invoke-direct {v8, v9}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    const-string v9, "image/jpeg"
+    const-string v9, "image/png"
 
     invoke-virtual {v8, v9}, Landroid/content/Intent;->setType(Ljava/lang/String;)Landroid/content/Intent;
 

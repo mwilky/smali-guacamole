@@ -18,7 +18,7 @@
 # static fields
 .field private static final SCREENSHOTS_DIR_NAME:Ljava/lang/String; = "Screenshots"
 
-.field private static final SCREENSHOT_FILE_NAME_TEMPLATE:Ljava/lang/String; = "Screenshot_%s.jpg"
+.field private static final SCREENSHOT_FILE_NAME_TEMPLATE:Ljava/lang/String; = "Screenshot_%s.png"
 
 .field private static final SCREENSHOT_SHARE_SUBJECT_TEMPLATE:Ljava/lang/String; = "Screenshot (%s)"
 
@@ -216,7 +216,7 @@
 
     invoke-static {v12, v5}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    const-string v5, "Screenshot_%s.jpg"
+    const-string v5, "Screenshot_%s.png"
 
     if-eqz v3, :cond_3
 
@@ -748,7 +748,7 @@
 
     const-string v3, "\\."
 
-    const-string v4, "image/jpeg"
+    const-string v4, "image/png"
 
     const-string v5, "mime_type"
 
@@ -1003,7 +1003,7 @@
 
     move-result-object v0
 
-    sget-object v13, Landroid/graphics/Bitmap$CompressFormat;->JPEG:Landroid/graphics/Bitmap$CompressFormat;
+    sget-object v13, Landroid/graphics/Bitmap$CompressFormat;->PNG:Landroid/graphics/Bitmap$CompressFormat;
 
     const/16 v14, 0x64
 
@@ -1083,7 +1083,7 @@
 
     invoke-direct {v11, v4}, Ljava/lang/StringBuffer;-><init>(Ljava/lang/String;)V
 
-    const-string v4, ".jpg"
+    const-string v4, ".png"
 
     invoke-virtual {v11, v4}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
@@ -1677,7 +1677,7 @@
     goto :goto_0
 
     :cond_1
-    const-string v4, "image/jpeg"
+    const-string v4, "image/png"
 
     :goto_0
     invoke-virtual {v2, v3, v4}, Landroid/content/Intent;->setDataAndType(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/Intent;

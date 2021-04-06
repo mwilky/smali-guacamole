@@ -2088,7 +2088,7 @@
 
     invoke-virtual {v11, v6, v8}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Long;)V
 
-    const-string v6, "image/jpeg"
+    const-string v6, "image/png"
 
     invoke-virtual {v11, v3, v6}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
@@ -2178,7 +2178,7 @@
     .catchall {:try_start_5 .. :try_end_5} :catchall_0
 
     :try_start_6
-    sget-object v12, Landroid/graphics/Bitmap$CompressFormat;->JPEG:Landroid/graphics/Bitmap$CompressFormat;
+    sget-object v12, Landroid/graphics/Bitmap$CompressFormat;->PNG:Landroid/graphics/Bitmap$CompressFormat;
 
     const/16 v13, 0x64
 
@@ -2255,7 +2255,7 @@
 
     invoke-direct {v13, v12}, Ljava/lang/StringBuffer;-><init>(Ljava/lang/String;)V
 
-    const-string v12, ".jpg"
+    const-string v12, ".png"
 
     invoke-virtual {v13, v12}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 

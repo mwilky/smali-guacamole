@@ -4468,7 +4468,7 @@
     goto :goto_0
 
     :cond_0
-    const-string v2, "image/jpeg"
+    const-string v2, "image/png"
 
     :goto_0
     invoke-virtual {v1, v2}, Landroid/content/Intent;->setType(Ljava/lang/String;)Landroid/content/Intent;
