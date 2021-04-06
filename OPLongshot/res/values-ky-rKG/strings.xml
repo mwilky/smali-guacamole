@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="notification_channel_alerts">Шашылыш билдирүүлөр</string>
+    <string name="notification_channel_screenshot">Скриншоттор</string>
+    <string name="screenshot_failed_text">Сактагыч орду чектелүү болгондуктан скриншот тарта албайт, же буга колдонмо же ишканаңыз тарабынан уруксат жок.</string>
+    <string name="screenshot_failed_title">Скриншот кылынбай жатат.</string>
+    <string name="screenshot_failed_to_capture_text">Скриншот тартууга колдонмо же ишканаңыз тыюу салган.</string>
+    <string name="screenshot_failed_to_save_text">Сактагычта бош орун аз болгондуктан скриншот сакталбай жатат.</string>
+    <string name="screenshot_failed_to_save_unknown_text">Скриншотту сактоо учурунда көйгөй пайда болду.</string>
+    <string name="screenshot_saved_text">Тийип, скриншотту көрүңүз.</string>
+    <string name="screenshot_saved_title">Скриншот тартылды.</string>
+    <string name="screenshot_saving_text">Скриншот сакталууда.</string>
+    <string name="screenshot_saving_ticker">Скриншот сакталууда…</string>
+    <string name="screenshot_saving_title">Скриншот сакталууда...</string>
+</resources>

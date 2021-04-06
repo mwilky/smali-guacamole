@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="notification_channel_alerts">अलर्टहरू</string>
+    <string name="notification_channel_screenshot">स्क्रिनशटहरू</string>
+    <string name="screenshot_failed_text">सीमित भण्डारण ठाउँको कारणले स्क्रिनसट लिन सकिएन, वा यो अनुप्रयोग वा आफ्नो संगठन द्वारा अनुमति छैन।</string>
+    <string name="screenshot_failed_title">स्क्रिनसट क्याप्चर गर्न सकिएन।</string>
+    <string name="screenshot_failed_to_capture_text">उक्त अनुप्रयोग वा तपाईंको संगठनले स्क्रिनसटहरू लिन दिँदैन</string>
+    <string name="screenshot_failed_to_save_text">सीमित भण्डारण स्थान उपलब्ध रहेको हुनाले स्क्रिनसटलाई सुरक्षित गर्न सकिँदैन।</string>
+    <string name="screenshot_failed_to_save_unknown_text">स्क्रिनसटलाई सुरक्षित गर्दा समस्या भयो।</string>
+    <string name="screenshot_saved_text">तपाईँको स्क्रिनसट हेर्न छुनुहोस्।</string>
+    <string name="screenshot_saved_title">स्क्रिनसट क्याप्चर गरियो।</string>
+    <string name="screenshot_saving_text">स्क्रिनसट बचत हुँदै छ।</string>
+    <string name="screenshot_saving_ticker">स्क्रिनसट बचत गर्दै…</string>
+    <string name="screenshot_saving_title">स्क्रिनसट बचत गर्दै…</string>
+</resources>

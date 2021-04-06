@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="notification_channel_alerts">Дабылдар</string>
+    <string name="notification_channel_screenshot">Скриншоттар</string>
+    <string name="screenshot_failed_text">Шектеулі жад кеңістігіне байланысты скриншот түсіру мүмкін емес немесе бұған қолданба немесе ұйым рұқсат етпейді.</string>
+    <string name="screenshot_failed_title">Скриншот жасалмады.</string>
+    <string name="screenshot_failed_to_capture_text">Қолданба немесе ұйым скриншоттар түсіруге рұқсат етпейді</string>
+    <string name="screenshot_failed_to_save_text">Жадтағы шектеулі бос орынға байланысты скриншотты сақтау мүмкін емес.</string>
+    <string name="screenshot_failed_to_save_unknown_text">Скриншотты сақтау кезінде мәселе туындады.</string>
+    <string name="screenshot_saved_text">Скриншотты көру үшін түрту.</string>
+    <string name="screenshot_saved_title">Скриншот сақталды.</string>
+    <string name="screenshot_saving_text">Скриншот сақталуда.</string>
+    <string name="screenshot_saving_ticker">Скриншотты сақтауда…</string>
+    <string name="screenshot_saving_title">Скриншотты сақтауда…</string>
+</resources>

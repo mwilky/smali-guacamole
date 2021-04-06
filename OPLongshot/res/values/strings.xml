@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="abc_action_bar_home_description">Navigate home</string>
+    <string name="abc_action_bar_up_description">Navigate up</string>
+    <string name="abc_action_menu_overflow_description">More options</string>
+    <string name="abc_action_mode_done">Done</string>
+    <string name="abc_activity_chooser_view_see_all">See all</string>
+    <string name="abc_activitychooserview_choose_application">Choose an app</string>
+    <string name="abc_capital_off">OFF</string>
+    <string name="abc_capital_on">ON</string>
+    <string name="abc_menu_alt_shortcut_label">Alt+</string>
+    <string name="abc_menu_ctrl_shortcut_label">Ctrl+</string>
+    <string name="abc_menu_delete_shortcut_label">delete</string>
+    <string name="abc_menu_enter_shortcut_label">enter</string>
+    <string name="abc_menu_function_shortcut_label">Function+</string>
+    <string name="abc_menu_meta_shortcut_label">Meta+</string>
+    <string name="abc_menu_shift_shortcut_label">Shift+</string>
+    <string name="abc_menu_space_shortcut_label">space</string>
+    <string name="abc_menu_sym_shortcut_label">Sym+</string>
+    <string name="abc_prepend_shortcut_label">Menu+</string>
+    <string name="abc_search_hint">Search…</string>
+    <string name="abc_searchview_description_clear">Clear query</string>
+    <string name="abc_searchview_description_query">Search query</string>
+    <string name="abc_searchview_description_search">Search</string>
+    <string name="abc_searchview_description_submit">Submit query</string>
+    <string name="abc_searchview_description_voice">Voice search</string>
+    <string name="abc_shareactionprovider_share_with">Share with</string>
+    <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
+    <string name="abc_toolbar_collapse_description">Collapse</string>
+    <string name="about_action_bar_title">About</string>
+    <string name="about_app_right_reserved">© 2013-%d   OnePlus. All Rights Reserved.</string>
+    <string name="about_app_version_text">Version %s</string>
+    <string name="about_privacy_policy">Privacy Policy</string>
+    <string name="about_release_note_title">Update log:</string>
+    <string name="about_terms_service">Terms of Service</string>
+    <string name="alert_window_show">Other window overlay while capturing expanded screenshots.</string>
+    <string name="app_name">Screenshot</string>
+    <string name="appbar_scrolling_view_behavior">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="back_button_label">Back</string>
+    <string name="bottom_sheet_behavior">com.google.android.material.bottomsheet.BottomSheetBehavior</string>
+    <string name="capital_off">OFF</string>
+    <string name="capital_on">ON</string>
+    <string name="character_counter_content_description">Characters entered %1$d of %2$d</string>
+    <string name="character_counter_overflowed_content_description">Character limit exceeded %1$d of %2$d</string>
+    <string name="character_counter_pattern">%1$d / %2$d</string>
+    <string name="clear_text_end_icon_content_description">Clear text</string>
+    <string name="copy">Copy</string>
+    <string name="date_picker_day_of_week_typeface">sans-serif-medium</string>
+    <string name="date_picker_day_typeface">sans-serif-medium</string>
+    <string name="date_picker_month_typeface">sans-serif-medium</string>
+    <string name="error_icon_content_description">Error</string>
+    <string name="expand_button_title">Advanced</string>
+    <string name="exposed_dropdown_menu_content_description">Show dropdown menu</string>
+    <string name="fab_scrolling_view_behavior">com.google.android.material.floatingactionbutton.FabScrollBehavior</string>
+    <string name="fab_transformation_scrim_behavior">com.google.android.material.transformation.FabTransformationScrimBehavior</string>
+    <string name="fab_transformation_sheet_behavior">com.google.android.material.transformation.FabTransformationSheetBehavior</string>
+    <string name="got_it">Got it</string>
+    <string name="hide_bottom_view_on_scroll_behavior">com.google.android.material.behavior.HideBottomViewOnScrollBehavior</string>
+    <string name="icon_content_description">Dialog Icon</string>
+    <string name="join_error">Fail to stitch bitmaps.</string>
+    <string name="loading_text">Loading...</string>
+    <string name="longshot_guide_not_support">Expanded screenshot is not supported on this page.</string>
+    <string name="longshot_guide_support">Tap here to try out Expanded Screenshot.</string>
+    <string name="longshot_mode">long screenshot mode</string>
+    <string name="maximum_pages">"You've reached the maximum length allowed."</string>
+    <string name="mtrl_badge_numberless_content_description">New notification</string>
+    <string name="mtrl_chip_close_icon_content_description">Remove %1$s</string>
+    <string name="mtrl_exceed_max_badge_number_suffix">%1$d%2$s</string>
+    <string name="mtrl_picker_a11y_next_month">Change to next month</string>
+    <string name="mtrl_picker_a11y_prev_month">Change to previous month</string>
+    <string name="mtrl_picker_announce_current_selection">Current selection: %1$s</string>
+    <string name="mtrl_picker_cancel">@android:string/cancel</string>
+    <string name="mtrl_picker_confirm">@android:string/ok</string>
+    <string name="mtrl_picker_date_header_selected">%1$s</string>
+    <string name="mtrl_picker_date_header_title">Select a Date</string>
+    <string name="mtrl_picker_date_header_unselected">Selected date</string>
+    <string name="mtrl_picker_day_of_week_column_header">Column of days: %1$s</string>
+    <string name="mtrl_picker_invalid_format">Invalid format.</string>
+    <string name="mtrl_picker_invalid_format_example">Example: %1$s</string>
+    <string name="mtrl_picker_invalid_format_use">Use: %1$s</string>
+    <string name="mtrl_picker_invalid_range">Invalid range.</string>
+    <string name="mtrl_picker_navigate_to_year_description">Navigate to year %1$s</string>
+    <string name="mtrl_picker_out_of_range">Out of range: %1$s</string>
+    <string name="mtrl_picker_range_header_only_end_selected">Start date – %1$s</string>
+    <string name="mtrl_picker_range_header_only_start_selected">%1$s – End date</string>
+    <string name="mtrl_picker_range_header_selected">%1$s – %2$s</string>
+    <string name="mtrl_picker_range_header_title">Select a Date Range</string>
+    <string name="mtrl_picker_range_header_unselected">Start date – End date</string>
+    <string name="mtrl_picker_save">Save</string>
+    <string name="mtrl_picker_text_input_date_hint">Date</string>
+    <string name="mtrl_picker_text_input_date_range_end_hint">End date</string>
+    <string name="mtrl_picker_text_input_date_range_start_hint">Start date</string>
+    <string name="mtrl_picker_text_input_day_abbr">d</string>
+    <string name="mtrl_picker_text_input_month_abbr">m</string>
+    <string name="mtrl_picker_text_input_year_abbr">y</string>
+    <string name="mtrl_picker_toggle_to_calendar_input_mode">Switch to calendar input mode</string>
+    <string name="mtrl_picker_toggle_to_day_selection">Tap to switch to selecting a day</string>
+    <string name="mtrl_picker_toggle_to_text_input_mode">Switch to text input mode</string>
+    <string name="mtrl_picker_toggle_to_year_selection">Tap to switch to selecting a year</string>
+    <string name="next_button_label">Next</string>
+    <string name="not_set">Not set</string>
+    <string name="not_support_longshot">Expanded screenshot is not supported on this page.</string>
+    <string name="notification_channel_alerts">Alerts</string>
+    <string name="notification_channel_screenshot">Screenshots</string>
+    <string name="oneplus_contorl_font_family_button">Slate-medium</string>
+    <string name="oneplus_contorl_font_family_subheading">Slate-book</string>
+    <string name="oneplus_delete">Delete</string>
+    <string name="oneplus_lunar_leap">闰</string>
+    <string name="oneplus_lunar_year">年</string>
+    <string name="oneplus_share">Share</string>
+    <string name="op_accessibility_quick_settings_page">Page %1$d of %2$d</string>
+    <string name="op_character_counter_pattern">%1$d / %2$d</string>
+    <string name="op_control_font_display_h1">sans-serif-light</string>
+    <string name="op_control_font_display_h2">sans-serif-light</string>
+    <string name="op_control_font_display_h3">sans-serif-light</string>
+    <string name="op_control_font_text_body1">sans-serif-light</string>
+    <string name="op_control_font_text_button">sans-serif-medium</string>
+    <string name="op_control_font_text_descriptions">sans-serif-regular</string>
+    <string name="op_control_font_text_h4">sans-serif-light</string>
+    <string name="op_control_font_text_h5">sans-serif-light</string>
+    <string name="op_control_font_text_h6">sans-serif-light</string>
+    <string name="op_control_font_text_subtitle">sans-serif-light</string>
+    <string name="op_password_toggle_content_description">Toggle password visibility</string>
+    <string name="password_toggle_content_description">Show password</string>
+    <string name="path_password_eye">M12,4.5C7,4.5 2.73,7.61 1,12c1.73,4.39 6,7.5 11,7.5s9.27,-3.11 11,-7.5c-1.73,-4.39 -6,-7.5 -11,-7.5zM12,17c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5 5,2.24 5,5 -2.24,5 -5,5zM12,9c-1.66,0 -3,1.34 -3,3s1.34,3 3,3 3,-1.34 3,-3 -1.34,-3 -3,-3z</string>
+    <string name="path_password_eye_mask_strike_through">M2,4.27 L19.73,22 L22.27,19.46 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
+    <string name="path_password_eye_mask_visible">M2,4.27 L2,4.27 L4.54,1.73 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
+    <string name="path_password_strike_through">M3.27,4.27 L19.74,20.74</string>
+    <string name="permission_btn_text_denied">Exit</string>
+    <string name="permission_btn_text_grant">OK</string>
+    <string name="permission_dialog_title">Permission statement</string>
+    <string name="preference_copied">\"%1$s\" copied to clipboard.</string>
+    <string name="quick_share_description1">Long press the thumbnail to share</string>
+    <string name="quick_share_more_text">More</string>
+    <string name="quick_share_send_description_text">Send to friend</string>
+    <string name="quick_share_title1">"Share the
+screen shot"</string>
+    <string name="quick_share_title2">"Drag to icon
+then release to
+quick share"</string>
+    <string name="reject_no_prompt" />
+    <string name="screen_orientation_changed">Screen orientation cannot be changed while capturing expanded screenshots.</string>
+    <string name="screenshot_failed_text">"Can't save screenshot due to limited storage space, or it isn't allowed by the app or your organization."</string>
+    <string name="screenshot_failed_title">"Couldn't save screenshot."</string>
+    <string name="screenshot_failed_to_capture_text">"Taking screenshots isn't allowed by the app or your organization"</string>
+    <string name="screenshot_failed_to_save_text">"Can't save screenshot due to limited storage space."</string>
+    <string name="screenshot_failed_to_save_unknown_text">Problem encountered while saving screenshot.</string>
+    <string name="screenshot_saved_text">Touch to view your screenshot.</string>
+    <string name="screenshot_saved_title">Screenshot captured.</string>
+    <string name="screenshot_saving_text">Screenshot is being saved.</string>
+    <string name="screenshot_saving_ticker">Saving screenshot…</string>
+    <string name="screenshot_saving_title">Saving screenshot…</string>
+    <string name="screenshot_stoped_text">The expanded screenshot has stopped</string>
+    <string name="scrolling">The screen will scroll automatically while capturing expanded screenshots.</string>
+    <string name="search_menu_title">Search</string>
+    <string name="searchview_description_clear">Clear query</string>
+    <string name="searchview_description_search">Search</string>
+    <string name="searchview_description_submit">Submit query</string>
+    <string name="searchview_description_voice">Voice search</string>
+    <string name="select_day">Select month and day</string>
+    <string name="select_hours">Select hours</string>
+    <string name="select_minutes">Select minutes</string>
+    <string name="select_year">Select year</string>
+    <string name="skip_button_label">Skip</string>
+    <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="stop_and_save">Tap anywhere to stop scrolling and take an expanded screenshot</string>
+    <string name="summary">After taking screenshot, tap expanded screenshot to capture the scrollable contents below.</string>
+    <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
+    <string name="time_picker_header_text">Set time</string>
+    <string name="time_picker_hour_label">hour</string>
+    <string name="time_picker_input_error">Enter a valid time</string>
+    <string name="time_picker_minute_label">minute</string>
+    <string name="time_picker_prompt_label">Type in time</string>
+    <string name="time_placeholder">--</string>
+    <item type="string" name="timepicker_ampm_circle_radius_multiplier">0.19</item>
+    <item type="string" name="timepicker_circle_radius_multiplier">0.82</item>
+    <item type="string" name="timepicker_circle_radius_multiplier_24HourMode">0.85</item>
+    <item type="string" name="timepicker_numbers_radius_multiplier_inner">0.6</item>
+    <item type="string" name="timepicker_numbers_radius_multiplier_normal">0.81</item>
+    <item type="string" name="timepicker_numbers_radius_multiplier_outer">0.83</item>
+    <item type="string" name="timepicker_selection_radius_multiplier">0.16</item>
+    <item type="string" name="timepicker_text_size_multiplier_inner">0.14</item>
+    <item type="string" name="timepicker_text_size_multiplier_normal">0.17</item>
+    <item type="string" name="timepicker_text_size_multiplier_outer">0.11</item>
+    <item type="string" name="timepicker_transition_end_radius_multiplier">1.3</item>
+    <item type="string" name="timepicker_transition_mid_radius_multiplier">0.95</item>
+    <string name="title">Expanded Screenshot</string>
+    <string name="top_activity_changed">App switching is not supported while capturing expanded screenshots.</string>
+    <string name="v7_preference_off">OFF</string>
+    <string name="v7_preference_on">ON</string>
+</resources>

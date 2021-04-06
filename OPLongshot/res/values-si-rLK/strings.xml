@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="notification_channel_alerts">ඇඟවීම්</string>
+    <string name="notification_channel_screenshot">තිර රු</string>
+    <string name="screenshot_failed_text">සීමිත ආචයනය ඉඩ හේතුවෙන් තිර රුව ලබාගත නොහැක, හෝ ඔබගේ යෙදුම හෝ ඔබගේ සංවිධානය විසින් එය ඉඩ නොදී තිබේ.</string>
+    <string name="screenshot_failed_title">තිර රුව ග්‍රහණය කිරීමට නොහැකි විය.</string>
+    <string name="screenshot_failed_to_capture_text">තිර රූ ගැනීමට යෙදුම හෝ ඔබගේ සංවිධානය ඉඩ නොදේ</string>
+    <string name="screenshot_failed_to_save_text">සීමිත ගබඩා ඉඩ නිසා තිර රුව සුරැකිය නොහැකිය.</string>
+    <string name="screenshot_failed_to_save_unknown_text">තිර රුව සුරකින අතරතුර ගැටලුවක් ඇති විය.</string>
+    <string name="screenshot_saved_text">ඔබගේ තිර රුව බැලීමට ස්පර්ශ කරන්න.</string>
+    <string name="screenshot_saved_title">තිර රුව ග්‍රහණය කරන ලදි.</string>
+    <string name="screenshot_saving_text">තිර රුව සුරැකෙමින් පවතී.</string>
+    <string name="screenshot_saving_ticker">තිර රුව සුරකිමින්…</string>
+    <string name="screenshot_saving_title">තිර රුව සුරැකෙමින් පවතී…</string>
+</resources>

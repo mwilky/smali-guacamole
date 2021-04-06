@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="30" android:compileSdkVersionCodename="11" android:sharedUserId="android.uid.system" coreApp="true" package="com.oneplus.screenshot" platformBuildVersionCode="30" platformBuildVersionName="11">
+    <uses-permission android:name="android.permission.INJECT_EVENTS"/>
+    <uses-permission android:name="android.permission.READ_FRAME_BUFFER"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS"/>
+    <permission android:label="TAKE_SCREENSHOT" android:name="com.oneplus.screenshot.permission.TAKE_SCREENSHOT" android:protectionLevel="signature"/>
+    <application android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:defaultToDeviceProtectedStorage="true" android:directBootAware="true" android:extractNativeLibs="false" android:label="@string/app_name" android:largeHeap="true" android:name="com.oneplus.screenshot.ScreenshotApplication" android:requestLegacyExternalStorage="true" android:theme="@style/AppTheme">
+        <service android:exported="true" android:name="com.oneplus.screenshot.LongshotService"/>
+        <service android:name="com.oneplus.screenshot.service.GlobalService"/>
+        <service android:exported="true" android:name="com.oneplus.screenshot.TakeScreenshotService" android:permission="com.oneplus.screenshot.permission.TAKE_SCREENSHOT"/>
+        <receiver android:name="com.oneplus.screenshot.GlobalScreenshot$TargetChosenReceiver"/>
+        <receiver android:name="com.oneplus.screenshot.GlobalScreenshot$DeleteScreenshotReceiver"/>
+        <service android:name="com.oneplus.screenshot.StitchViewService" android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE" android:protectionLevel="signature">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService"/>
+            </intent-filter>
+            <meta-data android:name="android.accessibilityservice" android:resource="@xml/accessibility"/>
+        </service>
+    </application>
+</manifest>

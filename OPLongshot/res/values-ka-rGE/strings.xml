@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="notification_channel_alerts">გაფრთხილებები</string>
+    <string name="notification_channel_screenshot">ეკრანის ანაბეჭდები</string>
+    <string name="screenshot_failed_text">ეკრანის ანაბეჭდი ვერ შეიქმნა შეზღუდული სივრცის გამო, ან შეზღუდულია თქვენი ორგანიზაციის აპის მიერ.</string>
+    <string name="screenshot_failed_title">ვერ მოხერხდა ეკრანის ანაბეჭდის გადაღება.</string>
+    <string name="screenshot_failed_to_capture_text">ეკრანის ანაბეჭდების შექმნა არ არის ნებადართული აპის ან თქვენი ორგანიზაციის მიერ</string>
+    <string name="screenshot_failed_to_save_text">ეკრანის ანაბეჭდის შენახვა ვერ მოხერხდა შეზღუდული მეხსიერების გამო.</string>
+    <string name="screenshot_failed_to_save_unknown_text">ეკრანის ანაბეჭდის შენახვისას წარმოიქმნა პრობლემა.</string>
+    <string name="screenshot_saved_text">შეეხეთ ეკრანის სურათის სანახავად.</string>
+    <string name="screenshot_saved_title">სკრინშოტი გადაღებულია.</string>
+    <string name="screenshot_saving_text">ეკრანის სურათი შენახულია.</string>
+    <string name="screenshot_saving_ticker">სკრინშოტის შენახვა…</string>
+    <string name="screenshot_saving_title">ეკრანის სურათის შენახვა…</string>
+</resources>

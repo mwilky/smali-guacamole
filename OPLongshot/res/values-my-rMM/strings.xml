@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="notification_channel_alerts">သတိပေးချက်များ</string>
+    <string name="notification_channel_screenshot">မျက်နှာပြင်ဓာတ်ပုံများ</string>
+    <string name="screenshot_failed_text">မျက်နှာပြင်လျှပ်တပြက်ပုံကို မရုက်နိုင်ခဲ့ပါ၊ သိုလှောင်မှု နေရာ အကန့်အသတ် ရှိနေ၍ သို့မဟုတ် app သို့မဟုတ် သင်၏ အဖွဲ့အစည်းက ခွင့်မပြု၍ ဖြစ်နိုင်သည်။</string>
+    <string name="screenshot_failed_title">ဖန်သားပြင်ဓါတ်ပုံရိုက်ခြင်းအား မဖမ်းစီးနိုင်ပါ</string>
+    <string name="screenshot_failed_to_capture_text">ဖန်သားပြင်ဓာတ်ပုံရိုက်ကူးခြင်းကို ဤအက်ပ် သို့မဟုတ် သင်၏အဖွဲ့အစည်းက ခွင့်မပြုပါ</string>
+    <string name="screenshot_failed_to_save_text">သိုလှောင်ခန်းနေရာ အကန့်အသတ်ရှိသောကြောင့် ဖန်သားပြင်ဓာတ်ပုံကို သိမ်းဆည်း၍မရပါ။</string>
+    <string name="screenshot_failed_to_save_unknown_text">ဖန်သားပြင်ဓာတ်ပုံဖမ်းယူမှုကို သိမ်းဆည်းရာတွင် ပြဿနာကြုံခဲ့သည်။</string>
+    <string name="screenshot_saved_text">သင့်ဖန်သားပြင်ဓါတ်ပုံရိုက်ခြင်းအား ကြည့်ရှုရန် ထိပါ</string>
+    <string name="screenshot_saved_title">ဖန်သားပြင်ဓါတ်ပုံရိုက်ခြင်းအား ဖမ်းယူပြီး</string>
+    <string name="screenshot_saving_text">ဖန်သားပြင်ဓါတ်ပုံရိုက်ခြင်းအား သိမ်းဆည်းပြီးပါပြီ</string>
+    <string name="screenshot_saving_ticker">ဖန်သားပြင်ဓါတ်ပုံသိမ်းစဉ်..</string>
+    <string name="screenshot_saving_title">ဖန်သားပြင်ဓါတ်ပုံရိုက်ခြင်းအား သိမ်းဆည်းပါမည်</string>
+</resources>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="abc_action_bar_home_description">ഹോമിലേക്ക് പോവുക</string>
+    <string name="abc_action_bar_up_description">മുകളിലേക്ക് പോവുക</string>
+    <string name="abc_action_menu_overflow_description">കൂടുതൽ ഓപ്ഷനുകൾ</string>
+    <string name="abc_action_mode_done">പൂർത്തിയായി</string>
+    <string name="abc_activity_chooser_view_see_all">എല്ലാം കാണുക</string>
+    <string name="abc_activitychooserview_choose_application">ആപ്പ് തിരഞ്ഞെടുക്കുക</string>
+    <string name="abc_capital_off">ഓഫ്</string>
+    <string name="abc_capital_on">ഓൺ</string>
+    <string name="abc_menu_alt_shortcut_label">Alt+</string>
+    <string name="abc_menu_ctrl_shortcut_label">Ctrl+</string>
+    <string name="abc_menu_delete_shortcut_label">ഇല്ലാതാക്കുക</string>
+    <string name="abc_menu_enter_shortcut_label">enter</string>
+    <string name="abc_menu_function_shortcut_label">ഫംഗ്ഷന്‍+</string>
+    <string name="abc_menu_meta_shortcut_label">മെറ്റ+</string>
+    <string name="abc_menu_shift_shortcut_label">Shift+</string>
+    <string name="abc_menu_space_shortcut_label">സ്‌പെയ്‌സ്</string>
+    <string name="abc_menu_sym_shortcut_label">Sym+</string>
+    <string name="abc_prepend_shortcut_label">മെനു+</string>
+    <string name="abc_search_hint">തിരയുക…</string>
+    <string name="abc_searchview_description_clear">ചോദ്യം മായ്‌ക്കുക</string>
+    <string name="abc_searchview_description_query">ചോദ്യം തിരയുക</string>
+    <string name="abc_searchview_description_search">തിരയുക</string>
+    <string name="abc_searchview_description_submit">ചോദ്യം സമർപ്പിക്കുക</string>
+    <string name="abc_searchview_description_voice">സംസാരത്തിലൂടെ തിരയുക</string>
+    <string name="abc_shareactionprovider_share_with">ഇനിപ്പറയുന്നതുമായി പങ്കിടുക</string>
+    <string name="abc_shareactionprovider_share_with_application">%s എന്നതുമായി പങ്കിടുക</string>
+    <string name="abc_toolbar_collapse_description">ചുരുക്കുക</string>
+    <string name="about_action_bar_title">വിവരം</string>
+    <string name="about_app_version_text">പതിപ്പ് %s</string>
+    <string name="about_privacy_policy">സ്വകാര്യതാ നയം</string>
+    <string name="about_release_note_title">ലോഗ് അപ്‍ഡേറ്റ് ചെയ്യുക:</string>
+    <string name="about_terms_service">സേവന നിബന്ധനകൾ</string>
+    <string name="copy">പകർത്തുക</string>
+    <string name="expand_button_title">വിപുലമായത്</string>
+    <string name="got_it">മനസ്സിലായി</string>
+    <string name="loading_text">ലോഡുചെയ്യുന്നു...</string>
+    <string name="longshot_guide_not_support">ഈ പേജിനെ വികസിപ്പിച്ച സ്ക്രീന്‍ഷോട്ട് പിന്തുണയ്ക്കുന്നില്ല.</string>
+    <string name="longshot_guide_support">വികസിപ്പിച്ച സ്ക്രീന്‍ഷോട്ട് പരീക്ഷിക്കുന്നതിന് ഇവിടെ ടാപ് ചെയ്യുക.</string>
+    <string name="not_set">സജ്ജീകരിച്ചിട്ടില്ല</string>
+    <string name="not_support_longshot">ഈ പേജിനെ വികസിപ്പിച്ച സ്ക്രീന്‍ഷോട്ട് പിന്തുണയ്ക്കുന്നില്ല.</string>
+    <string name="permission_btn_text_denied">പുറത്തുകടക്കുക</string>
+    <string name="permission_btn_text_grant">ശരി</string>
+    <string name="permission_dialog_title">അനുമതി പ്രസ്‌താവന</string>
+    <string name="preference_copied">\"%1$s\" ക്ലിപ്‌ബോർഡിലേക്ക് പകർത്തി.</string>
+    <string name="quick_share_description1">"പങ്കിടാന്‍ തം‍പ്നെയിലില്‍ 
+ലോങ്‍പ്രസ്സ് ചെയ്യുക"</string>
+    <string name="quick_share_more_text">കൂടുതല്‍</string>
+    <string name="quick_share_send_description_text">സുഹൃത്തിന്‌ അയയ്ക്കുക</string>
+    <string name="quick_share_title1">"സ്ക്രീന്‍ഷോട്ട് 
+പങ്കുവെയ്ക്കുക"</string>
+    <string name="quick_share_title2">"ഐക്കണ്‍ ഇഴയ്ക്കുക
+എന്നിട്ട് വിടുകയും
+ക്വിക്‍ഷെയര്‍ ചെയ്യുകയും
+ചെയ്യുക"</string>
+    <string name="screen_orientation_changed">വികസിപ്പിച്ച സ്ക്രീന്‍‌ഷോട്ടുകള്‍ എടുക്കുമ്പോള്‍ സ്ക്രീനിന്‍റെ ക്രമീകരണം മാറ്റാനാവില്ല.</string>
+    <string name="screenshot_stoped_text">വിപുലീകരിച്ച സ്ക്രീൻഷോട്ട് നിർത്തി</string>
+    <string name="scrolling">വികസിപ്പിച്ച സ്ക്രീന്‍‌ഷോട്ടുകള്‍ എടുക്കുമ്പോള്‍ സ്ക്രീന്‍ സ്വയം സ്ക്രോള്‍ ചെയ്യും.</string>
+    <string name="search_menu_title">തിരയുക</string>
+    <string name="select_day">മാസവും ദിവസവും തിരഞ്ഞെടുക്കുക</string>
+    <string name="select_hours">മണിക്കൂർ തിരഞ്ഞെടുക്കുക</string>
+    <string name="select_minutes">മിനിറ്റ് തിരഞ്ഞെടുക്കുക</string>
+    <string name="select_year">വർഷം തിരഞ്ഞെടുക്കുക</string>
+    <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="stop_and_save">സ്ക്രോളിംഗ് അവസാനിപ്പിക്കാനും വികസിതമായൊരു സ്ക്രീന്‍ഷോട്ട് ചേര്‍ക്കാനും എവിടെയും ചേര്‍ക്കുക</string>
+    <string name="summary">സ്ക്രീന്‍ഷോട്ട് എടുത്തതിന് ശേഷം, താഴെയുള്ള സ്ക്രോള്‍ ചെയ്യാവുന്ന ഉള്ളടക്കം എടുക്കുന്നതിന് വികസിപ്പിച്ച സ്ക്രീന്‍ഷോട്ടില്‍ ടാപ് ചെയ്യുക.</string>
+    <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
+    <string name="time_picker_header_text">സമയം ക്രമീകരിക്കുക</string>
+    <string name="time_picker_hour_label">മണിക്കൂര്‍</string>
+    <string name="time_picker_input_error">സാധുവായ സമയം നൽകുക</string>
+    <string name="time_picker_minute_label">മിനിറ്റ്</string>
+    <string name="time_picker_prompt_label">ആവശ്യമായ സമയത്ത് ടൈപ്പുചെയ്യുക</string>
+    <string name="title">വികസിപ്പിച്ച സ്‌ക്രീന്‍ഷോട്ട്</string>
+    <string name="top_activity_changed">വികസിപ്പിച്ച സ്ക്രീന്‍‌ഷോട്ടുകള്‍ എടുക്കുമ്പോള്‍ ആപ്പ് മാറ്റുന്നത് പിന്തുണയ്ക്കില്ല.</string>
+    <string name="v7_preference_off">ഓഫാണ്</string>
+    <string name="v7_preference_on">ഓൺ</string>
+</resources>

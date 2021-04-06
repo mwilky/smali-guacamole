@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="abc_action_bar_home_description">ಹೋಮ್‌ಗೆ ನ್ಯಾವಿಗೇಟ್ ಮಾಡಿ</string>
+    <string name="abc_action_bar_up_description">ಮೇಲಕ್ಕೆ ನ್ಯಾವಿಗೇಟ್ ಮಾಡಿ</string>
+    <string name="abc_action_menu_overflow_description">ಇನ್ನಷ್ಟು ಆಯ್ಕೆಗಳು</string>
+    <string name="abc_action_mode_done">ಮುಗಿದಿದೆ</string>
+    <string name="abc_activity_chooser_view_see_all">ಎಲ್ಲವನ್ನೂ ನೋಡಿ</string>
+    <string name="abc_activitychooserview_choose_application">ಆ್ಯಪ್‌ವೊಂದನ್ನು ಆಯ್ಕೆಮಾಡಿ</string>
+    <string name="abc_capital_off">ಆಫ್</string>
+    <string name="abc_capital_on">ಆನ್</string>
+    <string name="abc_menu_alt_shortcut_label">Alt+</string>
+    <string name="abc_menu_ctrl_shortcut_label">Ctrl+</string>
+    <string name="abc_menu_delete_shortcut_label">delete</string>
+    <string name="abc_menu_enter_shortcut_label">enter</string>
+    <string name="abc_menu_function_shortcut_label">Function+</string>
+    <string name="abc_menu_meta_shortcut_label">Meta+</string>
+    <string name="abc_menu_shift_shortcut_label">Shift+</string>
+    <string name="abc_menu_space_shortcut_label">space</string>
+    <string name="abc_menu_sym_shortcut_label">Sym+</string>
+    <string name="abc_prepend_shortcut_label">Menu+</string>
+    <string name="abc_search_hint">ಹುಡುಕಿ…</string>
+    <string name="abc_searchview_description_clear">ಪ್ರಶ್ನೆಯನ್ನು ತೆರವುಗೊಳಿಸಿ</string>
+    <string name="abc_searchview_description_query">ಪ್ರಶ್ನೆಯನ್ನು ಹುಡುಕಿ</string>
+    <string name="abc_searchview_description_search">ಹುಡುಕಿ</string>
+    <string name="abc_searchview_description_submit">ಪ್ರಶ್ನೆಯನ್ನು ಸಲ್ಲಿಸಿ</string>
+    <string name="abc_searchview_description_voice">ಧ್ವನಿ ಹುಡುಕಾಟ</string>
+    <string name="abc_shareactionprovider_share_with">ಇವರೊಂದಿಗೆ ಹಂಚಿಕೊಳ್ಳಿ</string>
+    <string name="abc_shareactionprovider_share_with_application">%s ನೊಂದಿಗೆ ಹಂಚಿಕೊಳ್ಳಿ</string>
+    <string name="abc_toolbar_collapse_description">ಕುಗ್ಗಿಸಿ</string>
+    <string name="about_action_bar_title">ಬಗ್ಗೆ</string>
+    <string name="about_app_version_text">ಆವೃತ್ತಿ %s</string>
+    <string name="about_privacy_policy">ಗೌಪ್ಯತಾ ನೀತಿ</string>
+    <string name="about_release_note_title">ಪರಿಷ್ಕರಣೆ ಲಾಗ್:</string>
+    <string name="about_terms_service">ಸೇವೆಯ ನಿಯಮಗಳು</string>
+    <string name="copy">ನಕಲಿಸಿ</string>
+    <string name="expand_button_title">ಸುಧಾರಿತ</string>
+    <string name="got_it">ಅರ್ಥವಾಯಿತು</string>
+    <string name="loading_text">ಲೋಡ್ ಆಗುತ್ತಿದೆ...</string>
+    <string name="longshot_guide_not_support">ವಿಸ್ತೃತ ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ಈ ಪುಟದಲ್ಲಿ ಬೆಂಬಲಿಸುವುದಿಲ್ಲ.</string>
+    <string name="longshot_guide_support">ವಿಸ್ತೃತ ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ಪ್ರಯತ್ನಿಸಲು ಇಲ್ಲಿ ಟ್ಯಾಪ್ ಮಾಡಿ.</string>
+    <string name="not_set">ಹೊಂದಿಸಿಲ್ಲ</string>
+    <string name="not_support_longshot">ವಿಸ್ತೃತ ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ಈ ಪುಟದಲ್ಲಿ ಬೆಂಬಲಿಸುವುದಿಲ್ಲ.</string>
+    <string name="permission_btn_text_denied">ನಿರ್ಗಮಿಸಿ</string>
+    <string name="permission_btn_text_grant">ಸರಿ</string>
+    <string name="permission_dialog_title">ಅನುಮತಿ ಹೇಳಿಕೆ</string>
+    <string name="preference_copied">\"%1$s\" ಅನ್ನು ಕ್ಲಿಪ್‌ಬೋರ್ಡ್‌ಗೆ ನಕಲಿಸಲಾಗಿದೆ.</string>
+    <string name="quick_share_description1">"ಹಂಚಿಕೊಳ್ಳಲು ಥಂಬ್‌ನೇಲ್ 
+ಅನ್ನು ದೀರ್ಘವಾಗಿ ಒತ್ತಿರಿ"</string>
+    <string name="quick_share_more_text">ಹೆಚ್ಚು</string>
+    <string name="quick_share_send_description_text">ಸ್ನೇಹಿತರಿಗೆ ಕಳುಹಿಸಿ</string>
+    <string name="quick_share_title1">"ಸ್ಕ್ರೀನ್ ಶಾಟ್
+ಹಂಚಿಕೊಳ್ಳಿ"</string>
+    <string name="quick_share_title2">"ಐಕಾನ್‌ಗೆ ಎಳೆಯಿರಿ
+ನಂತರ ತ್ವರಿತ ಹಂಚಿಕೆಗೆ
+ಬಿಡಿ"</string>
+    <string name="screen_orientation_changed">ಸ್ಕ್ರೀನ್ ಓರಿಯಂಟೇಶನ್ ಅನ್ನು ವಿಸ್ತೃತ ಸ್ಕ್ರೀನ್‌ಶಾಟ್‌ಗಳನ್ನು ಕ್ಯಾಪ್ಚರ್ ಮಾಡುವಾಗ ಬದಲಾಯಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ.</string>
+    <string name="screenshot_stoped_text">ವಿಸ್ತೃತ ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ಸ್ಥಗಿತಗೊಂಡಿದೆ</string>
+    <string name="scrolling">ವಿಸ್ತೃತ ಸ್ಕ್ರೀನ್‌ಶಾಟ್‌ಗಳನ್ನು ಕ್ಯಾಪ್ಚರ್ ಮಾಡುವಾಗ ಸ್ಕ್ರೀನ್ ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಸ್ಕ್ರಾಲ್ ಆಗುತ್ತದೆ.</string>
+    <string name="search_menu_title">ಹುಡುಕಿ</string>
+    <string name="select_day">ತಿಂಗಳು ಮತ್ತು ದಿನವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ</string>
+    <string name="select_hours">ಗಂಟೆಗಳನ್ನು ಆರಿಸಿ</string>
+    <string name="select_minutes">ನಿಮಿಷಗಳನ್ನು ಆರಿಸಿ</string>
+    <string name="select_year">ವರ್ಷವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ</string>
+    <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="stop_and_save">ಸ್ಕ್ರೋಲಿಂಗ್ ನಿಲ್ಲಿಸಲು ಎಲ್ಲಿಯಾದರೂ ಟ್ಯಾಪ್ ಮಾಡಿ ಮತ್ತು ವಿಸ್ತರಿಸಿದ ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ತೆಗೆದುಕೊಳ್ಳಿ</string>
+    <string name="summary">ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ತೆಗೆದುಕೊಂಡ ನಂತರ, ಈ ಕೆಳಗಿನ ಸ್ಕ್ರಾಲ್ ಮಾಡಬಹುದಾದ ವಿಷಯಗಳನ್ನು ಕ್ಯಾಪ್ಚರ್ ಮಾಡಾಲು ವಿಸ್ತೃತ ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ಟ್ಯಾಪ್ ಮಾಡಿ.</string>
+    <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
+    <string name="time_picker_header_text">ಸಮಯ ನಿಗದಿಪಡಿಸಿ</string>
+    <string name="time_picker_hour_label">ಗಂಟೆ</string>
+    <string name="time_picker_input_error">ಒಂದು ಮಾನ್ಯವಾದ ಸಮಯವನ್ನು ನಮೂದಿಸಿ</string>
+    <string name="time_picker_minute_label">ನಿಮಿಷ</string>
+    <string name="time_picker_prompt_label">ಸಮಯವನ್ನು ನಮೂದಿಸಿ</string>
+    <string name="title">ವಿಸ್ತೃತ ಸ್ಕ್ರೀನ್‌ಶಾಟ್</string>
+    <string name="top_activity_changed">ಆಪ್ ಸ್ವಿಚಿಂಗ್ ವಿಸ್ತೃತ ಸ್ಕ್ರೀನ್‌ಶಾಟ್‌ಗಳನ್ನು ಕ್ಯಾಪ್ಚರ್ ಮಾಡುವಾಗ ಬೆಂಬಲಿಸಿಲ್ಲ.</string>
+    <string name="v7_preference_off">ಆಫ್</string>
+    <string name="v7_preference_on">ಆನ್</string>
+</resources>

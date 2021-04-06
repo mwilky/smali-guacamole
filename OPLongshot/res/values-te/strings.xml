@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="abc_action_bar_home_description">హోమ్‌కు నావిగేట్ చేస్తుంది</string>
+    <string name="abc_action_bar_up_description">పైకి నావిగేట్ చేస్తుంది</string>
+    <string name="abc_action_menu_overflow_description">మరిన్ని ఎంపికలు</string>
+    <string name="abc_action_mode_done">పూర్తయింది</string>
+    <string name="abc_activity_chooser_view_see_all">అన్నీ చూడండి</string>
+    <string name="abc_activitychooserview_choose_application">యాప్‌ను ఎంచుకోండి</string>
+    <string name="abc_capital_off">ఆఫ్</string>
+    <string name="abc_capital_on">ఆన్</string>
+    <string name="abc_menu_alt_shortcut_label">Alt+</string>
+    <string name="abc_menu_ctrl_shortcut_label">Ctrl+</string>
+    <string name="abc_menu_delete_shortcut_label">delete</string>
+    <string name="abc_menu_enter_shortcut_label">enter</string>
+    <string name="abc_menu_function_shortcut_label">Function+</string>
+    <string name="abc_menu_meta_shortcut_label">Meta+</string>
+    <string name="abc_menu_shift_shortcut_label">Shift+</string>
+    <string name="abc_menu_space_shortcut_label">స్పేస్</string>
+    <string name="abc_menu_sym_shortcut_label">Sym+</string>
+    <string name="abc_prepend_shortcut_label">Menu+</string>
+    <string name="abc_search_hint">వెతకండి…</string>
+    <string name="abc_searchview_description_clear">ప్రశ్నను తీసివేస్తుంది</string>
+    <string name="abc_searchview_description_query">శోధన ప్రశ్న</string>
+    <string name="abc_searchview_description_search">శోధన</string>
+    <string name="abc_searchview_description_submit">ప్రశ్నని సమర్పిస్తుంది</string>
+    <string name="abc_searchview_description_voice">వాయిస్ శోధన</string>
+    <string name="abc_shareactionprovider_share_with">వీరితో షేర్ చేస్తుంది</string>
+    <string name="abc_shareactionprovider_share_with_application">%sతో షేర్ చేస్తుంది</string>
+    <string name="abc_toolbar_collapse_description">కుదిస్తుంది</string>
+    <string name="about_action_bar_title">పరిచయం</string>
+    <string name="about_app_version_text">వర్షన్ %s</string>
+    <string name="about_privacy_policy">గోప్యతా విధానం</string>
+    <string name="about_release_note_title">అప్‌డేట్ లాగ్:</string>
+    <string name="about_terms_service">సేవా నిబంధనలు</string>
+    <string name="copy">కాపీ చేయి</string>
+    <string name="expand_button_title">అధునాతనం</string>
+    <string name="got_it">అర్థమైంది</string>
+    <string name="loading_text">లోడ్ అవుతోంది...</string>
+    <string name="longshot_guide_not_support">ఈ పేజీ విస్తరించబడ్డ స్క్రీన్‌షాట్ మద్దతు ఇవ్వదు.</string>
+    <string name="longshot_guide_support">విస్తరించబడ్డ స్క్రీన్‌షాట్ ప్రయత్నించడం కొరకు ఇక్కడ తట్టండి.</string>
+    <string name="not_set">సెట్ చేయలేదు</string>
+    <string name="not_support_longshot">ఈ పేజీ విస్తరించబడ్డ స్క్రీన్‌షాట్ మద్దతు ఇవ్వదు.</string>
+    <string name="permission_btn_text_denied">నిష్క్రమించు</string>
+    <string name="permission_btn_text_grant">సరే</string>
+    <string name="permission_dialog_title">అనుమతి ప్రకటన</string>
+    <string name="preference_copied">\"%1$s\" క్లిప్‌బోర్డ్‌కి కాపీ చేయబడింది.</string>
+    <string name="quick_share_description1">"షేర్ చెయ్యడానికి థంబ్ నెయిల్ 
+ని ఎక్కువసేపు నొక్కండి"</string>
+    <string name="quick_share_more_text">మరిన్ని</string>
+    <string name="quick_share_send_description_text">స్నేహితుడికి పంపండి</string>
+    <string name="quick_share_title1">"స్క్రీన్ షాట్ 
+పంచుకోండి"</string>
+    <string name="quick_share_title2">"ఐకాన్ వద్దకి లాగండి 
+తర్వాత త్వరగా షేర్ 
+చేయడానికి వదలండి"</string>
+    <string name="screen_orientation_changed">విస్తరించబడ్డ స్క్రీన్‌షాట్‌లను తీసుకునేటప్పుడు స్క్రీన్ ఒరియెంటేషన్‌ని మార్చలేం.</string>
+    <string name="screenshot_stoped_text">విస్తరించిన స్క్రీన్‌షాట్ ఆగిపోయింది</string>
+    <string name="scrolling">విస్తరించబడ్డ స్క్రీన్‌షాట్‌లను క్యాప్చర్ చేసేటప్పుడు స్క్రీన్ ఆటోమేటిక్‌గా స్క్రోల్ అవుతుంది.</string>
+    <string name="search_menu_title">శోధన</string>
+    <string name="select_day">నెల మరియు రోజును ఎంచుకోండి</string>
+    <string name="select_hours">గంటలు ఎంచుకోండి</string>
+    <string name="select_minutes">నిమిషాలను ఎంచుకోండి</string>
+    <string name="select_year">సంవత్సరాన్ని ఎంచుకోండి</string>
+    <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="stop_and_save">స్క్రోలింగ్ ఆపడానికి ఎక్కడైనా నొక్కండి మరియు ఎక్సపాండెడ్ స్క్రీన్ షాట్ తీసుకోండి</string>
+    <string name="summary">స్క్రీన్‌షాట్ తీసుకున్న తరువాత, దిగువన స్క్రోల్ చేయదగ్గకంటెంట్‌ని క్యాప్చర్ చేయడం కొరకు విస్తరించబడ్డ స్క్రీన్‌షాట్‌ని తట్టండి.</string>
+    <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
+    <string name="time_picker_header_text">సమయాన్ని సెట్ చేయండి</string>
+    <string name="time_picker_hour_label">గంట</string>
+    <string name="time_picker_input_error">చెల్లే సమయాన్ని నమోదు చేయండి</string>
+    <string name="time_picker_minute_label">నిమిషం</string>
+    <string name="time_picker_prompt_label">సమయాన్ని పేర్కొనండి</string>
+    <string name="title">విస్తరించబడ్డ స్క్రీన్‌‌షాట్</string>
+    <string name="top_activity_changed">విస్తరించబడ్డ స్క్రీన్‌షాట్‌లను క్యాప్చర్ చేసేటప్పుడు యాప్ మారడం మద్దతు ఇవ్వదు.</string>
+    <string name="v7_preference_off">ఆఫ్ చేయండి</string>
+    <string name="v7_preference_on">ఆన్ చేయండి</string>
+</resources>
