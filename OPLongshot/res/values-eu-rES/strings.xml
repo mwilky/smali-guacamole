@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="notification_channel_screenshot">Pantaila-argazkiak</string>
+    <string name="screenshot_failed_text">Ezin da atera pantaila-argazkia tokirik geratzen ez delako edo horrelakorik onartzen ez delako.</string>
+    <string name="screenshot_failed_title">Ezin izan da pantaila-argazkia atera.</string>
+    <string name="screenshot_failed_to_capture_text">Aplikazioak edo erakundeak ez du onartzen pantaila-argazkiak ateratzea</string>
+    <string name="screenshot_failed_to_save_text">Ezin da atera pantaila-argazkia ez delako tokirik geratzen.</string>
+    <string name="screenshot_failed_to_save_unknown_text">Arazo bat izan da pantaila-argazkia gordetzean.</string>
+    <string name="screenshot_saved_text">Pantaila-argazkia ikusteko, ukitu ezazu.</string>
+    <string name="screenshot_saved_title">Pantaila-argazkia atera da.</string>
+    <string name="screenshot_saving_text">Pantaila-argazkia gordetzen ari da.</string>
+    <string name="screenshot_saving_ticker">Pantaila-argazkia gordetzen…</string>
+    <string name="screenshot_saving_title">Pantaila-argazkia gordetzen…</string>
+</resources>

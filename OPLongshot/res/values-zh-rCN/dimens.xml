@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="max_expandable_button_size">12.0sp</dimen>
+    <dimen name="op_app_bar_expand_text_size">86.0px</dimen>
+    <dimen name="op_text_size_h2">86.0px</dimen>
+</resources>

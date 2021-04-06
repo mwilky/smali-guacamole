@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="abc_action_bar_home_description">Orientohu për në shtëpi</string>
+    <string name="abc_action_bar_up_description">Ngjitu lart</string>
+    <string name="abc_action_menu_overflow_description">Opsione të tjera</string>
+    <string name="abc_action_mode_done">U krye</string>
+    <string name="abc_activity_chooser_view_see_all">Shfaq çdo gjë</string>
+    <string name="abc_activitychooserview_choose_application">Zgjidh një aplikacion</string>
+    <string name="abc_capital_off">JOAKTIV</string>
+    <string name="abc_capital_on">AKTIV</string>
+    <string name="abc_menu_alt_shortcut_label">Alt+</string>
+    <string name="abc_menu_ctrl_shortcut_label">Ctrl+</string>
+    <string name="abc_menu_delete_shortcut_label">delete</string>
+    <string name="abc_menu_enter_shortcut_label">enter</string>
+    <string name="abc_menu_function_shortcut_label">Funksioni+</string>
+    <string name="abc_menu_meta_shortcut_label">Meta+</string>
+    <string name="abc_menu_shift_shortcut_label">Shift+</string>
+    <string name="abc_menu_space_shortcut_label">hapësirë</string>
+    <string name="abc_menu_sym_shortcut_label">Sym+</string>
+    <string name="abc_prepend_shortcut_label">Menyja+</string>
+    <string name="abc_search_hint">Kërko…</string>
+    <string name="abc_searchview_description_clear">Pastro pyetjen</string>
+    <string name="abc_searchview_description_query">Kërko pyetjen</string>
+    <string name="abc_searchview_description_search">Kërko</string>
+    <string name="abc_searchview_description_submit">Dërgo pyetjen</string>
+    <string name="abc_searchview_description_voice">Kërkim me zë</string>
+    <string name="abc_shareactionprovider_share_with">Ndaje me</string>
+    <string name="abc_shareactionprovider_share_with_application">Ndaje me %s</string>
+    <string name="abc_toolbar_collapse_description">Palos</string>
+    <string name="about_action_bar_title">Rreth</string>
+    <string name="about_app_version_text">Versioni %s</string>
+    <string name="about_privacy_policy">Politika për privatësinë</string>
+    <string name="about_release_note_title">Regjistri i përditësimit:</string>
+    <string name="about_terms_service">Rregullat e shërbimit</string>
+    <string name="copy">Kopjo</string>
+    <string name="expand_button_title">Të përparuara</string>
+    <string name="got_it">E kuptova</string>
+    <string name="loading_text">Duke ngarkuar...</string>
+    <string name="longshot_guide_not_support">Fotoja e ekranit e zgjeruar nuk mbështetet në këtë faqe.</string>
+    <string name="longshot_guide_support">Shtypni këtu për të provuar foton e ekranit të zgjeruar.</string>
+    <string name="not_set">Nuk është caktuar</string>
+    <string name="not_support_longshot">Fotoja e ekranit e zgjeruar nuk mbështetet në këtë faqe.</string>
+    <string name="permission_btn_text_denied">Dil</string>
+    <string name="permission_btn_text_grant">Në rregull</string>
+    <string name="permission_dialog_title">Deklaratë për lejen</string>
+    <string name="preference_copied">\"%1$s\" u kopjua në kujtesën e fragmenteve</string>
+    <string name="quick_share_description1">"Mbajeni shtypur figurën 
+për ta ndarë"</string>
+    <string name="quick_share_more_text">Më shumë</string>
+    <string name="quick_share_send_description_text">Dërgojeni te një mik</string>
+    <string name="quick_share_title1">"Ndaj
+foton e ekranit"</string>
+    <string name="quick_share_title2">"Tërhiqeni ikonën
+dhe më pas lëshojeni për ta
+ndarë shpejt"</string>
+    <string name="screen_orientation_changed">Orientimi i ekranit nuk mund të ndryshohet ndërsa kapni foto ekrani të zgjeruara.</string>
+    <string name="screenshot_stoped_text">Fotoja e ekranit e zgjeruar ka ndaluar</string>
+    <string name="scrolling">Ekrani do të lëvizë automatikisht ndërsa bëni foto ekrani të zgjeruara.</string>
+    <string name="search_menu_title">Kërko</string>
+    <string name="select_day">Zgjidh muajin dhe ditën</string>
+    <string name="select_hours">Zgjidh orët</string>
+    <string name="select_minutes">Zgjidh minutat</string>
+    <string name="select_year">Zgjidh vitin</string>
+    <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="stop_and_save">Shtypni kudo për të ndaluar lëvizjen dhe bëni një foto ekrani të zgjeruar</string>
+    <string name="summary">Pasi të keni bërë foton e ekranit, shtypni foton e ekranit të zgjeruar për të fotografuar përmbajtjen e lëvizshme më poshtë.</string>
+    <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
+    <string name="time_picker_header_text">Vendos orën</string>
+    <string name="time_picker_hour_label">orë</string>
+    <string name="time_picker_input_error">Vendosni një orë të vlefshme</string>
+    <string name="time_picker_minute_label">minutë</string>
+    <string name="time_picker_prompt_label">Shkruaj orën</string>
+    <string name="title">Zgjero foton e ekranit</string>
+    <string name="top_activity_changed">Ndryshimi i aplikacionit nuk mbështetet ndërsa bëni foto ekrani të zgjeruara.</string>
+    <string name="v7_preference_off">JOAKTIV</string>
+    <string name="v7_preference_on">AKTIV</string>
+</resources>

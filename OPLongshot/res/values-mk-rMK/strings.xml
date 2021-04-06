@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="notification_channel_screenshot">Слики од екранот</string>
+    <string name="screenshot_failed_text">Не може да направи слика на екран поради огран. простор или не дозволува аплика. или организацијата.</string>
+    <string name="screenshot_failed_title">Сликата на екранот не можеше да се сними.</string>
+    <string name="screenshot_failed_to_capture_text">Апликацијата или вашата организација не дозволува снимање слики од екранот</string>
+    <string name="screenshot_failed_to_save_text">Сликата од екранот не може да се зачува поради ограничена меморија.</string>
+    <string name="screenshot_failed_to_save_unknown_text">Се појави проблем при зачувување на сликата од екранот.</string>
+    <string name="screenshot_saved_text">Допрете за да ја видите сликата на екранот.</string>
+    <string name="screenshot_saved_title">Сликата на екранот е снимена.</string>
+    <string name="screenshot_saving_text">Сликата на екранот се зачувува.</string>
+    <string name="screenshot_saving_ticker">Сликата на екранот се зачувува...</string>
+    <string name="screenshot_saving_title">Сликата на екранот се зачувува...</string>
+</resources>

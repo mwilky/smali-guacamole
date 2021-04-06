@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="notification_channel_screenshot">Pamjet e ekranit</string>
+    <string name="screenshot_failed_text">Nuk pranon pamje ekrani për shkak të hapësirës së kufizuar ruajtëse, ose një gjë e tillë nuk lejohet nga aplikacioni apo organizata jote.</string>
+    <string name="screenshot_failed_title">Nuk mundi të kapte pamjen e ekranit.</string>
+    <string name="screenshot_failed_to_capture_text">Nxjerrja e pamjeve të ekranit nuk lejohet nga aplikacioni ose organizata jote.</string>
+    <string name="screenshot_failed_to_save_text">Pamja e ekranit nuk mund të ruhet për shkak të hapësirës ruajtëse të kufizuar.</string>
+    <string name="screenshot_failed_to_save_unknown_text">U has problem gjatë ruajtjes së pamjes së ekranit.</string>
+    <string name="screenshot_saved_text">Prek për të parë pamjen e ekranit tënd.</string>
+    <string name="screenshot_saved_title">Pamja e ekranit u kap.</string>
+    <string name="screenshot_saving_text">Pamja e ekranit po ruhet.</string>
+    <string name="screenshot_saving_ticker">Po ruan pamjen e ekranit...</string>
+    <string name="screenshot_saving_title">Po ruan pamjen e ekranit…</string>
+</resources>

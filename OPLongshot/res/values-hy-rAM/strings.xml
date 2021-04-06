@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="notification_channel_alerts">Ծանուցումներ</string>
+    <string name="notification_channel_screenshot">Էկրանի պատկերներ</string>
+    <string name="screenshot_failed_text">Չենք կարող պատճենել էկրանը՝ տարածքի սահմանափակման կամ ձեր կազմակերպության կողմից արգելքի պատճառով:</string>
+    <string name="screenshot_failed_title">Չհաջողվեց լուսանկարել էկրանի հանույթը:</string>
+    <string name="screenshot_failed_to_capture_text">Հավելվածը կամ ձեր կազմակերպությունը չի թույլատրում էկրանի պատկերի ստացումը</string>
+    <string name="screenshot_failed_to_save_text">Չհաջողվեց պահել էկրանի պատկերը սահմանափակ հիշողության պատճառով:</string>
+    <string name="screenshot_failed_to_save_unknown_text">Էկրանի պատկերը պահելիս խնդիր առաջացավ:</string>
+    <string name="screenshot_saved_text">Հպեք ձեր էկրանի հանույթը տեսնելու համար:</string>
+    <string name="screenshot_saved_title">Էկրանի հանույթը լուսանկարվել է:</string>
+    <string name="screenshot_saving_text">Էկրանի հանույթը պահվում է:</string>
+    <string name="screenshot_saving_ticker">Պահում է էկրանի հանույթը…</string>
+    <string name="screenshot_saving_title">Պահում է էկրանի հանույթը...</string>
+</resources>

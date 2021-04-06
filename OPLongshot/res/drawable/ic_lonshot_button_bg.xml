@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector android:height="@dimen/longshot_icon_height" android:width="@dimen/longshot_icon_width" android:viewportWidth="216.0" android:viewportHeight="96.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillColor="#ff333333" android:pathData="M48,0L168,0A48,48 0,0 1,216 48L216,48A48,48 0,0 1,168 96L48,96A48,48 0,0 1,0 48L0,48A48,48 0,0 1,48 0z" android:fillAlpha="0.9" />
+</vector>

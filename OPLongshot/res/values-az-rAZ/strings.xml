@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="notification_channel_screenshot">Skrinşotlar</string>
+    <string name="screenshot_failed_text">Yaddaş ehtiyatının az olması səbəbindən skrinşot çəkmək olmur və ya bunu etmək ya tətbiq, ya da şirkət tərəfindən qadağan olunub.</string>
+    <string name="screenshot_failed_title">Skrinşot götürülə bilinmədi.</string>
+    <string name="screenshot_failed_to_capture_text">Skrinşot çəkməyə tətbiq və ya təşkilat tərəfindən icazə verilmir</string>
+    <string name="screenshot_failed_to_save_text">Yaddaş ehtiyatının az olması səbəbindən skrinşotu yadda saxlamaq olmur.</string>
+    <string name="screenshot_failed_to_save_unknown_text">Skrinşot yadda saxlanarkən problem baş verdi.</string>
+    <string name="screenshot_saved_text">Skrinşotunuza baxmaq üçün toxunun</string>
+    <string name="screenshot_saved_title">Skrinşot çəkildi.</string>
+    <string name="screenshot_saving_text">Skrinşot yadda saxlanır.</string>
+    <string name="screenshot_saving_ticker">Skrinşot yadda saxlanılır...</string>
+    <string name="screenshot_saving_title">Skrinşot yadda saxlanır...</string>
+</resources>

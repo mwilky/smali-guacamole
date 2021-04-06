@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="notification_channel_alerts">Сануулга</string>
+    <string name="notification_channel_screenshot">Дэлгэцийн зураг дарах</string>
+    <string name="screenshot_failed_text">Хадгалах сан хязгаартай эсхүл таны байгууллага буюу апп-с зөвшөөрөөгүй учир дэлгэцийн зургийг авах боломжгүй.</string>
+    <string name="screenshot_failed_title">Дэлгэцийн агшинг авч чадсангүй.</string>
+    <string name="screenshot_failed_to_capture_text">Таны апп, байгууллагад дэлгэцийн зураг авахыг зөвшөөрдөггүй</string>
+    <string name="screenshot_failed_to_save_text">Хадгалах сангийн багтаамж бага байгаа тул дэлгэцийн авсан зургийг хадгалах боломжгүй байна.</string>
+    <string name="screenshot_failed_to_save_unknown_text">Дэлгэцийн агшинг хадгалахад алдаа гарлаа.</string>
+    <string name="screenshot_saved_text">Дэлгэцийн агшныг харах бол хүрнэ үү.</string>
+    <string name="screenshot_saved_title">Дэлгэцийн агшинг авсан.</string>
+    <string name="screenshot_saving_text">Дэлгэцийн агшин хадгалагдав.</string>
+    <string name="screenshot_saving_ticker">Дэлгэцийн агшинг хадгалж байна…</string>
+    <string name="screenshot_saving_title">Дэлгэцийн агшинг хадгалж байна…</string>
+</resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="notification_channel_alerts">الرٹس</string>
+    <string name="notification_channel_screenshot">اسکرین شاٹس</string>
+    <string name="screenshot_failed_text">اسٹوریج کی محدود جگہ کی وجہ سے اسکرین شاٹ نہیں لے سکتے، یا ایپ یا آپکی تنظیم کے ذریعے یہ مجاز نہیں ہے۔</string>
+    <string name="screenshot_failed_title">اسکرین شاٹ کیپچر نہیں کر سکے۔</string>
+    <string name="screenshot_failed_to_capture_text">ایپ یا آپ کی تنظیم کی جانب سے اسکرین شاٹس لینے کی اجازت نہیں ہے</string>
+    <string name="screenshot_failed_to_save_text">محدود اسٹوریج جگہ کی وجہ سے اسکرین شاٹس نہیں لئے جا سکتے۔</string>
+    <string name="screenshot_failed_to_save_unknown_text">اسکرین شاٹ محفوظ کرتے وقت مسئلہ پیش آ گیا۔</string>
+    <string name="screenshot_saved_text">اپنے اسکرین شاٹ دیکھنے کیلئے چھوئیں۔</string>
+    <string name="screenshot_saved_title">اسکرین شاٹ کیپچر کیا گیا۔</string>
+    <string name="screenshot_saving_text">اسکرین شاٹ محفوظ کیا جا رہا ہے۔</string>
+    <string name="screenshot_saving_ticker">اسکرین شاٹ محفوظ ہو رہا ہے…</string>
+    <string name="screenshot_saving_title">اسکرین شاٹ محفوظ ہو رہا ہے…</string>
+</resources>

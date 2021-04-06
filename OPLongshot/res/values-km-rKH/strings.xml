@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="notification_channel_alerts">ការ​ជូនដំណឹង</string>
+    <string name="screenshot_failed_text">មិនអាចថតអេក្រង់ដោយសារតែទំហំផ្ទុកមានដែនកំណត់ ឬវាមិនត្រូវបានអនុញ្ញាត​ដោយកម្មវិធី ឬ​ស្ថាប័ន​របស់​អ្នក។</string>
+    <string name="screenshot_failed_title">មិន​អាច​ចាប់​យក​រូប​ថត​អេក្រង់​។</string>
+    <string name="screenshot_saved_text">ប៉ះ ​ដើម្បី​មើល​រូបថត​អេក្រង់​របស់​អ្នក​។</string>
+    <string name="screenshot_saved_title">បាន​ចាប់​យក​រូបថត​អេក្រង់។​</string>
+    <string name="screenshot_saving_text">រូបថត​អេក្រង់​កំពុង​ត្រូវ​បាន​រក្សាទុក។</string>
+    <string name="screenshot_saving_ticker">កំពុង​រក្សាទុក​រូបថត​អេក្រង់…</string>
+    <string name="screenshot_saving_title">កំពុង​រក្សាទុក​រូបថត​អេក្រង់...</string>
+</resources>

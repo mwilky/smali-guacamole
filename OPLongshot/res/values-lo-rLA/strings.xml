@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="notification_channel_alerts">ການເຕືອນ</string>
+    <string name="notification_channel_screenshot">ຮູບຖ່າຍໜ້າຈໍ</string>
+    <string name="screenshot_failed_text">ບໍ່​ສາມາດ​ຖ່າຍ​ຮູບ​ໜ້າ​ຈໍ​ໄດ້​ເນື່ອງ​ຈາກ​ບ່ອນ​ຈັດ​ເກັບ​ຂໍ້ມູນ​ທີ່​ຈຳກັດ ຫຼື​ແອັບຯ ຫຼື​ອົງກອນ​ຂອງ​ທ່ານ​ບໍ່​ອະນຸຍາດ​ໃຫ້​ເຮັດ​ໄດ້.</string>
+    <string name="screenshot_failed_title">ບໍ່ສາມາດຖ່າຍຮູບໜ້າຈໍໄດ້</string>
+    <string name="screenshot_failed_to_capture_text">ແອັບ ຫຼື ອົງກອນຂອງທ່ານບໍ່ອະນຸຍາດໃຫ້ຖ່າຍຮູບໜ້າຈໍ</string>
+    <string name="screenshot_failed_to_save_text">ບໍ່ສາມາດຖ່າຍຮູບໜ້າຈໍໄດ້ເນື່ອງຈາກພື້ນທີ່ຈັດເກັບຂໍ້ມູນມີຈຳກັດ.</string>
+    <string name="screenshot_failed_to_save_unknown_text">ເກີດບັນຫາໃນການບັນທຶກພາບໜ້າຈໍຂອງທ່ານ.</string>
+    <string name="screenshot_saved_text">ແຕະເພື່ອເບິ່ງພາບໜ້າຈໍຂອງທ່ານ.</string>
+    <string name="screenshot_saved_title">ຖ່າຍຮູບໜ້າຈໍແລ້ວ</string>
+    <string name="screenshot_saving_text">ກຳລັງບັນທຶກພາບໜ້າຈໍ.</string>
+    <string name="screenshot_saving_ticker">ກຳລັງບັນທຶກຮູບໜ້າຈໍ</string>
+    <string name="screenshot_saving_title">ກຳລັງບັນທຶກພາບໜ້າຈໍ...</string>
+</resources>

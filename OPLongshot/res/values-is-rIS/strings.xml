@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="notification_channel_screenshot">Skjámyndir</string>
+    <string name="screenshot_failed_text">Ekki hægt að taka skjámynd vegna takmarkaðs pláss eða forritið eða notendaskipanin leyfir það ekki.</string>
+    <string name="screenshot_failed_title">Ekki tókst að taka skjámynd.</string>
+    <string name="screenshot_failed_to_capture_text">Forritið eða fyrirtækið þitt leyfir ekki skjámyndatöku</string>
+    <string name="screenshot_failed_to_save_text">Ekki tókst að vista skjámynd vegna takmarkaðs geymslupláss.</string>
+    <string name="screenshot_failed_to_save_unknown_text">Upp kom vandamál við að vista skjámynd.</string>
+    <string name="screenshot_saved_text">Snertu til að skoða skjámyndina.</string>
+    <string name="screenshot_saved_title">Skjámynd var tekin.</string>
+    <string name="screenshot_saving_text">Verið er að vista skjámynd.</string>
+    <string name="screenshot_saving_ticker">Vistar skjámynd…</string>
+    <string name="screenshot_saving_title">Vistar skjámynd…</string>
+</resources>
