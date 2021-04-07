@@ -509,30 +509,7 @@
 .method public static isSupportAlwaysOn()Z
     .locals 3
 
-    const-string v0, "sys.aod.debug_support_always_on"
-
-    const/4 v1, 0x0
-
-    invoke-static {v0, v1}, Landroid/os/SystemProperties;->getInt(Ljava/lang/String;I)I
-
-    move-result v0
-
-    const/4 v2, 0x1
-
-    if-ne v0, v2, :cond_0
-
-    return v2
-
-    :cond_0
-    new-array v0, v2, [I
-
-    const/16 v2, 0x12c
-
-    aput v2, v0, v1
-
-    invoke-static {v0}, Landroid/util/OpFeatures;->isSupport([I)Z
-
-    move-result v0
+    const/4 v0, 0x1
 
     return v0
 .end method
