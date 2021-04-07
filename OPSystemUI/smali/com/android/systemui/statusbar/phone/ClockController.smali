@@ -372,7 +372,7 @@
 
     .line 74
     :cond_73
-    invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/ClockController;->setCenterClockPadding()V
+    #invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/ClockController;->setCenterClockPadding()V
 
     goto :goto_8e
 
